@@ -18,8 +18,9 @@ const app = express();
 // ℹ️ This function is getting exported from the config folder. It runs most pieces of middleware
 require("./config")(app);
 
-const projectName = "inception-vol-2";
-const capitalized = (string) => string[0].toUpperCase() + string.slice(1).toLowerCase();
+const projectName = "CarAmerican";
+const capitalized = (string) =>
+  string[0].toUpperCase() + string.slice(1).toLowerCase();
 
 app.locals.title = `${capitalized(projectName)} created with IronLauncher`;
 
