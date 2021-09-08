@@ -6,7 +6,9 @@ const vehicleSchema = new Schema({
     make: String,
     model: String,
     year: Number,
-    // unique: true -> Ideally, should be unique, but its up to you
+    color: String,
+    mileage: Number,
+    bodyType: String
   },
 });
 
