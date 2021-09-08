@@ -1,4 +1,5 @@
-const router = require("express").Router();
+const { Router } = require("express");
+const router = new Router();
 
 // ℹ️ Handles password encryption
 const bcrypt = require("bcryptjs");
