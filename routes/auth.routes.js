@@ -52,7 +52,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
   User.findOne({ email }).then((found) => {
     //   // If the user is found, send the message email is already used
     if (found) {
-      return res.status(400).render("auth.signup", {
+      return res.status(400).render("auth/signup", {
         errorMessage: "Email is already being used.",
       });
     }
@@ -84,7 +84,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
         if (error.code === 11000) {
           return res.status(400).render("auth/signup", {
             errorMessage:
-              "Email need to be unique. The email you chose is already in use.",
+              "Email needs to be unique. The email you chose is already in use.",
           });
         }
         return res
