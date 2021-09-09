@@ -1,0 +1,11 @@
+ FOUND VEHICLES
+ {{#each vehiclesFromApi}}
+    <p>
+      {{this.make}}
+    </p>
+    <img src="{{this.primaryPhotoUrl}}" alt='' />
+  {{/each}}
+
+  {{#if errorMessage}}
+    {{errorMessage}}
+  {{/if}}

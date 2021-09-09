@@ -8,22 +8,25 @@ const VehiclesApi = require('../service/VehiclesApi');
 const vehiclesApi = new VehiclesApi();
 
 // ****************************************************************************************
-// GET route to get the default set of 20 vehicles and render index/landing page
+// POST route to submit search query
 // ****************************************************************************************
-router.get('/', (req, res) => {
-  console.log('indexiiiiing');
+router.post('/', (req, res) => {
+  const { make, model, year_min, year_max, city } = req.body;
+  console.log('our queries', { make, model, year_min, year_max, city });
+
   vehiclesApi
-    .getGeneralLisiting()
-    .then((vehiclesFromApi) => {
-      const { records } = vehiclesFromApi.data;
-      console.log({ records });
-      res.render('index', {
+    .getQueriedListings(make, model, year_min, year_max, city)
+    .then((queriedVehicles) => {
+      const { records } = queriedVehicles.data;
+      console.log('SEARCHED: ', { records });
+
+      res.render('vehicles/vehicles-list', {
         vehiclesFromApi: records,
       });
     })
     .catch((err) => {
       console.log('Error appaeared during getting cars from API', err);
-      res.render('index', {
+      res.render('vehicles/vehicles-list', {
         errorMessage:
           'Oops, something went wrong,\ntry one more time, please 😔',
       });

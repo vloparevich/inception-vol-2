@@ -1,21 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 
-   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <title>{{title}}</title>
-      <link rel="stylesheet" href="/stylesheets/style.css" />
-   </head>
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css"> 
+   <title>{{title}}</title>
+   <link rel="stylesheet" href="/stylesheets/style.css" />
+</head>
 
-   <body>
-      <nav>Log In</nav>
-      <nav>Sign In</nav>
+<body>
+   <header>
+      <div class='header-content'>
+         <p>CarAmerican</p>
+         <nav class="nav-bar">
+            <ul class='nav-bar-ul'>
+               <li><a href="">Log In</a></li>
+               <li><a href="">Sign Up</a></li>
+            </ul>
+         </nav>
+      </div>
+   </header>
 
-      {{{body}}}
+   {{{body}}}
 
-      <script src="/js/script.js"></script>
-   </body>
+
+
+   <footer class="footer-section"></footer>
+   <script src="/js/script.js"></script>
+</body>
 
 </html>
