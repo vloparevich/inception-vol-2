@@ -4,8 +4,8 @@ class VehiclesApi {
   constructor() {
     this.apiKey = process.env.API_KEY;
     this.api = axios.create({
-      baseURL: `https://auto.dev/api/listings?apikey=${this.apiKey}`,
-      //   baseURL: `https://auto.dev/api/listings?apikey=$TEST`,
+      //   baseURL: `https://auto.dev/api/listings?apikey=${this.apiKey}`,
+      baseURL: `https://auto.dev/api/listings?apikey=$TEST`,
     });
   }
 

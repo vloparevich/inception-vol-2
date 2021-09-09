@@ -1,6 +1,14 @@
-<form action="/auth/signup" method="POST">
-   <label> Username
-      <input type="text" name="username">
+<h2>Sign Up</h2>
+
+<form action="/signup" method="POST">
+   <label> First Name
+      <input type="text" name="firstName">
+   </label>
+   <label> Last Name
+      <input type="text" name="lastName">
+   </label>
+   <label> Email
+      <input type="text" name="email">
    </label>
    <label> Password
       <input type="password" name="password">
@@ -8,6 +16,10 @@
 
    <button type="submit">Submit</button>
 </form>
+
+{{#if errorMessage}}
+    <p class="error">{{errorMessage}}</p>
+  {{/if}}
 
 
    
