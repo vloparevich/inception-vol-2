@@ -13,8 +13,16 @@ const userSchema = new Schema({
     type: String,
     required: [true, "Password is required."],
   },
-  firstName: String,
-  lastName: String,
+  firstName: {
+    type: String,
+    unique: false,
+    required: true,
+  },
+  lastName: {
+    type: String,
+    unique: false,
+    required: true,
+  },
 });
 
 const User = model("User", userSchema);
