@@ -14,9 +14,6 @@ class VehiclesApi {
   };
 
   getQueriedListings = (make, model, year_min, year_max, city) => {
-    console.log('MY REQ:', { make, model, year_min, year_max, city });
-    //https://auto.dev/api/listings?apikey=KAMptQA8oJqF06&year_min=2016&make=Acura&model=MDX&trim[]=Base&trim[]=SH-AWD&city=Los%20Angeles&state=CA&location=Los%20Angeles,%20CA&latitude=34.0522342&longitude=-118.2436849&radius=100&transmission[]=automatic&features[]=sunroof&exterior_color[]=gray&exterior_color[]=silver&interior_color[]=black&page=1
-    //https://auto.dev/api/listings?apikey=KAMptQA8oJqF06&year_min=2016&make=Acura&model=MDX&trim[]=Base&trim[]=SH-AWD&city=Los%20Angeles&state=CA&radius=100&transmission[]=automatic&features[]=sunroof&exterior_color[]=gray&page=1
     return this.api.get('', {
       params: {
         make: make,
