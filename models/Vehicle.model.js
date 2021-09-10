@@ -6,10 +6,12 @@ const vehicleSchema = new Schema({
     make: String,
     model: String,
     year: Number,
-    color: String,
+    displayColor: String,
     mileage: Number,
-    bodyType: String
+    bodyType: String,
+    condition: String
   },
+  user: { type: Schema.Types.ObjectId, ref: 'User' },
 });
 
 const Vehicle = model("Vehicle", vehicleSchema);

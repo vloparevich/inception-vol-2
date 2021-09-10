@@ -31,8 +31,8 @@ app.use('/', index);
 const authRoutes = require('./routes/auth.routes');
 app.use('/auth', authRoutes);
 
-const vehcileRoutes = require('./routes/vehicles.routes');
-app.use('/vehicles', vehcileRoutes);
+const vehicleRoutes = require('./routes/vehicles.routes');
+app.use('/vehicles', vehicleRoutes);
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require('./error-handling')(app);
