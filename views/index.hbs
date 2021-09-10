@@ -1,48 +1,78 @@
 <div class='main-search-area'>
   <form action='/vehicles' method='POST' autocomplete='off'>
     <div class='form__group'>
-      <input
+      {{! <input
         type='text'
         class='form__input'
         placeholder='Make...'
         required=''
-        name="make"
+        name='make'
         autofocus
+      /> }}
+      <input
+        autofocus
+        list='select'
+        name='make'
+        class='form__input'
+        placeholder='Make...'
       />
+      <datalist class='form-control' id='select'>
+          <option value='Acura'></option>
+        <option value='Ford'>
+        <option value='BMW'></option>
+        <option value='Ford'>
+        </option>
+        <option value='Honda'>
+        </option>
+        <option value='Hyundai'>
+        </option>
+        <option value='Kia'>
+        </option>
+        <option value='Lexus'>
+        </option>
+        <option value='Mazda'>
+        </option>
+        <option value='Mitsubishi'>
+        </option>
+        <option value='Nissan'>
+        </option>
+        <option value='Subaru'>
+        </option>
+        <option value='Suzuki'>
+        </option>
+        <option value='Toyota'>
+        </option>
+      </datalist>
       <input
         type='text'
         class='form__input'
         id='name'
         placeholder='Model...'
-        required=''
-        name="model"
+        name='model'
       />
-
       <input
         type='text'
         class='form__input'
         id='name'
         placeholder='Min year...'
-        required=''
-        name="year_min"
+        name='year_min'
       />
       <input
         type='text'
         class='form__input'
         id='name'
         placeholder='Max year...'
-        required=''
-        name="year_max"
+        name='year_max'
       />
 
-          <button type='submit' class='search-button'>
-      Search
-    </button>
+      <button type='submit' class='search-button'>
+        Search
+      </button>
     </div>
   </form>
 </div>
-<div class='main-section'>
-  {{#each vehiclesFromApi}}
+
+  {{!-- {{#each vehiclesFromApi}}
     <p>
       {{this.make}}
     </p>
@@ -52,4 +82,22 @@
   {{#if errorMessage}}
     {{errorMessage}}
   {{/if}}
+</div>
+ --}}
+
+<div class='main-section'>
+<div class='set-of-vehicles'>
+  <div class='vehicle-card'>
+    {{#each vehiclesFromApi}}
+    <img class='vehicle-img' src="{{this.primaryPhotoUrl}}" alt='' />
+      <p>
+        {{this.make}}
+      </p>
+    {{/each}}
+
+    {{#if errorMessage}}
+      {{errorMessage}}
+    {{/if}}
+  </div>
+</div>
 </div>
