@@ -10,7 +10,7 @@ const vehicleSchema = new Schema({
     mileage: Number,
     bodyType: String,
     condition: String,
-    imageUrl: String
+    imageUrl: String,
   },
   user: { type: Schema.Types.ObjectId, ref: 'User' },
 });
