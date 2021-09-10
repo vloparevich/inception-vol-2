@@ -12,11 +12,16 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   font-family: "Montserrat", sans-serif;
   margin-top: 7rem;
-  min-height: 100vh;
+  min-height: 90vh;
   display: flex;
   flex-direction: column;
   background-color: #F2F2F2;
   text-align: center;
+}
+
+.app-title {
+  text-decoration: none !important;
+  color: #04D9D9;
 }
 
 h1 {
@@ -79,8 +84,6 @@ header>div {
 
 .form__group {
   text-align: center;
-  ;
-
 }
 
 .form__input {
@@ -95,7 +98,7 @@ header>div {
   display: block;
   border-bottom: 0.3rem solid transparent;
   transition: all 0.3s;
-  height: .5rem;
+  height: 0.2rem;
   text-align: center;
 }
 
@@ -112,4 +115,18 @@ header>div {
 
 :-moz-placeholder {
   text-align: center;
+}
+
+.set-of-vehicles {
+  display: flex;
+  flex-direction: row;
+}
+
+.set-of-vehicles .vehicle-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.vehicle-img {
+  width: 35%;
 }

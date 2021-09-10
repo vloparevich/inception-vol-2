@@ -1,4 +1,4 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model } = require('mongoose');
 
 // TODO: Please make sure you edit the user model to whatever makes sense in this case
 const vehicleSchema = new Schema({
@@ -8,10 +8,10 @@ const vehicleSchema = new Schema({
     year: Number,
     color: String,
     mileage: Number,
-    bodyType: String
+    bodyType: String,
   },
 });
 
-const Vehicle = model("Vehicle", vehicleSchema);
+const Vehicle = model('Vehicle', vehicleSchema);
 
 module.exports = Vehicle;

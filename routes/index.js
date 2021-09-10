@@ -15,10 +15,19 @@ router.get('/', (req, res) => {
   vehiclesApi
     .getGeneralLisiting()
     .then((vehiclesFromApi) => {
-      const { records } = vehiclesFromApi.data;
-      console.log({ records });
+      let records = vehiclesFromApi.data.records;
+
+      // const trimmedArr = [];
+      // for (i = 0; i < 4; i++) {
+      //   trimmedArr.push(records[i]);
+      // }
+      // const newArr = Array.from(records);
+      // const trimmedArr = newArr.slice(1);
+      // console.log('TRIMMED', trimmedArr);
+      const trimmedArr = records.filter((curr, i) => i < 4 && curr);
+
       res.render('index', {
-        vehiclesFromApi: records,
+        vehiclesFromApi: trimmedArr,
       });
     })
     .catch((err) => {
