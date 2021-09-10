@@ -1,15 +1,17 @@
-FOUND VEHICLES
-<div class='set-of-vehicles'>
-  <div class='vehicle-card'>
-    <img class='vehicle-img' src="{{this.primaryPhotoUrl}}" alt='' />
+<form action=''>
+  <div class='set-of-vehicles'>
     {{#each vehiclesFromApi}}
-      <p>
-        {{this.make}}
-      </p>
+      <div class='vehicle-card'>
+        <img class='vehicle-img' src="{{this.primaryPhotoUrl}}" alt='' />
+        <p>
+          {{this.make}}
+          test
+        </p>
+      </div>
     {{/each}}
 
     {{#if errorMessage}}
       {{errorMessage}}
     {{/if}}
   </div>
-</div>
+</form>

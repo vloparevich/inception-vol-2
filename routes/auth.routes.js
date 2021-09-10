@@ -15,7 +15,7 @@ const User = require('../models/User.model');
 const isLoggedOut = require('../middleware/isLoggedOut');
 const isLoggedIn = require('../middleware/isLoggedIn');
 
-router.get('/signup', isLoggedOut, (req, res) => {
+router.get('/signup', (req, res) => {
   res.render('auth/signup');
 });
 
@@ -64,6 +64,13 @@ router.post('/signup', isLoggedOut, (req, res) => {
       .then((salt) => bcrypt.hash(password, salt))
       .then((hashedPassword) => {
         // Create a user and save it in the database
+        // console.log('BEFORE', {
+        //   email: email,
+        //   password: hashedPassword,
+        //   firstName: firstName,
+        //   lastName: lastName,
+        // });
+        console.log('BEFORE TEHN');
         return User.create({
           email: email,
           password: hashedPassword,
@@ -73,7 +80,9 @@ router.post('/signup', isLoggedOut, (req, res) => {
       })
       .then((user) => {
         // Bind the user to the session object
+        console.log('line 83');
         req.session.user = user;
+        console.log('Session', req.session.user);
         res.redirect('/');
       })
       .catch((error) => {
@@ -84,8 +93,7 @@ router.post('/signup', isLoggedOut, (req, res) => {
         }
         if (error.code === 11000) {
           return res.status(400).render('auth/signup', {
-            errorMessage:
-              'Email needs to be unique. The email you chose is already in use.',
+            errorMessage: `Email needs to be unique. The email you chose is already in use. ${error}`,
           });
         }
         return res

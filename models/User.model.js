@@ -10,20 +10,13 @@ const userSchema = new Schema({
     trim: true,
   },
   password: {
-    type: String,
+    type: { type: String },
     required: [true, 'Password is required.'],
   },
-  firstName: {
-    type: String,
-    unique: false,
-    required: true,
-  },
-  lastName: {
-    type: String,
-    unique: false,
-    required: true,
-  },
+  firstName: { type: String, required: true },
+  lastName: { type: String },
   vehicles: [{ type: Schema.Types.ObjectId, ref: 'Vehicle' }],
+  dealerShip: [{ type: Schema.Types.ObjectId, ref: 'Dealer' }],
 });
 
 const User = model('User', userSchema);

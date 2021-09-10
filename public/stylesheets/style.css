@@ -124,11 +124,12 @@ header>div {
 .set-of-vehicles {
   display: flex;
   flex-direction: row;
+  justify-content: center;
 }
 
 .set-of-vehicles .vehicle-card {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 }
 
 .vehicle-img {
