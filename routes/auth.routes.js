@@ -1,31 +1,31 @@
-const { Router } = require("express");
+const { Router } = require('express');
 const router = new Router();
 
 // ℹ️ Handles password encryption
-const bcrypt = require("bcryptjs");
-const mongoose = require("mongoose");
+const bcrypt = require('bcryptjs');
+const mongoose = require('mongoose');
 
 // How many rounds should bcrypt run the salt (default [10 - 12 rounds])
 const saltRounds = 10;
 
 // Require the User model in order to interact with the database
-const User = require("../models/User.model");
+const User = require('../models/User.model');
 
 // Require necessary (isLoggedOut and isLiggedIn) middleware in order to control access to specific routes
-const isLoggedOut = require("../middleware/isLoggedOut");
-const isLoggedIn = require("../middleware/isLoggedIn");
+const isLoggedOut = require('../middleware/isLoggedOut');
+const isLoggedIn = require('../middleware/isLoggedIn');
 
-router.get("/signup", isLoggedOut, (req, res) => {
-  res.render("auth/signup");
+router.get('/signup', isLoggedOut, (req, res) => {
+  res.render('auth/signup');
 });
 
-router.post("/signup", isLoggedOut, (req, res) => {
+router.post('/signup', isLoggedOut, (req, res) => {
   const { email, password, firstName, lastName } = req.body;
-  console.log(email, password, firstName, lastName);
+  console.log('User: ', { email, password, firstName, lastName });
 
   if (!email || !password || !firstName || !lastName) {
-    return res.status(400).render("auth/signup", {
-      errorMessage: "Please fill out all required fields.",
+    return res.status(400).render('auth/signup', {
+      errorMessage: 'Please fill out all required fields.',
     });
   }
 
@@ -49,11 +49,12 @@ router.post("/signup", isLoggedOut, (req, res) => {
   */
 
   // Search the database for a user with the email submitted in the form
-  User.findOne({ email }).then((found) => {
+  User.findOne({ email: email }).then((found) => {
+    console.log({ found });
     //   // If the user is found, send the message email is already used
     if (found) {
-      return res.status(400).render("auth/signup", {
-        errorMessage: "Email is already being used.",
+      return res.status(400).render('auth/signup', {
+        errorMessage: 'Email is already being used.',
       });
     }
 
@@ -64,32 +65,32 @@ router.post("/signup", isLoggedOut, (req, res) => {
       .then((hashedPassword) => {
         // Create a user and save it in the database
         return User.create({
-          email,
+          email: email,
           password: hashedPassword,
-          firstName,
-          lastName,
+          firstName: firstName,
+          lastName: lastName,
         });
       })
       .then((user) => {
         // Bind the user to the session object
         req.session.user = user;
-        res.redirect("/");
+        res.redirect('/');
       })
       .catch((error) => {
         if (error instanceof mongoose.Error.ValidationError) {
           return res
             .status(400)
-            .render("auth/signup", { errorMessage: error.message });
+            .render('auth/signup', { errorMessage: error.message });
         }
         if (error.code === 11000) {
-          return res.status(400).render("auth/signup", {
+          return res.status(400).render('auth/signup', {
             errorMessage:
-              "Email needs to be unique. The email you chose is already in use.",
+              'Email needs to be unique. The email you chose is already in use.',
           });
         }
         return res
           .status(500)
-          .render("auth/signup", { errorMessage: error.message });
+          .render('auth/signup', { errorMessage: error.message });
       });
   });
 });
