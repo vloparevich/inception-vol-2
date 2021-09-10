@@ -6,10 +6,15 @@ const vehicleSchema = new Schema({
     make: String,
     model: String,
     year: Number,
-    color: String,
+    displayColor: String,
     mileage: Number,
     bodyType: String,
+<<<<<<< HEAD
+=======
+    condition: String
+>>>>>>> 8a6baf08a701794c3918c0b410d1b6f2114524dc
   },
+  user: { type: Schema.Types.ObjectId, ref: 'User' },
 });
 
 const Vehicle = model('Vehicle', vehicleSchema);

@@ -57,7 +57,7 @@ router.post('/signup', isLoggedOut, (req, res) => {
       });
     }
 
-    //     // if user is not found, create a new user - start with hashing the password
+    // if user is not found, create a new user - start with hashing the password
     return bcrypt
       .genSalt(saltRounds)
       .then((salt) => bcrypt.hash(password, salt))
