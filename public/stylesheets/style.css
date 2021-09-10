@@ -74,6 +74,10 @@ header>div {
   width: 50%
 }
 
+.nav-bar-ul li {
+  margin: 0rem 1rem;
+}
+
 .footer-section {
   background-color: #A194BF;
   display: block;

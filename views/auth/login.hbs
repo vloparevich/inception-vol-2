@@ -1,6 +1,8 @@
+<h2>Log In</h2>
+
 <form action="/auth/login" method="POST">
-   <label> Username
-      <input type="text" name="username">
+   <label> Email
+      <input type="text" name="email">
    </label>
    <label> Password
       <input type="password" name="password">
@@ -9,5 +11,6 @@
    <button type="submit">Submit</button>
 </form>
 
-
-   
+   {{#if errorMessage}}
+    <p class="error">{{errorMessage}}</p>
+  {{/if}}
