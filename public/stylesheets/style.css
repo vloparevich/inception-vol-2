@@ -52,6 +52,10 @@ header>div {
   font-size: 1rem;
 }
 
+.details {
+  flex-direction: row;
+}
+
 .nav-bar {
   width: 40%;
 }
