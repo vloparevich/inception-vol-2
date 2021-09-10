@@ -18,6 +18,7 @@ router.post('/', (req, res) => {
     .getQueriedListings(make, model, year_min, year_max, city)
     .then((queriedVehicles) => {
       const { records } = queriedVehicles.data;
+      console.log('AXIOS_REW: ', queriedVehicles);
       console.log('SEARCHED: ', { records });
 
       res.render('vehicles/vehicles-list', {
