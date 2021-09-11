@@ -22,7 +22,7 @@ const projectName = 'CarAmerican';
 const capitalized = (string) =>
   string[0].toUpperCase() + string.slice(1).toLowerCase();
 
-app.locals.title = `${capitalized(projectName)} created with IronLauncher`;
+app.locals.title = capitalized(projectName);
 
 // 👇 Start handling routes here
 const index = require('./routes/index');
@@ -36,6 +36,8 @@ app.use('/vehicles', vehicleRoutes);
 
 const reviewRoutes = require('./routes/review.routes');
 app.use('/review', reviewRoutes);
+const userRoutes = require('./routes/profile.routes');
+app.use('/user', userRoutes);
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require('./error-handling')(app);

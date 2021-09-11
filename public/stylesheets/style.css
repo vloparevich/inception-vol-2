@@ -102,43 +102,39 @@ header>div {
   color: #F2F2F2;
 }
 
-.main-search-area {
-  width: 66%;
-  margin: 0 auto;
+#main-search-area {
+  margin: 5rem 2rem;
+}
+
+#search-form {
+  background-color: #856161;
 }
 
 .form__group {
   text-align: center;
+  display: flex;
+  flex-direction: row;
+  height: 60px;
 }
 
 .form__input {
   color: #04D9D9;
-  font-size: 1.2rem;
-  margin: 0 auto;
-  padding: 1.5rem 2rem;
-  background-color: rgb(255, 255, 255);
-  border: none;
-  width: 50%;
-  display: block;
-  border-bottom: 0.3rem solid transparent;
-  transition: all 0.3s;
-  height: 0.2rem;
+  font-size: .85rem;
   text-align: center;
 }
 
-/* .form__input:placeholder-shown+.form__label {
-  opacity: 0;
-  visibility: hidden;
-  -webkit-transform: translateY(-4rem);
-  transform: translateY(-4rem);
+/* .form__input {
+  color: #04D9D9;
+  font-size: .95rem;
+  margin: 0 auto;
+  padding: .5rem 2rem;
+  display: block;
+  text-align: center;
+  height: 20px;
 } */
 
-::-webkit-input-placeholder {
-  text-align: center;
-}
-
-:-moz-placeholder {
-  text-align: center;
+.search-button {
+  height: 60px;
 }
 
 .set-of-vehicles {
@@ -222,6 +218,19 @@ header>div {
   }
 }
 
+/* USER PROFILE PAGE */
+
+.user-profile {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.user-details {
+  display: flex;
+  flex-direction: column;
+  align-content: left;
+}
 
 /* A U T H F O R M S */
 
@@ -244,7 +253,6 @@ input[type=password] {
   background: #F2F2F2;
 }
 
-input[type=text]:focus,
 input[type=password]:focus {
   background-color: pink;
   outline: none;
@@ -285,3 +293,41 @@ hr {
 }
 
 /* A U T H F O R M S */
+
+
+/* V E H I C L E S   L I S T */
+
+.list-of-vehicles {
+  display: flex;
+  flex-direction: column;
+}
+
+#vehicle-card {
+  display: flex;
+  flex-direction: row;
+  margin: 5% 10%;
+  box-shadow: 5px 5px 5px lightgray;
+  background-color: white;
+}
+
+#vehicle-primary-img {
+  height: 200px;
+}
+
+.vehicle-info {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.vehicle-year-make {
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+
+
+/* V E H I C L E S   L I S T */
