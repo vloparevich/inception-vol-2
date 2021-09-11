@@ -1,25 +1,43 @@
-<h2>Sign Up</h2>
 
-<form action="/auth/signup" method="POST">
-   <label> First Name
-      <input type="text" name="firstName">
-   </label>
-   <label> Last Name
-      <input type="text" name="lastName">
-   </label>
-   <label> Email
-      <input type="text" name="email">
-   </label>
-   <label> Password
-      <input type="password" name="password">
-   </label>
+<form action="/auth/signup" class="auth-form" method="POST">
+   <div class="auth-form-container">
+      <h1>Welcome to My CarAmerican</h1>
+      <p>Create your account and completely control the way you buy your next car</p>
+      <hr>
 
-   <button type="submit">Submit</button>
+      <label> <b>First Name</b><br>
+         <input type="text" placeholder="Enter First Name" name="firstName" required>
+      </label>
+
+      <label> <b>Last Name</b><br>
+         <input type="text" placeholder="Enter Last Name" name="lastName" required>
+      </label>
+
+      <label> <b>Email</b><br>
+         <input type="text" placeholder="Enter Email" name="email" required>
+      </label>
+
+      <label> <b>Password</b><br>
+         <input type="password" placeholder="Enter Password" name="password" required>
+      </label>
+
+      <label>
+      <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+    </label>
+
+    <p>By creating an account you agree to our 
+       <a href="#" style="color:dodgerblue">
+          Terms & Privacy</a>.</p>
+
+      <button type="submit">Submit</button>
+
+      {{#if errorMessage}}
+         <p class="error">{{errorMessage}}</p>
+      {{/if}}
+
+   </div>
 </form>
 
-{{#if errorMessage}}
-    <p class="error">{{errorMessage}}</p>
-  {{/if}}
 
 
    

@@ -1,3 +1,10 @@
+/* colors
+dark blue = #225473
+light blue = #04D9D9
+white = #F2F2F2
+purple = #A194BF
+pink = #F28DEB */
+
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&family=Roboto:wght@100;300;700&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;500;600&display=swap');
 
@@ -25,7 +32,7 @@ body {
 }
 
 h1 {
-  color: 15px;
+  color: #225473;
 }
 
 header>div {
@@ -43,6 +50,8 @@ header>div {
   top: 0;
   width: 100%;
   height: 5rem;
+  font-size: 1rem;
+  border-bottom: 1rem solid #04D9D9;
 }
 
 .header-content p {
@@ -54,7 +63,6 @@ header>div {
 .header-content li a {
   color: #F2F2F2;
   text-decoration: none;
-  font-size: 1rem;
 }
 
 .details {
@@ -65,20 +73,34 @@ header>div {
   width: 40%;
 }
 
-.nav-bar-ul {
+.nav-bar ul {
   margin: auto;
   list-style: none;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  width: 50%
+  width: 50%;
+  font-size: .75rem;
+} 
+
+.nav-bar ul li {
+  margin: 0rem .5rem;
 }
 
+
 .footer-section {
-  background-color: #A194BF;
+  background-color: #225473;
   display: block;
   height: 5rem;
   margin-top: auto;
+  border-top: 1rem solid #04D9D9;
+}
+
+#footer-quote {
+  font-size: .75rem;
+  font-weight: lighter;
+  margin: 2rem 0;
+  color: #F2F2F2;
 }
 
 .main-search-area {
@@ -142,6 +164,7 @@ header>div {
   width: 35%;
 }
 
+<<<<<<< HEAD
 /* DETAILS PAGE */
 .vehicle-details {
   display: flex;
@@ -175,3 +198,65 @@ header>div {
     margin: 0 auto;
   }
 }
+=======
+/* A U T H F O R M S */
+
+.auth-form {
+  border: .25rem solid #225473;
+  margin: 2.5% 30%;
+  box-shadow: 10px 5px 5px lightgray;
+  border-radius: 1rem;
+  background-color: white;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 50%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: .1rem solid lightgray;
+  background: #F2F2F2;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #pink;
+  outline: none;
+}
+
+.auth-form-container {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-form-container p {
+  color: gray;
+  font-weight: lighter;
+}
+
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* Set a style for all buttons */
+.auth-form-container button {
+  background-color: #04D9D9;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px auto;
+  border: none;
+  cursor: pointer;
+  width: 50%;
+  opacity: 0.9;
+  border-radius: 50rem;
+}
+
+.auth-form-container button:hover {
+  opacity:2;
+  background-color: #F28DEB;
+}
+
+/* A U T H F O R M S */
+>>>>>>> f8e61b4ead8156183606f0c16578761fe2a60dae

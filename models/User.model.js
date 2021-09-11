@@ -4,7 +4,7 @@ const { Schema, model } = require('mongoose');
 const userSchema = new Schema({
   email: {
     type: String,
-    unique: true,
+    unique: false,
     required: true,
     lowercase: true,
     trim: true,
@@ -14,7 +14,7 @@ const userSchema = new Schema({
     required: [true, 'Password is required'],
   },
   firstName: { type: String, required: true },
-  lastName: { type: String },
+  lastName: { type: String, required: true },
   vehicles: [{ type: Schema.Types.ObjectId, ref: 'Vehicle' }],
   dealerShip: [{ type: Schema.Types.ObjectId, ref: 'Dealer' }],
 });
