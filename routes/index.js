@@ -11,7 +11,6 @@ const vehiclesApi = new VehiclesApi();
 // GET route to get the default set of 20 vehicles and render index/landing page
 // ****************************************************************************************
 router.get('/', (req, res) => {
-  console.log('indexiiiiing');
   vehiclesApi
     .getGeneralLisiting()
     .then((vehiclesFromApi) => {
@@ -25,7 +24,7 @@ router.get('/', (req, res) => {
       // const trimmedArr = newArr.slice(1);
       // console.log('TRIMMED', trimmedArr);
       const trimmedArr = records.filter((curr, i) => i < 4 && curr);
-
+      console.log('TRIMMED:', { trimmedArr });
       res.render('index', {
         vehiclesFromApi: trimmedArr,
       });

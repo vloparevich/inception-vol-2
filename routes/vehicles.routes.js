@@ -18,9 +18,6 @@ router.post('/', (req, res) => {
     .getQueriedListings(make, model, year_min, year_max, city)
     .then((queriedVehicles) => {
       const { records } = queriedVehicles.data;
-      console.log('AXIOS_REW: ', queriedVehicles);
-      console.log('SEARCHED: ', { records });
-
       res.render('vehicles/vehicles-list', {
         vehiclesFromApi: records,
       });
@@ -37,20 +34,31 @@ router.post('/', (req, res) => {
 // ****************************************************************************************
 // GET route to get the details of selected vehicle and render details page
 // ****************************************************************************************
-router.get("/:id/details", (req, res, next) => {
+router.get('/:id/details', (req, res, next) => {
   Vehicle.findById(req.params.id)
     .populate({
-      path: "details",
-      populate: { path: "user" },
+      path: 'details',
+      populate: { path: 'user' },
     })
     .then((vehicleFromAPI) => {
       console.log({ vehicle: vehicleFromAPI.make.model });
-      res.render("/details", {
+      res.render('/details', {
         vehicleFromAPI,
         isAuth: req.session?.user._id,
       });
     });
-  });
+});
 
+// ****************************************************************************************
+// GET route to get the details of selected vehicle and render details page
+// ****************************************************************************************
+//!!!!!! uncomment when login is ready--> router.get('/vehicle/details/:vin', isLoggedIn, (req, res, next) => {
+router.get('/details/:vin', (req, res, next) => {
+  const { vin } = req.params;
+  vehiclesApi.getVehicleDetails(vin).then((vehicleFromAPI) => {
+    console.log(vehicleFromAPI);
+    res.render('vehicles/vehicle-details', { vehicle: vehicleFromAPI.data });
+  });
+});
 
 module.exports = router;

@@ -129,9 +129,49 @@ header>div {
 
 .set-of-vehicles .vehicle-card {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.set-of-vehicles .vehicle-card img {
+  width: 85%;
+  margin: 0 auto;
 }
 
 .vehicle-img {
   width: 35%;
+}
+
+/* DETAILS PAGE */
+.vehicle-details {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.set-of-pictures-left-side {
+  max-width: 640px;
+}
+
+.set-of-pictures-left-side .main-image {
+  width: 85%;
+}
+
+.more-images {
+  max-width: 640px;
+}
+
+.small-pic {
+  width: 3rem;
+}
+
+@media (max-width: 964px) {
+  .vehicle-details {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .set-of-pictures-left-side {
+    margin: 0 auto;
+  }
 }

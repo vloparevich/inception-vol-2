@@ -1,19 +1,37 @@
-<div class='details'>
-  <h1>
-    DETAILS
-  </h1>
-
-  <img
-    src="{{vehicleFromAPI.imageUrl}}"
-    alt="{{vehicleFromAPI.make.model}} image"
-    height='300'
-  />
-
-  <h2>
-    {{vehicleFromAPI.year.make.model}}
-  </h2>
-
-  <p>
-    {{vehicleFromApi.condition}}
-  </p>
+<div class='vehicle-details'>
+  <div class="set-of-pictures-left-side">
+    <img class="main-image"
+      src="{{vehicle.primaryPhotoUrl}}"
+      alt="image of {{vehicle.make}} vehicle"
+    />
+    <div class='more-images'>
+      {{#each vehicle.photoUrls}}
+        <img
+          class='small-pic'
+          src="{{this}}"
+          alt="small image - {{vehicle.make}}"
+        />
+      {{/each}}
+    </div>
+  </div>
+  <div class="main-details">
+    <h1>
+      DETAILS
+    </h1>
+    <h2>
+      {{vehicle.make}} {{vehicle.model}}
+    </h2>
+    <p>
+      {{vehicle.year}}
+    </p>
+    <p>
+      {{vehicle.price}}
+    </p>
+    <p>
+      {{vehicle.city}} {{vehicle.state}}
+    </p>
+    <p>
+      {{vehicle.dealerName}}
+    </p>
+  </div>
 </div>

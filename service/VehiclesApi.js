@@ -7,6 +7,9 @@ class VehiclesApi {
       baseURL: `https://auto.dev/api/listings?apikey=${this.apiKey}`,
       //   baseURL: `https://auto.dev/api/listings?apikey=$TEST`,
     });
+    this.customApi = axios.create({
+      baseURL: ``,
+    });
   }
 
   getGeneralLisiting = () => {
@@ -23,6 +26,19 @@ class VehiclesApi {
         city: city,
       },
     });
+  };
+
+  getVehicleDetails = (vin) => {
+    const baseUrl = this.api.defaults.baseURL;
+    const indexOfQuerySign = baseUrl.indexOf('?');
+    const preparedUrl = `${baseUrl.slice(
+      0,
+      indexOfQuerySign
+    )}/${vin}${baseUrl.slice(indexOfQuerySign)}`;
+    console.log('CUSTOMED API', this.customApi);
+    this.customApi.defaults.baseURL = preparedUrl;
+    console.log('preparedVIN', preparedUrl);
+    return this.customApi.get('');
   };
 }
 
