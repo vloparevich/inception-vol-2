@@ -17,7 +17,6 @@ const userSchema = new Schema({
   lastName: { type: String },
   vehicles: [{ type: Schema.Types.ObjectId, ref: 'Vehicle' }], // VINs will be saved
   reviews: [{ type: Schema.Types.ObjectId, ref: 'Review' }], // Reviews in regards to the Delaerships
-  // dealerShip: [{ type: Schema.Types.ObjectId, ref: 'Dealer' }],
 });
 
 const User = model('User', userSchema);

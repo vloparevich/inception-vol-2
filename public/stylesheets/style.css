@@ -81,12 +81,11 @@ header>div {
   align-items: center;
   width: 50%;
   font-size: .75rem;
-} 
+}
 
 .nav-bar ul li {
   margin: 0rem .5rem;
 }
-
 
 .footer-section {
   background-color: #225473;
@@ -117,7 +116,6 @@ header>div {
   font-size: 1.2rem;
   margin: 0 auto;
   padding: 1.5rem 2rem;
-  /* border-radius: 0.2rem; */
   background-color: rgb(255, 255, 255);
   border: none;
   width: 50%;
@@ -128,12 +126,12 @@ header>div {
   text-align: center;
 }
 
-.form__input:placeholder-shown+.form__label {
+/* .form__input:placeholder-shown+.form__label {
   opacity: 0;
   visibility: hidden;
   -webkit-transform: translateY(-4rem);
   transform: translateY(-4rem);
-}
+} */
 
 ::-webkit-input-placeholder {
   text-align: center;
@@ -164,12 +162,11 @@ header>div {
   width: 35%;
 }
 
-<<<<<<< HEAD
 /* DETAILS PAGE */
 .vehicle-details {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: center;
 }
 
 .set-of-pictures-left-side {
@@ -181,11 +178,29 @@ header>div {
 }
 
 .more-images {
-  max-width: 640px;
+  max-width: 543px;
+  margin: 0 auto;
 }
 
 .small-pic {
   width: 3rem;
+}
+
+
+.main-details>* {
+  text-align: left;
+}
+
+.main-details h1 {
+  margin-top: 0;
+}
+
+.main-details .price {
+  margin-left: 2rem;
+}
+
+.dealer-review-section {
+  background-color: #04D9D9;
 }
 
 @media (max-width: 964px) {
@@ -197,8 +212,17 @@ header>div {
   .set-of-pictures-left-side {
     margin: 0 auto;
   }
+
+  .main-details>* {
+    text-align: center;
+  }
+
+  .main-details h1 {
+    margin-top: auto;
+  }
 }
-=======
+
+
 /* A U T H F O R M S */
 
 .auth-form {
@@ -210,7 +234,8 @@ header>div {
 }
 
 /* Full-width input fields */
-input[type=text], input[type=password] {
+input[type=text],
+input[type=password] {
   width: 50%;
   padding: 15px;
   margin: 5px 0 22px 0;
@@ -219,8 +244,9 @@ input[type=text], input[type=password] {
   background: #F2F2F2;
 }
 
-input[type=text]:focus, input[type=password]:focus {
-  background-color: #pink;
+input[type=text]:focus,
+input[type=password]:focus {
+  background-color: pink;
   outline: none;
 }
 
@@ -254,9 +280,8 @@ hr {
 }
 
 .auth-form-container button:hover {
-  opacity:2;
+  opacity: 2;
   background-color: #F28DEB;
 }
 
 /* A U T H F O R M S */
->>>>>>> f8e61b4ead8156183606f0c16578761fe2a60dae
