@@ -272,3 +272,41 @@ hr {
 }
 
 /* A U T H F O R M S */
+
+
+/* V E H I C L E S   L I S T */
+
+.set-of-vehicles {
+  display: flex;
+  flex-direction: column;
+}
+
+#vehicle-card {
+  display: flex;
+  flex-direction: row;
+  margin: 5% 10%;
+  box-shadow: 5px 5px 5px lightgray;
+  background-color: white;
+}
+
+#vehicle-primary-img {
+  height: 200px;
+}
+
+.vehicle-info {
+background-color: white;
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+}
+
+.vehicle-year-make {
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  }
+
+
+
+/* V E H I C L E S   L I S T */
