@@ -1,13 +1,17 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model } = require('mongoose');
 
 // TODO: Please make sure you edit the user model to whatever makes sense in this case
 const dealerSchema = new Schema({
-  dealer: {
-    dealerName: String
+  dealerName: {
+    type: String,
   },
-  user: { type: Schema.Types.ObjectId, ref: 'User' },
+  delaerUrl: {
+    type: String,
+  },
+  // vehicle: [{ type: Schema.Types.ObjectId, ref: 'Vehicle' }],
+  review: [{ type: Schema.Types.ObjectId, ref: 'Review' }],
 });
 
-const Dealer = model("Dealer", dealerSchema);
+const Dealer = model('Dealer', dealerSchema);
 
 module.exports = Dealer;

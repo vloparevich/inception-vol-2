@@ -13,6 +13,7 @@ const vehicleSchema = new Schema({
     imageUrl: String,
   },
   user: { type: Schema.Types.ObjectId, ref: 'User' },
+  dealer: { type: Schema.Types.ObjectId, ref: 'Dealer' },
 });
 
 const Vehicle = model('Vehicle', vehicleSchema);
