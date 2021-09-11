@@ -1,16 +1,27 @@
-<h2>Log In</h2>
 
-<form action="/auth/login" method="POST">
-   <label> Email
-      <input type="text" name="email">
-   </label>
-   <label> Password
-      <input type="password" name="password">
-   </label>
+<form action="/auth/login" class="auth-form" method="POST">
+   <div class="auth-form-container">
+      <h1>Welcome Back to My CarAmerican</h1>
+      <p>Sign in and completely control the way you buy your next car.</p>
+      <hr>
 
-   <button type="submit">Submit</button>
+      <label> <b>Email</b><br>
+         <input type="text" placeholder="Enter Email" name="email" required>
+      </label>
+      <label> <b>Password</b><br>
+         <input type="password" placeholder="Enter Password" name="password" required>
+      </label>
+
+      <label>
+      <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+      </label>
+
+      <button type="submit">Log In</button>
+
+      {{#if errorMessage}}
+      <p class="error">{{errorMessage}}</p>
+   {{/if}}
+
+   </div>
 </form>
 
-   {{#if errorMessage}}
-    <p class="error">{{errorMessage}}</p>
-  {{/if}}
