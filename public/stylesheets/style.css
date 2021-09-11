@@ -276,7 +276,7 @@ hr {
 
 /* V E H I C L E S   L I S T */
 
-.set-of-vehicles {
+.list-of-vehicles {
   display: flex;
   flex-direction: column;
 }

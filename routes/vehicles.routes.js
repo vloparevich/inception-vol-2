@@ -11,16 +11,26 @@ const vehiclesApi = new VehiclesApi();
 // POST route to submit search query
 // ****************************************************************************************
 router.post('/', (req, res) => {
-  const { make, model, year_min, year_max, city } = req.body;
-  console.log('our queries', { make, model, year_min, year_max, city });
+  const { make, model, year_min, year_max, city, bodyStyle } = req.body;
+  console.log('our queries', {
+    make,
+    model,
+    year_min,
+    year_max,
+    city,
+    bodyStyle,
+  });
 
   vehiclesApi
-    .getQueriedListings(make, model, year_min, year_max, city)
+    .getQueriedListings(make, model, year_min, year_max, city, bodyStyle)
     .then((queriedVehicles) => {
       const { records } = queriedVehicles.data;
       console.log(records[0]);
+      const suvCars = records.filter((car) => car.bodyStyle === 'suv');
+      console.log('suvCars: ', { suvCars });
       res.render('vehicles/vehicles-list', {
         vehiclesFromApi: records,
+        suvCars: suvCars,
       });
     })
     .catch((err) => {

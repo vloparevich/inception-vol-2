@@ -1,13 +1,16 @@
 <form action=''>
-  <div class='set-of-vehicles'>
+  <div class='list-of-vehicles'>
+
     {{#each vehiclesFromApi}}
-      <div id='vehicle-card'>
+      <div id='vehicle-card'> 
         <img id='vehicle-primary-img' src="{{this.primaryPhotoUrl}}" alt=''/>
         <div class='vehicle-info'>
+          <a href="/vehicles/details/{{this.vin}}">click here</a>
           <div class='vehicle-year-make'>
             {{this.year}}
             {{this.make}}
           </div>
+          {{this.bodyStyle}}
           {{this.model}}
           {{this.price}}
           {{this.mileage}}

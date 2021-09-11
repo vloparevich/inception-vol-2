@@ -16,7 +16,7 @@ class VehiclesApi {
     return this.api.get('');
   };
 
-  getQueriedListings = (make, model, year_min, year_max, city) => {
+  getQueriedListings = (make, model, year_min, year_max, city, bodyStyle) => {
     return this.api.get('', {
       params: {
         make: make,
@@ -24,6 +24,7 @@ class VehiclesApi {
         year_min: year_min,
         year_max: year_max,
         city: city,
+        bodyStyle: bodyStyle,
       },
     });
   };

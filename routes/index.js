@@ -11,12 +11,8 @@ const vehiclesApi = new VehiclesApi();
 // GET route to get the default set of 20 vehicles and render index/landing page
 // ****************************************************************************************
 router.get('/', (req, res) => {
-  // ************
-  // Don't forget to uncomment vehicalesApi and .getGeneralListing()
-  // ************
-  // vehiclesApi
-  //   .getGeneralLisiting()
-  new Promise((resolve, reject) => resolve())
+  vehiclesApi
+    .getGeneralLisiting()
     .then((vehiclesFromApi) => {
       let records = vehiclesFromApi.data.records;
 
