@@ -164,7 +164,6 @@ header>div {
   width: 35%;
 }
 
-<<<<<<< HEAD
 /* DETAILS PAGE */
 .vehicle-details {
   display: flex;
@@ -198,7 +197,6 @@ header>div {
     margin: 0 auto;
   }
 }
-=======
 /* A U T H F O R M S */
 
 .auth-form {
@@ -259,4 +257,30 @@ hr {
 }
 
 /* A U T H F O R M S */
->>>>>>> f8e61b4ead8156183606f0c16578761fe2a60dae
+
+
+/* V E H I C L E S   L I S T */
+
+.vehicle-card {
+  margin: 5% 10%;
+  box-shadow: 5px 5px 5px lightgray;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+}
+
+.vehicle-card div {
+margin: 5% 10%;
+box-shadow: 5px 5px 5px lightgray;
+background-color: white;
+display: flex;
+flex-direction: row;
+}
+
+.set-of-vehicles {
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* V E H I C L E S   L I S T */

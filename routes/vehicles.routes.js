@@ -18,6 +18,7 @@ router.post('/', (req, res) => {
     .getQueriedListings(make, model, year_min, year_max, city)
     .then((queriedVehicles) => {
       const { records } = queriedVehicles.data;
+      console.log(records[0]);
       res.render('vehicles/vehicles-list', {
         vehiclesFromApi: records,
       });
