@@ -164,7 +164,6 @@ header>div {
   width: 35%;
 }
 
-<<<<<<< HEAD
 /* DETAILS PAGE */
 .vehicle-details {
   display: flex;
@@ -198,7 +197,21 @@ header>div {
     margin: 0 auto;
   }
 }
-=======
+
+/* USER PROFILE PAGE */
+
+.user-profile {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.user-details {
+  display: flex;
+  flex-direction: column;
+  align-content: left;
+}
+
 /* A U T H F O R M S */
 
 .auth-form {
@@ -220,7 +233,7 @@ input[type=text], input[type=password] {
 }
 
 input[type=text]:focus, input[type=password]:focus {
-  background-color: #pink;
+  background-color: pink;
   outline: none;
 }
 
@@ -259,4 +272,3 @@ hr {
 }
 
 /* A U T H F O R M S */
->>>>>>> f8e61b4ead8156183606f0c16578761fe2a60dae
