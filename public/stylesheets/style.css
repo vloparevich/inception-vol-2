@@ -104,12 +104,12 @@ header>div {
 }
 
 #main-search-area {
-  margin: 5rem 2rem;
+  margin: 5rem 15%;
 }
 
-#search-form {
+/* #search-form {
   background-color: #856161;
-}
+} */
 
 .form__group {
   text-align: center;
@@ -118,24 +118,36 @@ header>div {
   height: 60px;
 }
 
-.form__input {
+#model.form__input {
   color: #04D9D9;
   font-size: .85rem;
   text-align: center;
+  margin: 0;
 }
 
-/* .form__input {
+#year_min.form__input {
   color: #04D9D9;
-  font-size: .95rem;
-  margin: 0 auto;
-  padding: .5rem 2rem;
-  display: block;
+  font-size: .85rem;
   text-align: center;
-  height: 20px;
-} */
+  margin: 0;
+}
+
+#year_max.form__input {
+  color: #04D9D9;
+  font-size: .85rem;
+  text-align: center;
+  margin: 0;
+}
+
+.form__input_make {
+  color: #F28DEB;
+  font-size: .95rem;
+  text-align: center;
+}
 
 .search-button {
   height: 60px;
+  width: 100px;
 }
 
 .set-of-vehicles {
