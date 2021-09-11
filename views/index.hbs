@@ -1,12 +1,12 @@
-<div class='main-search-area'>
-  <form action='/vehicles' method='POST' autocomplete='off'>
+<div id='main-search-area'>
+  <form id="search-form" action='/vehicles' method='POST' autocomplete='off'>
     <div class='form__group'>
       <input
         autofocus
         list='select'
         name='make'
-        class='form__input'
-        placeholder='Make...'
+        class='form__input_make'
+        placeholder='Make'
       />
       <datalist class='form-control' id='select'>
         <option value='Acura'></option>
@@ -38,21 +38,21 @@
         type='text'
         class='form__input'
         id='model'
-        placeholder='Model...'
+        placeholder='Model'
         name='model'
       />
       <input
         type='text'
         class='form__input'
         id='year_min'
-        placeholder='Min year...'
+        placeholder='Min. year'
         name='year_min'
       />
       <input
         type='text'
         class='form__input'
         id='year_max'
-        placeholder='Max year...'
+        placeholder='Max. year'
         name='year_max'
       />
 
@@ -62,6 +62,8 @@
     </div>
   </form>
 </div>
+
+
 <div class='main-section'>
   <div class='set-of-vehicles'>
     {{#each vehiclesFromApi}}
@@ -88,10 +90,4 @@
     {{/if}}
   </div>
 
-  
-
-  
-{{#each suvCars}}
-    <h1 id="body-style-title"><a href="/vehicles/vehicles-list">SUV Cars</a></h1>
-{{/each}}
 </div>

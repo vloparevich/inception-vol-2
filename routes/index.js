@@ -16,6 +16,10 @@ router.get('/', (req, res) => {
     .then((vehiclesFromApi) => {
       let records = vehiclesFromApi.data.records;
 
+      // vehiclesApi.getQueriedListings('', '', '', '', '', bodyStyle);
+      // .then()
+      // let suvCars = records.filter((car) => car.bodyStyle === 'suv');
+
       // const trimmedArr = [];
       // for (i = 0; i < 4; i++) {
       //   trimmedArr.push(records[i]);
@@ -27,6 +31,7 @@ router.get('/', (req, res) => {
       console.log('TRIMMED:', { trimmedArr });
       res.render('index', {
         vehiclesFromApi: trimmedArr,
+        // suvCars: suvCars,
       });
     })
     .catch((err) => {

@@ -103,44 +103,39 @@ header>div {
   color: #F2F2F2;
 }
 
-.main-search-area {
-  width: 66%;
-  margin: 0 auto;
+#main-search-area {
+  margin: 5rem 2rem;
+}
+
+#search-form {
+  background-color: #856161;
 }
 
 .form__group {
   text-align: center;
+  display: flex;
+  flex-direction: row;
+  height: 60px;
 }
 
 .form__input {
   color: #04D9D9;
-  font-size: 1.2rem;
+  font-size: .85rem;
+  text-align: center;
+}
+
+/* .form__input {
+  color: #04D9D9;
+  font-size: .95rem;
   margin: 0 auto;
-  padding: 1.5rem 2rem;
-  /* border-radius: 0.2rem; */
-  background-color: rgb(255, 255, 255);
-  border: none;
-  width: 50%;
+  padding: .5rem 2rem;
   display: block;
-  border-bottom: 0.3rem solid transparent;
-  transition: all 0.3s;
-  height: 0.2rem;
   text-align: center;
-}
+  height: 20px;
+} */
 
-.form__input:placeholder-shown+.form__label {
-  opacity: 0;
-  visibility: hidden;
-  -webkit-transform: translateY(-4rem);
-  transform: translateY(-4rem);
-}
-
-::-webkit-input-placeholder {
-  text-align: center;
-}
-
-:-moz-placeholder {
-  text-align: center;
+.search-button {
+  height: 60px;
 }
 
 .set-of-vehicles {
