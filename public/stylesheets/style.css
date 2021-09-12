@@ -32,6 +32,10 @@ body {
   color: #04D9D9;
 }
 
+.app-title:hover {
+  color: #F28DEB;
+}
+
 h1 {
   color: #225473;
 }
