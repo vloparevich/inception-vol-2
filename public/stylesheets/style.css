@@ -7,6 +7,7 @@ pink = #F28DEB */
 
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&family=Roboto:wght@100;300;700&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;500;600&display=swap');
+@import url('//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 
 html {
   margin: 0;
@@ -281,6 +282,70 @@ header>div {
   }
 }
 
+/* ERROR MESSAGE STLES */
+.info,
+.success,
+.warning,
+.error {
+  margin: 10px 0px;
+  padding: 12px;
+
+}
+
+.info {
+  color: #00529B;
+  background-color: #BDE5F8;
+}
+
+.success {
+  color: #4F8A10;
+  background-color: #DFF2BF;
+}
+
+.warning {
+  color: #9F6000;
+  background-color: #FEEFB3;
+}
+
+.error {
+  color: #D8000C;
+  background-color: #FFD2D2;
+}
+
+.info i,
+.success i,
+.warning i,
+.error i {
+  animation: blinker 2s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* 
+.info,
+.success,
+.warning,
+.error:active {
+  visibility: hidden;
+} */
+
+.info i,
+.success i,
+.warning i,
+.error i {
+  margin: 10px 22px;
+  font-size: 1rem;
+  vertical-align: middle;
+}
+
+.error-banner:hover {
+  text-decoration: none;
+}
+
 /* USER PROFILE PAGE */
 
 .user-profile {
@@ -293,6 +358,10 @@ header>div {
   display: flex;
   flex-direction: column;
   align-content: left;
+}
+
+.error-banner p {
+  margin: 0 auto;
 }
 
 /* A U T H F O R M S */
