@@ -13,13 +13,10 @@ const vehiclesApi = new VehiclesApi();
 router.get('/', (req, res) => {
   vehiclesApi
     .getGeneralLisiting()
+    // new Promise((resolve, reject) => resolve())
     .then((vehiclesFromApi) => {
       let records = vehiclesFromApi.data.records;
-
-      // vehiclesApi.getQueriedListings('', '', '', '', '', bodyStyle);
-      // .then()
-      // let suvCars = records.filter((car) => car.bodyStyle === 'suv');
-
+      console.log({ vehiclesFromApi });
       // const trimmedArr = [];
       // for (i = 0; i < 4; i++) {
       //   trimmedArr.push(records[i]);
@@ -27,11 +24,10 @@ router.get('/', (req, res) => {
       // const newArr = Array.from(records);
       // const trimmedArr = newArr.slice(1);
       // console.log('TRIMMED', trimmedArr);
-      const trimmedArr = records.filter((curr, i) => i < 4 && curr);
-      console.log('TRIMMED:', { trimmedArr });
+      const trimmedArrOfCars = records.filter((curr, i) => i < 4 && curr);
+      console.log('TRIMMED:', { trimmedArr: trimmedArrOfCars });
       res.render('index', {
-        vehiclesFromApi: trimmedArr,
-        // suvCars: suvCars,
+        vehiclesFromApi: trimmedArrOfCars,
       });
     })
     .catch((err) => {

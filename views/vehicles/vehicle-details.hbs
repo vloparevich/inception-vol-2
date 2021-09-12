@@ -1,6 +1,7 @@
 <div class='vehicle-details'>
-  <div class="set-of-pictures-left-side">
-    <img class="main-image"
+  <div class='set-of-pictures-left-side'>
+    <img
+      class='main-image'
       src="{{vehicle.primaryPhotoUrl}}"
       alt="image of {{vehicle.make}} vehicle"
     />
@@ -14,24 +15,61 @@
       {{/each}}
     </div>
   </div>
-  <div class="main-details">
+  <div class='main-details'>
     <h1>
       DETAILS
     </h1>
     <h2>
-      {{vehicle.make}} {{vehicle.model}}
+      {{vehicle.year}} {{vehicle.make}} {{vehicle.model}}
     </h2>
     <p>
-      {{vehicle.year}}
+      {{vehicle.doorCount}} {{vehicle.driveline}}
     </p>
     <p>
-      {{vehicle.price}}
+      Exterior {{vehicle.colorExterior}}
     </p>
     <p>
-      {{vehicle.city}} {{vehicle.state}}
+      {{vehicle.city}}, {{vehicle.state}}
     </p>
     <p>
-      {{vehicle.dealerName}}
+      <a href="{{this.clickoffUrl}}">
+        {{vehicle.dealerName}}
+      </a>
+      Price
+      <span class='price'>
+        <b>
+          {{vehicle.price}}
+        </b>
+      </span>
     </p>
+    <div class='dealer-review-section'>
+      <h4>
+        Dealer review section
+      </h4>
+      <a href="/review/add-review/{{vehicle.dealerName}}/{{vehicle.vin}}">
+        Add review
+      </a>
+      {{#each reviews}}
+        <p class='review'>
+          Review: {{this}}
+        </p>
+        <p>
+          <span class='review-author'>
+            Author:
+          </span>
+          <span class='review-author-name'>
+            {{reviews.author}}
+          </span>
+        </p>
+      {{/each}}
+      {{#each foundDealer.0.reviews}}
+        <p>
+          Review content: {{this.reviewContent}}
+        </p>
+        <p>
+          User First Name: {{this.user_id.firstName}}
+        </p>
+      {{/each}}
+    </div>
   </div>
 </div>

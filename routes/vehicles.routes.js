@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const User = require('../models/User.model');
+const Dealer = require('../models/Dealer.model');
 
 const isLoggedOut = require('../middleware/isLoggedOut');
 const isLoggedIn = require('../middleware/isLoggedIn');
@@ -68,8 +69,21 @@ router.get('/:id/details', (req, res, next) => {
 router.get('/details/:vin', (req, res, next) => {
   const { vin } = req.params;
   vehiclesApi.getVehicleDetails(vin).then((vehicleFromAPI) => {
-    console.log(vehicleFromAPI);
-    res.render('vehicles/vehicle-details', { vehicle: vehicleFromAPI.data });
+    // const vehicle = vehicleFromAPI.data;
+    const dealerName = vehicleFromAPI.data.dealerName;
+    Dealer.find({ dealerName: dealerName })
+      .populate({
+        path: 'reviews',
+        populate: {
+          path: 'user_id',
+        },
+      })
+      .then((foundDealer) => {
+        res.render('vehicles/vehicle-details', {
+          vehicle: vehicleFromAPI.data,
+          foundDealer: foundDealer,
+        });
+      });
   });
 });
 

@@ -36,9 +36,7 @@ class VehiclesApi {
       0,
       indexOfQuerySign
     )}/${vin}${baseUrl.slice(indexOfQuerySign)}`;
-    console.log('CUSTOMED API', this.customApi);
     this.customApi.defaults.baseURL = preparedUrl;
-    console.log('preparedVIN', preparedUrl);
     return this.customApi.get('');
   };
 }

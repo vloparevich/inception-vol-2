@@ -5,11 +5,10 @@ const dealerSchema = new Schema({
   dealerName: {
     type: String,
   },
-  delaerUrl: {
+  dealerUrl: {
     type: String,
   },
-  // vehicle: [{ type: Schema.Types.ObjectId, ref: 'Vehicle' }],
-  review: [{ type: Schema.Types.ObjectId, ref: 'Review' }],
+  reviews: [{ type: Schema.Types.ObjectId, ref: 'Review' }],
 });
 
 const Dealer = model('Dealer', dealerSchema);

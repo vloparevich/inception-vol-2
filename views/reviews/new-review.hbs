@@ -1,0 +1,35 @@
+<form action='/review/add-review' class='auth-form' method='POST'>
+  <div class='auth-form-container'>
+    <input type='hidden' name="vin" value="{{vin}}" />
+    <h1>
+      Welcome to My CarAmerican
+    </h1>
+    <h1>
+      {{userName}}
+    </h1>
+    <p>
+      Here you can add a review in regards to this Dealer:
+    </p>
+    <h4>
+      "{{dealerName}}"
+    </h4>
+    <input type='hidden' name='dealerName' value="{{dealerName}}" />
+    <hr />
+    <label>
+      <b>
+        Review
+      </b>
+      <br />
+      <textarea name='reviewContent' rows='4' cols='50'></textarea>
+    </label>
+    <button type='submit'>
+      Submit
+    </button>
+
+    {{#if errorMessage}}
+      <p class='error'>
+        {{errorMessage}}
+      </p>
+    {{/if}}
+  </div>
+</form>
