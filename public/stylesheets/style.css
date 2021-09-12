@@ -35,6 +35,10 @@ h1 {
   color: #225473;
 }
 
+header {
+  z-index: 7;
+}
+
 header>div {
   padding: 0 25px;
   display: flex;
@@ -105,33 +109,48 @@ header>div {
 #top-area {
   background-image: url("../images/road.jpg");
   background-color: #cccccc;
-  height: 500px;
+  height: 55vh;
   background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
-  z-index: -5;
+  margin-top: -1rem
 }
 
 #slogan {
   font-size: 2.5rem;
   margin: 7rem 0 2rem 0;
-  color:#F2F2F2;
+  color: #F2F2F2;
 }
 
 #main-search-area {
   margin: 2rem 15%;
 }
 
-/* #search-form {
-  background-color: #856161;
-} */
 
+/* MAIN SEARCH */
 .form__group {
   text-align: center;
   display: flex;
   flex-direction: row;
   height: 60px;
+}
+
+@media (max-width: 964px) {
+  .form__group {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .form__group button {
+    width: 55%;
+    margin: 0 auto;
+    border-radius: 3px;
+    font-size: 1.55rem;
+    color: #225473;
+  }
+
+
 }
 
 #model.form__input {
@@ -185,179 +204,184 @@ header>div {
 }
 
 .vehicle-img {
-  width: 35%;
+  width: 100px;
 }
 
-/* DETAILS PAGE */
-.vehicle-details {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
+@media (min-width: 964px) {
+  .set-of-vehicles .vehicle-card {
+    width: 20rem;
+  }
 
-.set-of-pictures-left-side {
-  max-width: 640px;
-}
-
-.set-of-pictures-left-side .main-image {
-  width: 85%;
-}
-
-.more-images {
-  max-width: 543px;
-  margin: 0 auto;
-}
-
-.small-pic {
-  width: 3rem;
-}
-
-
-.main-details>* {
-  text-align: left;
-}
-
-.main-details h1 {
-  margin-top: 0;
-}
-
-.main-details .price {
-  margin-left: 2rem;
-}
-
-.dealer-review-section {
-  background-color: #04D9D9;
-}
-
-@media (max-width: 964px) {
+  /* DETAILS PAGE */
   .vehicle-details {
-    flex-direction: column;
+    display: flex;
+    flex-direction: row;
     justify-content: center;
   }
 
   .set-of-pictures-left-side {
+    max-width: 640px;
+  }
+
+  .set-of-pictures-left-side .main-image {
+    width: 85%;
+  }
+
+  .more-images {
+    max-width: 543px;
     margin: 0 auto;
   }
 
+  .small-pic {
+    width: 3rem;
+  }
+
+
   .main-details>* {
-    text-align: center;
+    text-align: left;
   }
 
   .main-details h1 {
-    margin-top: auto;
+    margin-top: 0;
   }
-}
 
-/* USER PROFILE PAGE */
+  .main-details .price {
+    margin-left: 2rem;
+  }
 
-.user-profile {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-}
+  .dealer-review-section {
+    background-color: #04D9D9;
+  }
 
-.user-details {
-  display: flex;
-  flex-direction: column;
-  align-content: left;
-}
+  @media (max-width: 964px) {
+    .vehicle-details {
+      flex-direction: column;
+      justify-content: center;
+    }
 
-/* A U T H F O R M S */
+    .set-of-pictures-left-side {
+      margin: 0 auto;
+    }
 
-.auth-form {
-  border: .25rem solid #225473;
-  margin: 2.5% 30%;
-  box-shadow: 10px 5px 5px lightgray;
-  border-radius: 1rem;
-  background-color: white;
-}
+    .main-details>* {
+      text-align: center;
+    }
 
-/* Full-width input fields */
-input[type=text],
-input[type=password] {
-  width: 50%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  display: inline-block;
-  border: .1rem solid lightgray;
-  background: #F2F2F2;
-}
+    .main-details h1 {
+      margin-top: auto;
+    }
+  }
 
-input[type=password]:focus {
-  background-color: pink;
-  outline: none;
-}
+  /* USER PROFILE PAGE */
 
-.auth-form-container {
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-}
+  .user-profile {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
 
-.auth-form-container p {
-  color: gray;
-  font-weight: lighter;
-}
+  .user-details {
+    display: flex;
+    flex-direction: column;
+    align-content: left;
+  }
 
-hr {
-  border: 1px solid #f1f1f1;
-  margin-bottom: 25px;
-}
+  /* A U T H F O R M S */
 
-/* Set a style for all buttons */
-.auth-form-container button {
-  background-color: #04D9D9;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px auto;
-  border: none;
-  cursor: pointer;
-  width: 50%;
-  opacity: 0.9;
-  border-radius: 50rem;
-}
+  .auth-form {
+    border: .25rem solid #225473;
+    margin: 2.5% 30%;
+    box-shadow: 10px 5px 5px lightgray;
+    border-radius: 1rem;
+    background-color: white;
+  }
 
-.auth-form-container button:hover {
-  opacity: 2;
-  background-color: #F28DEB;
-}
+  /* Full-width input fields */
+  input[type=text],
+  input[type=password] {
+    width: 50%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: .1rem solid lightgray;
+    background: #F2F2F2;
+  }
 
-/* A U T H F O R M S */
+  input[type=password]:focus {
+    background-color: pink;
+    outline: none;
+  }
 
+  .auth-form-container {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+  }
 
-/* V E H I C L E S   L I S T */
+  .auth-form-container p {
+    color: gray;
+    font-weight: lighter;
+  }
 
-.list-of-vehicles {
-  display: flex;
-  flex-direction: column;
-}
+  hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+  }
 
-#vehicle-card {
-  display: flex;
-  flex-direction: row;
-  margin: 5% 10%;
-  box-shadow: 5px 5px 5px lightgray;
-  background-color: white;
-}
+  /* Set a style for all buttons */
+  .auth-form-container button {
+    background-color: #04D9D9;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px auto;
+    border: none;
+    cursor: pointer;
+    width: 50%;
+    opacity: 0.9;
+    border-radius: 50rem;
+  }
 
-#vehicle-primary-img {
-  height: 200px;
-}
+  .auth-form-container button:hover {
+    opacity: 2;
+    background-color: #F28DEB;
+  }
 
-.vehicle-info {
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.vehicle-year-make {
-  background-color: white;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-}
+  /* A U T H F O R M S */
 
 
+  /* V E H I C L E S   L I S T */
 
-/* V E H I C L E S   L I S T */
+  .list-of-vehicles {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #vehicle-card {
+    display: flex;
+    flex-direction: row;
+    margin: 5% 10%;
+    box-shadow: 5px 5px 5px lightgray;
+    background-color: white;
+  }
+
+  #vehicle-primary-img {
+    height: 200px;
+  }
+
+  .vehicle-info {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .vehicle-year-make {
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+
+
+  /* V E H I C L E S   L I S T */
