@@ -1,67 +1,76 @@
-<div id='main-search-area'>
-  <form id="search-form" action='/vehicles' method='POST' autocomplete='off'>
-    <div class='form__group'>
-      <input
-        autofocus
-        list='select'
-        name='make'
-        class='form__input_make'
-        placeholder='Make'
-      />
-      <datalist class='form-control' id='select'>
-        <option value='Acura'></option>
-        <option value='BMW'></option>
-        <option value='Ford'>
-        </option>
-        <option value='Honda'>
-        </option>
-        <option value='Hyundai'>
-        </option>
-        <option value='Kia'>
-        </option>
-        <option value='Lexus'>
-        </option>
-        <option value='Mazda'>
-        </option>
-        <option value='Mitsubishi'>
-        </option>
-        <option value='Nissan'>
-        </option>
-        <option value='Subaru'>
-        </option>
-        <option value='Suzuki'>
-        </option>
-        <option value='Toyota'>
-        </option>
-      </datalist>
-      <input
-        type='text'
-        class='form__input'
-        id='model'
-        placeholder='Model'
-        name='model'
-      />
-      <input
-        type='text'
-        class='form__input'
-        id='year_min'
-        placeholder='Min. year'
-        name='year_min'
-      />
-      <input
-        type='text'
-        class='form__input'
-        id='year_max'
-        placeholder='Max. year'
-        name='year_max'
-      />
+<div id="top-area">
 
-      <button type='submit' class='search-button'>
-        Search
-      </button>
-    </div>
-  </form>
+  <div>
+    <h1 id="slogan">Change Starts Here</h1>
+  </div>
+
+  <div id='main-search-area'>
+    <form id="search-form" action='/vehicles' method='POST' autocomplete='off'>
+      <div class='form__group'>
+        <input
+          autofocus
+          list='select'
+          name='make'
+          class='form__input_make'
+          placeholder='Make'
+        />
+        <datalist class='form-control' id='select'>
+          <option value='Acura'></option>
+          <option value='BMW'></option>
+          <option value='Ford'>
+          </option>
+          <option value='Honda'>
+          </option>
+          <option value='Hyundai'>
+          </option>
+          <option value='Kia'>
+          </option>
+          <option value='Lexus'>
+          </option>
+          <option value='Mazda'>
+          </option>
+          <option value='Mitsubishi'>
+          </option>
+          <option value='Nissan'>
+          </option>
+          <option value='Subaru'>
+          </option>
+          <option value='Suzuki'>
+          </option>
+          <option value='Toyota'>
+          </option>
+        </datalist>
+        <input
+          type='text'
+          class='form__input'
+          id='model'
+          placeholder='Model'
+          name='model'
+        />
+        <input
+          type='text'
+          class='form__input'
+          id='year_min'
+          placeholder='Min. year'
+          name='year_min'
+        />
+        <input
+          type='text'
+          class='form__input'
+          id='year_max'
+          placeholder='Max. year'
+          name='year_max'
+        />
+
+        <button type='submit' class='search-button'>
+          Search
+        </button>
+      </div>
+    </form>
+  </div>
+
 </div>
+
 
 
 <div class='main-section'>
