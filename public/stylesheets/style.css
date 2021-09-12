@@ -121,7 +121,7 @@ header>div {
 #slogan {
   font-size: 2.5rem;
   margin: 7rem 0 2rem 0;
-  color:#F2F2F2;
+  color: #F2F2F2;
 }
 
 #main-search-area {
@@ -177,14 +177,19 @@ header>div {
   padding: .50rem;
   border-radius: 5rem;
   /* background-color: #F28DEB; */
-  background-image: linear-gradient(to right, #ff00ee , #F28DEB);
+  background-image: linear-gradient(to right, #ff00ee, #F28DEB);
   font-weight: bold;
   border: none;
   height: 45px;
   width: 175px;
   font: 1.1rem Helvetica, "Lucida Grande", Arial, sans-serif;
   color: white;
-  box-shadow: 2px rgb(85, 84, 84);
+  box-shadow: 0 4px pink;
+}
+
+.search-button:active {
+  box-shadow: 0 0px #666;
+  transform: translateY(4px);
 }
 
 .main-section {
