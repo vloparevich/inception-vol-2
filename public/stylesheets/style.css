@@ -9,7 +9,7 @@ pink = #F28DEB */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;500;600&display=swap');
 
 html {
-  margin-top: 0;
+  margin: 0;
   padding-top: 0;
 }
 
@@ -18,7 +18,7 @@ body {
   padding: 0;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   font-family: "Montserrat", sans-serif;
-  margin-top: 7rem;
+  margin-top: 6rem;
   min-height: 90vh;
   display: flex;
   flex-direction: column;
@@ -36,7 +36,8 @@ h1 {
 }
 
 header {
-  z-index: 7;
+  margin: 0;
+  z-index: 15;
 }
 
 header>div {
@@ -109,46 +110,39 @@ header>div {
 #top-area {
   background-image: url("../images/road.jpg");
   background-color: #cccccc;
-  height: 55vh;
-  background-position: top;
+  height: 500px;
+  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
-  margin-top: -1rem
+  /* z-index: -5; */
 }
 
 #slogan {
   font-size: 2.5rem;
   margin: 7rem 0 2rem 0;
-  color: #F2F2F2;
+  color:#F2F2F2;
 }
 
 #main-search-area {
   margin: 2rem 15%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
+#search-form {
+  /* background-color: #856161; */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
 
-/* MAIN SEARCH */
 .form__group {
   text-align: center;
   display: flex;
   flex-direction: row;
   height: 60px;
-}
-
-@media (max-width: 964px) {
-  .form__group {
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  .form__group button {
-    width: 55%;
-    margin: 0 auto;
-    border-radius: 3px;
-    font-size: 1.55rem;
-    color: #225473;
-  }
 }
 
 #model.form__input {
@@ -173,15 +167,32 @@ header>div {
 }
 
 .form__input_make {
-  color: #F28DEB;
+  color: #04D9D9;
   font-size: .95rem;
   text-align: center;
-  z-index: 100;
 }
 
 .search-button {
-  height: 60px;
-  width: 100px;
+  margin-top: 1rem;
+  padding: .50rem;
+  border-radius: 5rem;
+  /* background-color: #F28DEB; */
+  background-image: linear-gradient(to right, #ff00ee , #F28DEB);
+  font-weight: bold;
+  border: none;
+  height: 45px;
+  width: 175px;
+  font: 1.1rem Helvetica, "Lucida Grande", Arial, sans-serif;
+  color: white;
+  box-shadow: 2px rgb(85, 84, 84);
+}
+
+.main-section {
+  margin: 2rem 15%;
+}
+
+.main-section h1 {
+  margin: 2rem 0;
 }
 
 .set-of-vehicles {
@@ -202,184 +213,178 @@ header>div {
 }
 
 .vehicle-img {
-  width: 100px;
+  width: 35%;
 }
 
-@media (min-width: 964px) {
-  .set-of-vehicles .vehicle-card {
-    width: 20rem;
-  }
+/* DETAILS PAGE */
+.vehicle-details {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
 
-  /* DETAILS PAGE */
+.set-of-pictures-left-side {
+  max-width: 640px;
+}
+
+.set-of-pictures-left-side .main-image {
+  width: 85%;
+}
+
+.more-images {
+  max-width: 543px;
+  margin: 0 auto;
+}
+
+.small-pic {
+  width: 3rem;
+}
+
+
+.main-details>* {
+  text-align: left;
+}
+
+.main-details h1 {
+  margin-top: 0;
+}
+
+.main-details .price {
+  margin-left: 2rem;
+}
+
+.dealer-review-section {
+  background-color: #04D9D9;
+}
+
+@media (max-width: 964px) {
   .vehicle-details {
-    display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
   }
 
   .set-of-pictures-left-side {
-    max-width: 640px;
-  }
-
-  .set-of-pictures-left-side .main-image {
-    width: 85%;
-  }
-
-  .more-images {
-    max-width: 543px;
     margin: 0 auto;
   }
 
-  .small-pic {
-    width: 3rem;
-  }
-
-
   .main-details>* {
-    text-align: left;
+    text-align: center;
   }
 
   .main-details h1 {
-    margin-top: 0;
+    margin-top: auto;
   }
+}
 
-  .main-details .price {
-    margin-left: 2rem;
-  }
+/* USER PROFILE PAGE */
 
-  .dealer-review-section {
-    background-color: #04D9D9;
-  }
+.user-profile {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
 
-  @media (max-width: 964px) {
-    .vehicle-details {
-      flex-direction: column;
-      justify-content: center;
-    }
+.user-details {
+  display: flex;
+  flex-direction: column;
+  align-content: left;
+}
 
-    .set-of-pictures-left-side {
-      margin: 0 auto;
-    }
+/* A U T H F O R M S */
 
-    .main-details>* {
-      text-align: center;
-    }
+.auth-form {
+  border: .25rem solid #225473;
+  margin: 2.5% 30%;
+  box-shadow: 10px 5px 5px lightgray;
+  border-radius: 1rem;
+  background-color: white;
+}
 
-    .main-details h1 {
-      margin-top: auto;
-    }
-  }
+input[type=text],
+input[type=password] {
+  width: 50%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: .1rem solid lightgray;
+  background: #F2F2F2;
+}
 
-  /* USER PROFILE PAGE */
+input[type=password]:focus {
+  background-color: pink;
+  outline: none;
+}
 
-  .user-profile {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-  }
+.auth-form-container {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
 
-  .user-details {
-    display: flex;
-    flex-direction: column;
-    align-content: left;
-  }
+.auth-form-container p {
+  color: gray;
+  font-weight: lighter;
+}
 
-  /* A U T H F O R M S */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
 
-  .auth-form {
-    border: .25rem solid #225473;
-    margin: 2.5% 30%;
-    box-shadow: 10px 5px 5px lightgray;
-    border-radius: 1rem;
-    background-color: white;
-  }
+/* Set a style for buttons */
+.auth-form-container button {
+  background-color: #04D9D9;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px auto;
+  border: none;
+  cursor: pointer;
+  width: 50%;
+  opacity: 0.9;
+  border-radius: 50rem;
+}
 
-  /* Full-width input fields */
-  input[type=text],
-  input[type=password] {
-    width: 50%;
-    padding: 15px;
-    margin: 5px 0 22px 0;
-    display: inline-block;
-    border: .1rem solid lightgray;
-    background: #F2F2F2;
-  }
+.auth-form-container button:hover {
+  opacity: 2;
+  background-color: #F28DEB;
+}
 
-  input[type=password]:focus {
-    background-color: pink;
-    outline: none;
-  }
-
-  .auth-form-container {
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .auth-form-container p {
-    color: gray;
-    font-weight: lighter;
-  }
-
-  hr {
-    border: 1px solid #f1f1f1;
-    margin-bottom: 25px;
-  }
-
-  /* Set a style for all buttons */
-  .auth-form-container button {
-    background-color: #04D9D9;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px auto;
-    border: none;
-    cursor: pointer;
-    width: 50%;
-    opacity: 0.9;
-    border-radius: 50rem;
-  }
-
-  .auth-form-container button:hover {
-    opacity: 2;
-    background-color: #F28DEB;
-  }
-
-  /* A U T H F O R M S */
+/* A U T H F O R M S */
 
 
-  /* V E H I C L E S   L I S T */
+/* V E H I C L E S   L I S T */
 
-  .list-of-vehicles {
-    display: flex;
-    flex-direction: column;
-  }
+.list-of-vehicles {
+  display: flex;
+  flex-direction: column;
+}
 
-  #vehicle-card {
-    display: flex;
-    flex-direction: row;
-    margin: 5% 10%;
-    box-shadow: 5px 5px 5px lightgray;
-    background-color: white;
-  }
+#vehicle-card {
+  display: flex;
+  flex-direction: row;
+  margin: 5% 10%;
+  box-shadow: 5px 5px 5px lightgray;
+  background-color: white;
+}
 
-  #vehicle-primary-img {
-    height: 200px;
-  }
+#vehicle-primary-img {
+  height: 200px;
+}
 
-  .vehicle-info {
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
+.vehicle-info {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
 
-  .vehicle-year-make {
-    background-color: white;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-  }
+.vehicle-year-make {
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
 
 
 
-  /* V E H I C L E S   L I S T */
+/* V E H I C L E S   L I S T */

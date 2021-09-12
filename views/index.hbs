@@ -1,10 +1,10 @@
 <div id="top-area">
 
+
+  <div id='main-search-area'>
   <div>
     <h1 id="slogan">Change Starts Here</h1>
   </div>
-
-  <div id='main-search-area'>
     <form id="search-form" action='/vehicles' method='POST' autocomplete='off'>
       <div class='form__group'>
         <input
@@ -63,10 +63,10 @@
           name='year_max'
         />
 
+      </div>
         <button type='submit' class='search-button'>
           Search
         </button>
-      </div>
     </form>
   </div>
 
@@ -75,6 +75,7 @@
 
 
 <div class='main-section'>
+  <h1>You Might Like</h1>
   <div class='set-of-vehicles'>
     {{#each vehiclesFromApi}}
       <div class='vehicle-card'>
