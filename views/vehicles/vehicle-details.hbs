@@ -1,3 +1,21 @@
+{{#if errorDeletion}}
+  <a class='error-banner' href="/vehicles/details/{{vehicle.vin}}">
+    <div class='action-error-message error'>
+      <i>
+        {{errorDeletion}}
+      </i>
+      <p>
+        Close X
+      </p>
+    </div>
+  </a>
+{{/if}}
+
+<div class='dealer-name-title'>
+  <h1>
+    {{vehicle.dealerName}}
+  </h1>
+</div>
 <div class='vehicle-details'>
   <div class='set-of-pictures-left-side'>
     <img
@@ -16,9 +34,6 @@
     </div>
   </div>
   <div class='main-details'>
-    <h1>
-      DETAILS
-    </h1>
     <h2>
       {{vehicle.year}} {{vehicle.make}} {{vehicle.model}}
     </h2>
@@ -32,9 +47,9 @@
       {{vehicle.city}}, {{vehicle.state}}
     </p>
     <p>
-      <a href="{{this.clickoffUrl}}">
+      {{!-- <a href="{{this.clickoffUrl}}">
         {{vehicle.dealerName}}
-      </a>
+      </a> --}}
       Price
       <span class='price'>
         <b>
@@ -42,13 +57,16 @@
         </b>
       </span>
     </p>
+    <form action="/review/add-review/{{vehicle.dealerName}}/{{vehicle.vin}}">
+      <button type='submit' class='btn btn-primary'>
+        Add review about: {{vehicle.dealerName}}
+      </button>
+    </form>
     <div class='dealer-review-section'>
       <h4>
         Dealer review section
       </h4>
-      <a href="/review/add-review/{{vehicle.dealerName}}/{{vehicle.vin}}">
-        Add review
-      </a>
+
       {{#each reviews}}
         <p class='review'>
           Review: {{this}}
@@ -67,8 +85,20 @@
           Review content: {{this.reviewContent}}
         </p>
         <p>
-          User First Name: {{this.user_id.firstName}}
+          Author: {{this.user_id.firstName}}
         </p>
+        <div class='review-control-buttons'>
+          <form action="/review/edit/{{this._id}}" method='GET'>
+            <button type='submit' class='btn btn-warning'>
+              Edit
+            </button>
+          </form>
+          <form action="/review/delete/{{this._id}}" method='GET'>
+            <button type='submit' class='btn btn-danger'>
+              Delete
+            </button>
+          </form>
+        </div>
       {{/each}}
     </div>
   </div>

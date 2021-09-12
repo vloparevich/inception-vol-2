@@ -67,6 +67,7 @@ router.get('/:id/details', (req, res, next) => {
 // ****************************************************************************************
 //!!!!!! uncomment when login is ready--> router.get('/vehicle/details/:vin', isLoggedIn, (req, res, next) => {
 router.get('/details/:vin', (req, res, next) => {
+  const errorDeletion = req.session?.errorDeletion;
   const { vin } = req.params;
   vehiclesApi.getVehicleDetails(vin).then((vehicleFromAPI) => {
     // const vehicle = vehicleFromAPI.data;
@@ -79,10 +80,13 @@ router.get('/details/:vin', (req, res, next) => {
         },
       })
       .then((foundDealer) => {
+        console.log(foundDealer);
         res.render('vehicles/vehicle-details', {
           vehicle: vehicleFromAPI.data,
           foundDealer: foundDealer,
+          errorDeletion: errorDeletion,
         });
+        delete req.session.errorDeletion;
       });
   });
 });

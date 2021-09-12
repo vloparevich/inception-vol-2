@@ -27,19 +27,49 @@ router.post('/add-review', isLoggedIn, async (req, res) => {
   const { dealerName, reviewContent, vin } = req.body;
   let { _id, firstName, lastName, vehicles, reviews } = req.session.user;
   const user_id = mongoose.Types.ObjectId(_id);
-
-  const dealerInDb = await Dealer.findOne({ dealerName: dealerName });
-  const createdReviewInDb = await Review.create({ reviewContent, user_id });
-  if (!dealerInDb) {
-    await Dealer.create({ dealerName: dealerName });
+  try {
+    const dealerInDb = await Dealer.findOne({ dealerName: dealerName });
+    const createdReviewInDb = await Review.create({
+      reviewContent,
+      user_id,
+      vin,
+    });
+    if (!dealerInDb) {
+      await Dealer.create({ dealerName: dealerName });
+    }
+    await Dealer.findByIdAndUpdate(dealerInDb._id, {
+      $push: { reviews: createdReviewInDb._id },
+    });
+    res.redirect(`/vehicles/details/${vin}`);
+  } catch (err) {
+    console.log('Soemthing went wrong during postin the review:', err);
   }
-  await Dealer.findByIdAndUpdate(dealerInDb._id, {
-    $push: { reviews: createdReviewInDb._id },
-  });
-  res.redirect(`/vehicles/details/${vin}`);
 });
 
-//router.put
-//router.delete
+// ****************************************************************************************
+// GET route to delete a review if belongs to this user
+// ****************************************************************************************
+router.get('/delete/:reviewId', isLoggedIn, async (req, res) => {
+  const { _id } = req.session.user;
+  const { reviewId } = req.params;
+  let reviewFromDB;
+  let vin;
+  let reviewCreatorIdFromDB;
+
+  try {
+    reviewFromDB = await Review.findById(reviewId);
+    vin = reviewFromDB.vin;
+    reviewCreatorIdFromDB = reviewFromDB.user_id.toString();
+    if (_id === reviewCreatorIdFromDB) {
+      await Review.findByIdAndRemove(reviewId);
+    } else {
+      req.session.errorDeletion =
+        'You are not Authorized to Delete this review, you are not a creator of it....';
+    }
+  } catch (err) {
+    console.log('Soemthing went wrong during deletion of the review:', err);
+  }
+  res.redirect(`/vehicles/details/${vin}`);
+});
 
 module.exports = router;
