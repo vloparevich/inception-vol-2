@@ -37,6 +37,7 @@ h1 {
 
 header {
   margin: 0;
+  z-index: 15;
 }
 
 header>div {
@@ -166,10 +167,9 @@ header>div {
 }
 
 .form__input_make {
-  color: #F28DEB;
+  color: #04D9D9;
   font-size: .95rem;
   text-align: center;
-  z-index: 100;
 }
 
 .search-button {
@@ -185,6 +185,14 @@ header>div {
   font: 1.1rem Helvetica, "Lucida Grande", Arial, sans-serif;
   color: white;
   box-shadow: 2px rgb(85, 84, 84);
+}
+
+.main-section {
+  margin: 2rem 15%;
+}
+
+.main-section h1 {
+  margin: 2rem 0;
 }
 
 .set-of-vehicles {
