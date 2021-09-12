@@ -191,10 +191,11 @@ header>div {
 .search-button:active {
   box-shadow: 0 0px #666;
   transform: translateY(4px);
+  outline: none;
 }
 
-.main-section {
-  margin: 2rem 15%;
+.search-button:focus {
+  outline: none;
 }
 
 .main-section h1 {
