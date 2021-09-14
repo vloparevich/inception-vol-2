@@ -452,15 +452,18 @@ hr {
   margin: 1rem auto;
 }
 
-
-
-
 #vehicle-card {
   display: flex;
   flex-direction: row;
   margin: 5% 10%;
   box-shadow: 5px 5px 5px lightgray;
   background-color: white;
+}
+
+#vehicle-card:active {
+  box-shadow: 0 0px;
+  transform: translateY(4px);
+  outline: none;
 }
 
 #vehicle-primary-img {
