@@ -15,7 +15,6 @@ const vehiclesApi = new VehiclesApi();
 // ****************************************************************************************
 // router.get('/review/add-review/:dealerName', isLoggedIn, (req, res) => {
 router.get('/add-review/:dealerName/:vin', (req, res) => {
-  console.log('Review');
   const { dealerName, vin } = req.params;
   res.render('reviews/new-review', { dealerName, vin });
 });
@@ -71,5 +70,23 @@ router.get('/delete/:reviewId', isLoggedIn, async (req, res) => {
   }
   res.redirect(`/vehicles/details/${vin}`);
 });
+
+// ****************************************************************************************
+// GET route to render the review for editing
+// ****************************************************************************************
+router.get('/edit/:reviewId', (req, res) => {
+  const { reviewId } = req.params;
+  //   const reviewIdObject = mongoose.Types.ObjectId(req.params.reviewId);
+  Review.findById(reviewId)
+    .populate('user_id')
+    .then((foundReview) => {
+      console.log('My review:', foundReview);
+      res.render('reviews/update-review-form', { foundReview: foundReview });
+    });
+});
+// ****************************************************************************************
+// POST route to update the review if belongs to this user
+// ****************************************************************************************
+router.post('/edit/:reviewId', (req, res) => {});
 
 module.exports = router;

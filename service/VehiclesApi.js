@@ -17,6 +17,12 @@ class VehiclesApi {
   };
 
   getQueriedListings = (make, model, year_min, year_max, city, bodyStyle) => {
+    if (model.length <= 3) {
+      model = model.toUpperCase();
+    } else {
+      model = model.charAt(0).toUpperCase() + model.slice(1);
+    }
+
     return this.api.get('', {
       params: {
         make: make,

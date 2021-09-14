@@ -250,6 +250,16 @@ header>div {
   width: 3rem;
 }
 
+/* .small-pic:hover {
+  position: relative;
+  top: -250px;
+  left: -35px;
+  width: 500px;
+  height: auto;
+  display: block;
+  z-index: 999;
+} */
+
 
 .main-details>* {
   text-align: left;
