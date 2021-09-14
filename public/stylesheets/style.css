@@ -180,20 +180,19 @@ header>div {
 .search-button {
   margin-top: 1rem;
   padding: .50rem;
-  border-radius: 5rem;
-  /* background-color: #F28DEB; */
+  border-radius: 1rem;
   background-image: linear-gradient(to right, #ff00ee, #F28DEB);
   font-weight: bold;
-  border: none;
+  border: .5px solid #FFA500;
   height: 45px;
   width: 175px;
   font: 1.1rem Helvetica, "Lucida Grande", Arial, sans-serif;
   color: white;
-  box-shadow: 0 4px pink;
+  box-shadow: 0 4px #F28DEB;
 }
 
 .search-button:active {
-  box-shadow: 0 0px #666;
+  box-shadow: 0 0px;
   transform: translateY(4px);
   outline: none;
 }
