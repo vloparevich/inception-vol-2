@@ -435,7 +435,25 @@ hr {
 .list-of-vehicles {
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
+
+.list-of-vehicles a {
+  text-decoration: none;
+  color: #225473
+}
+
+.list-of-vehicles-box {
+  width: 75%;
+  margin: 0 auto;
+}
+
+.list-of-vehicles-box #vehicle-card {
+  margin: 1rem auto;
+}
+
+
+
 
 #vehicle-card {
   display: flex;
@@ -462,7 +480,6 @@ hr {
   flex-direction: row;
   align-items: flex-start;
 }
-
 
 
 /* V E H I C L E S   L I S T */
