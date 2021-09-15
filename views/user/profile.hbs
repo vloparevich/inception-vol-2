@@ -1,30 +1,30 @@
 <div class='user-profile'>
   <div class="user-image-top-left">
-    <img class="user-image"
-      src=""
-      alt="image of user"
-    />
-    
+    <img class="user-image" src="" alt="image of user" />
+
   </div>
   <div class='user-details'>
+    {{!-- <p>{{userObject.firstName}}</p> --}}
     <h2>
-      Name:
+      Name: {{userObject.firstName}} {{userObject.lastName}}
     </h2>
     <h2>
-      Location:
+      Location: {{userObject.location}}
     </h2>
     <h2>
-      Current Vehicle:
+      Current Vehicle: {{userObject.currentVehicle}}
     </h2>
-    <button type='submit' class='edit-profile-button'>
-        Edit Profile
-    </button>
+    <a href ="/profile/edit">Edit Profile</a>
   </div>
 
   <div class="user-listings">
     <h2>My Listings</h2>
     <li><a href="">Listing 1</a></li>
     <li><a href="">Listing 2</a></li>
+  </div>
+
+  <div class="saved-vehicles">
+    <a href="/profile/savedvehicles">Saved Vehicles</a>
   </div>
 
 </div>

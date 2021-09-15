@@ -18,6 +18,7 @@ const app = express();
 // ℹ️ This function is getting exported from the config folder. It runs most pieces of middleware
 require('./config')(app);
 
+
 const projectName = 'CarAmerican';
 const capitalized = (string) =>
   string[0].toUpperCase() + string.slice(1).toLowerCase();
@@ -36,8 +37,9 @@ app.use('/vehicles', vehicleRoutes);
 
 const reviewRoutes = require('./routes/review.routes');
 app.use('/review', reviewRoutes);
-const userRoutes = require('./routes/profile.routes');
-app.use('/user', userRoutes);
+
+const profileRoutes = require('./routes/profile.routes');
+app.use('/profile', profileRoutes);
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require('./error-handling')(app);

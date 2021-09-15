@@ -1,0 +1,20 @@
+<h2>Profile Editor</h2>
+
+<form action="/user/profile" method="POST">
+    <input type="hidden" name="_id" value="{{user_id}}">
+    <label>First Name<input type="text" name="firstName" value="{{firstName}}"></label>
+    <label>Last Name<input type="text" name="lastName" value="{{lastName}}"></label>
+
+    <br>
+
+    <label>Location<input type="string" name="location" {{location}}></label>
+    
+    <br>
+
+    <label>Current Vehicle<input type="string" name="currentVehicle" {{currentVehicle}}></label>
+    
+    <br>
+
+    <button type="submit">Save changes</button>
+
+</form>

@@ -57,6 +57,13 @@
         </b>
       </span>
     </p>
+    <div class='save'>
+      <form action="/user/profile/{{vehicle.vin}}">
+      <button type='submit' class='btn btn-success'>Save This Vehicle</button>
+      </form>
+    </div>
+    <br>
+    <div class = 'reviews'>
     <form action="/review/add-review/{{vehicle.dealerName}}/{{vehicle.vin}}">
       <button type='submit' class='btn btn-primary'>
         Add review about: {{vehicle.dealerName}}
@@ -100,6 +107,7 @@
           </form>
         </div>
       {{/each}}
+      </div>
     </div>
   </div>
 </div>

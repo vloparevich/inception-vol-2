@@ -313,7 +313,6 @@ header>div {
 
 .success {
   color: #4F8A10;
-  background-color: #DFF2BF;
 }
 
 .warning {
@@ -372,6 +371,11 @@ header>div {
   display: flex;
   flex-direction: column;
   align-content: left;
+}
+
+.user-image {
+  height: 200px;
+  width: 200px;
 }
 
 .error-banner p {
