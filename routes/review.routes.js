@@ -74,19 +74,50 @@ router.get('/delete/:reviewId', isLoggedIn, async (req, res) => {
 // ****************************************************************************************
 // GET route to render the review for editing
 // ****************************************************************************************
-router.get('/edit/:reviewId', (req, res) => {
-  const { reviewId } = req.params;
-  //   const reviewIdObject = mongoose.Types.ObjectId(req.params.reviewId);
+router.get('/edit/:reviewId/:dealerName/:vin', (req, res) => {
+  const { reviewId, dealerName, vin } = req.params;
+  const { _id } = req.session.user;
+
+  console.log('USER ID', _id);
   Review.findById(reviewId)
     .populate('user_id')
     .then((foundReview) => {
       console.log('My review:', foundReview);
-      res.render('reviews/update-review-form', { foundReview: foundReview });
+      res.render('reviews/update-review-form', {
+        foundReview: foundReview,
+        dealerName: dealerName,
+        reviewId: reviewId,
+        vin: vin,
+      });
     });
 });
 // ****************************************************************************************
-// POST route to update the review if belongs to this user
+// POST route to update the review
 // ****************************************************************************************
-router.post('/edit/:reviewId', (req, res) => {});
+router.post('/edit/:reviewId/:vin', async (req, res) => {
+  const { reviewId, vin } = req.params;
+  const { reviewContent } = req.body;
+  const { _id } = req.session.user;
+  let reviewFromDB;
+  let reviewCreatorIdFromDB;
+
+  try {
+    reviewFromDB = await Review.findById(reviewId);
+    reviewCreatorIdFromDB = reviewFromDB.user_id.toString();
+    if (_id === reviewCreatorIdFromDB) {
+      await Review.findByIdAndUpdate(
+        reviewId,
+        { reviewContent: reviewContent },
+        { new: true }
+      );
+    } else {
+      req.session.errorDeletion =
+        'You are not Authorized to EDIT this review, you are not a creator of it....';
+    }
+  } catch (err) {
+    console.log('Soemthing went wrong during editing the review:', err);
+  }
+  res.redirect(`/vehicles/details/${vin}`);
+});
 
 module.exports = router;
