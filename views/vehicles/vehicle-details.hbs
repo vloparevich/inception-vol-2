@@ -95,7 +95,9 @@
           Author: {{this.user_id.firstName}}
         </p>
         <div class='review-control-buttons'>
-          <form action="/review/edit/{{this._id}}" method='GET'>
+        THIS ID: {{this._id}}
+          <form action="/review/edit/{{this._id}}/{{../dealerName}}/{{../vehicle.vin}}" method='GET'>
+          VIN:::{{../vehicle.vin}}
             <button type='submit' class='btn btn-warning'>
               Edit
             </button>

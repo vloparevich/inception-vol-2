@@ -1,30 +1,34 @@
-<form action='/review/update-review-form' class='auth-form' method='POST'>
-  <div class='auth-form-container'>
-    <input type='hidden' name='vin' value="{{foundReview._id}}" />
-    <h1>
-      You are welcome to update your review
-    </h1>
-    <h1>
-      {{foundReview.firstName}} {{foundReview.lastName}}
-    </h1>
-    <p>
-      Here you can add a review in regards to this Dealer:
-    </p>
-    <input type='hidden' name='dealerName' value="{{dealerName}}" />
-    <hr />
-    <label>
-      
-      <br />
-      <textarea name='reviewContent' rows='10' cols='50'>{{foundReview.reviewContent}}</textarea>
-    </label>
-    <button type='submit'>
-      Update
-    </button>
-
-    {{#if errorMessage}}
-      <p class='error'>
-        {{errorMessage}}
+<div class=''>
+  <form action="/review/edit/{{reviewId}}/{{vin}}" method='POST' class='auth-form'>
+    <div class='auth-form-container'>
+      <input type='hidden' name='vin' value="{{foundReview._id}}" />
+      <p>
+        You are welcome to update your review for this dealaer
+        <h1>
+          {{dealerName}}
+        </h1>
       </p>
-    {{/if}}
-  </div>
-</form>
+      <h3>
+        Author: {{foundReview.user_id.firstName}} {{
+          foundReview.user_id.lastName
+        }}
+      </h3>
+      <input type='hidden' name='dealerName' value="{{dealerName}}" />
+      <label>
+        <br />
+        <textarea name='reviewContent' rows='10' cols='50'>
+          {{foundReview.reviewContent}}
+        </textarea>
+      </label>
+      <button type='submit'>
+        Update
+      </button>
+
+      {{#if errorMessage}}
+        <p class='error'>
+          {{errorMessage}}
+        </p>
+      {{/if}}
+    </div>
+  </form>
+</div>

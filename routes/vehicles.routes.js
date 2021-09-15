@@ -26,9 +26,7 @@ router.post('/', (req, res) => {
     .getQueriedListings(make, model, year_min, year_max, city, bodyStyle)
     .then((queriedVehicles) => {
       const { records } = queriedVehicles.data;
-      console.log(records[0]);
       const suvCars = records.filter((car) => car.bodyStyle === 'suv');
-      console.log('suvCars: ', { suvCars });
       res.render('vehicles/vehicles-list', {
         vehiclesFromApi: records,
         suvCars: suvCars,
@@ -70,7 +68,6 @@ router.get('/details/:vin', (req, res, next) => {
   const errorDeletion = req.session?.errorDeletion;
   const { vin } = req.params;
   vehiclesApi.getVehicleDetails(vin).then((vehicleFromAPI) => {
-    // const vehicle = vehicleFromAPI.data;
     const dealerName = vehicleFromAPI.data.dealerName;
     Dealer.find({ dealerName: dealerName })
       .populate({
@@ -80,11 +77,12 @@ router.get('/details/:vin', (req, res, next) => {
         },
       })
       .then((foundDealer) => {
-        console.log(foundDealer);
+        console.log('FOUND', foundDealer);
         res.render('vehicles/vehicle-details', {
           vehicle: vehicleFromAPI.data,
           foundDealer: foundDealer,
           errorDeletion: errorDeletion,
+          dealerName: dealerName,
         });
         delete req.session.errorDeletion;
       });

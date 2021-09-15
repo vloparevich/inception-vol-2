@@ -296,6 +296,16 @@ header>div {
   }
 }
 
+/*REVIEW-FORMS*/
+.update-review-container form {
+  margin: 0 auto;
+  width: 50%;
+}
+
+.update-review-container form textarea {
+  width: 100%;
+}
+
 /* ERROR MESSAGE STLES */
 .info,
 .success,
@@ -445,7 +455,6 @@ hr {
 
 
 /* V E H I C L E S   L I S T */
-
 .list-of-vehicles {
   display: flex;
   flex-direction: column;
