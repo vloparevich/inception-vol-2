@@ -54,8 +54,15 @@ router.post(
   (req, res, next) => {
     const user = req.session.user;
     const user_id = mongoose.Types.ObjectId(user._id);
-    const { firstName, lastName, location, currentVehicle, existingImage } =
-      req.body;
+    const {
+      firstName,
+      lastName,
+      email,
+      location,
+      currentVehicle,
+      existingImage,
+    } = req.body;
+    console.log('user id and req.body, ', user_id, req.body);
 
     let profilePic;
     if (req.file) {
@@ -69,6 +76,7 @@ router.post(
       {
         firstName: firstName,
         lastName: lastName,
+        email: email,
         location: location,
         currentVehicle: currentVehicle,
         profilePic,
