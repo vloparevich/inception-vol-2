@@ -1,6 +1,6 @@
 <h2>Profile Editor</h2>
 
-<form action="/user/profile" method="POST">
+<form action="/user/profile" method="POST" enctype="multipart/form-data">
     <input type="hidden" name="_id" value="{{user_id}}">
     <label>First Name<input type="text" name="firstName" value="{{firstName}}"></label>
     <label>Last Name<input type="text" name="lastName" value="{{lastName}}"></label>
@@ -13,6 +13,13 @@
 
     <label>Current Vehicle<input type="string" name="currentVehicle" {{currentVehicle}}></label>
     
+    <br>
+
+    <label>Image
+          <input type="file" name="profilePic" />
+          <input type="text" name="existingImage" hidden value="{{profilePic}}">
+    </label>
+      
     <br>
 
     <button type="submit">Save changes</button>

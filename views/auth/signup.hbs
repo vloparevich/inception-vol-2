@@ -1,5 +1,5 @@
 
-<form action="/auth/signup" class="auth-form" method="POST">
+<form action="/auth/signup" class="auth-form" method="POST" enctype="multipart/form-data">
    <div class="auth-form-container">
       <h1>Welcome to My CarAmerican</h1>
       <p>Create your account and completely control the way you buy your next car.</p>
@@ -16,6 +16,10 @@
       <label> <b>Email</b><br>
          <input type="text" placeholder="Enter Email" name="email" required>
       </label>
+
+      <label> <b>Image</b><br>
+          <input type="file" name="profilePic" />
+      </label><br><br>
 
       <label> <b>Password</b><br>
          <input type="password" placeholder="Enter Password" name="password" required>

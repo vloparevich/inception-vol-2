@@ -11,6 +11,8 @@ const saltRounds = 10;
 // Require the User model in order to interact with the database
 const User = require('../models/User.model');
 
+const fileUploader = require('../config/cloudinary.config');
+
 // Require necessary (isLoggedOut and isLoggedIn) middleware in order to control access to specific routes
 const isLoggedOut = require('../middleware/isLoggedOut');
 const isLoggedIn = require('../middleware/isLoggedIn');
@@ -19,7 +21,7 @@ router.get('/signup', isLoggedOut, (req, res) => {
   res.render('auth/signup');
 });
 
-router.post('/signup', (req, res) => {
+router.post('/signup', fileUploader.single('profilePic'), (req, res) => {
   const { email, password, firstName, lastName } = req.body;
   console.log('User: ', { email, password, firstName, lastName });
 
@@ -76,6 +78,7 @@ router.post('/signup', (req, res) => {
           password: hashedPassword,
           firstName: firstName,
           lastName: lastName,
+          profilePic: req.file.path,
         });
       })
       .then((user) => {
