@@ -15,6 +15,9 @@ const User = require('../models/User.model');
 const isLoggedOut = require('../middleware/isLoggedOut');
 const isLoggedIn = require('../middleware/isLoggedIn');
 
+// ****************************************************************************************
+// GET route to render signup form
+// ****************************************************************************************
 router.get('/signup', isLoggedOut, (req, res) => {
   res.render('auth/signup');
 });
@@ -63,14 +66,6 @@ router.post('/signup', (req, res) => {
       .genSalt(saltRounds)
       .then((salt) => bcrypt.hash(password, salt))
       .then((hashedPassword) => {
-        // Create a user and save it in the database
-        // console.log('BEFORE', {
-        //   email: email,
-        //   password: hashedPassword,
-        //   firstName: firstName,
-        //   lastName: lastName,
-        // });
-        console.log('BEFORE THEN');
         return User.create({
           email: email,
           password: hashedPassword,
@@ -80,7 +75,6 @@ router.post('/signup', (req, res) => {
       })
       .then((user) => {
         // Bind the user to the session object
-        console.log('line 83');
         req.session.user = user;
         console.log('Session', req.session.user);
         res.redirect('/');
@@ -103,10 +97,16 @@ router.post('/signup', (req, res) => {
   });
 });
 
+// ****************************************************************************************
+// GET route to render login form
+// ****************************************************************************************
 router.get('/login', isLoggedOut, (req, res) => {
   res.render('auth/login');
 });
 
+// ****************************************************************************************
+// POST route to submit user's username and password
+// ****************************************************************************************
 router.post('/login', isLoggedOut, (req, res, next) => {
   const { email, password } = req.body;
 
@@ -155,6 +155,9 @@ router.post('/login', isLoggedOut, (req, res, next) => {
     });
 });
 
+// ****************************************************************************************
+// GET route to kill the user's session - logout
+// ****************************************************************************************
 router.get('/logout', isLoggedIn, (req, res) => {
   req.session.destroy((err) => {
     if (err) {
