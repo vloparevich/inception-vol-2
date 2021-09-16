@@ -2,22 +2,22 @@
 
 <form action="/user/profile" method="POST" enctype="multipart/form-data">
     <input type="hidden" name="_id" value="{{user_id}}">
-    <label>First Name<input type="text" name="firstName" value="{{firstName}}"></label>
-    <label>Last Name<input type="text" name="lastName" value="{{lastName}}"></label>
+    <label>First Name<input type="text" name="firstName" value="{{user.firstName}}"></label>
+    <label>Last Name<input type="text" name="lastName" value="{{user.lastName}}"></label>
 
     <br>
 
-    <label>Location<input type="string" name="location" {{location}}></label>
+    <label>Location<input type="string" name="location" {{user.location}}></label>
     
     <br>
 
-    <label>Current Vehicle<input type="string" name="currentVehicle" {{currentVehicle}}></label>
+    <label>Current Vehicle<input type="string" name="currentVehicle" {{user.currentVehicle}}></label>
     
     <br>
 
     <label>Image
           <input type="file" name="profilePic" />
-          <input type="text" name="existingImage" hidden value="{{profilePic}}">
+          <input type="text" name="existingImage" hidden value="{{user.profilePic}}">
     </label>
       
     <br>

@@ -32,6 +32,14 @@ router.get('/', isLoggedIn, (req, res) => {
 router.get('/edit', isLoggedIn, (req, res) => {
   const user = req.session.user;
   const user_id = mongoose.Types.ObjectId(user._id);
+
+  console.log('user: ', user);
+
+  //   User.findOne({ email: email })
+  //   .then(userFound => res.render('movie-views/movie-edit', userFound))
+  //   .catch(error => console.log(`Error while getting a single movie for edit: ${error}`));
+  // });
+
   res.render('user/edit', {
     user: user,
     _id: user_id,
