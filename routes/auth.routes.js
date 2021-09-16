@@ -18,7 +18,7 @@ const isLoggedOut = require('../middleware/isLoggedOut');
 const isLoggedIn = require('../middleware/isLoggedIn');
 
 router.get('/signup', isLoggedOut, (req, res) => {
-  res.render('auth/signup');
+  res.render('auth/signup', { isLoggedIn: req.session.user });
 });
 
 router.post('/signup', fileUploader.single('profilePic'), (req, res) => {
@@ -107,7 +107,7 @@ router.post('/signup', fileUploader.single('profilePic'), (req, res) => {
 });
 
 router.get('/login', isLoggedOut, (req, res) => {
-  res.render('auth/login');
+  res.render('auth/login', { isLoggedIn: req.session.user });
 });
 
 router.post('/login', isLoggedOut, (req, res, next) => {
@@ -161,9 +161,10 @@ router.post('/login', isLoggedOut, (req, res, next) => {
 router.get('/logout', isLoggedIn, (req, res) => {
   req.session.destroy((err) => {
     if (err) {
-      return res
-        .status(500)
-        .render('auth/logout', { errorMessage: err.message });
+      return res.status(500).render('auth/logout', {
+        errorMessage: err.message,
+        isLoggedIn: req.session.user,
+      });
     }
     res.redirect('/');
   });

@@ -30,6 +30,7 @@ router.post('/', (req, res) => {
       res.render('vehicles/vehicles-list', {
         vehiclesFromApi: records,
         suvCars: suvCars,
+        isLoggedIn: req.session.user,
       });
     })
     .catch((err) => {
@@ -56,6 +57,7 @@ router.get('/:id/details', (req, res, next) => {
       res.render('/details', {
         vehicleFromAPI,
         isAuth: req.session?.user._id,
+        isLoggedIn: req.session.user,
       });
     });
 });
@@ -83,6 +85,7 @@ router.get('/details/:vin', (req, res, next) => {
           foundDealer: foundDealer,
           errorDeletion: errorDeletion,
           dealerName: dealerName,
+          isLoggedIn: req.session.user,
         });
         delete req.session.errorDeletion;
       });

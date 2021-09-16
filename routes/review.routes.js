@@ -16,7 +16,11 @@ const vehiclesApi = new VehiclesApi();
 // router.get('/review/add-review/:dealerName', isLoggedIn, (req, res) => {
 router.get('/add-review/:dealerName/:vin', (req, res) => {
   const { dealerName, vin } = req.params;
-  res.render('reviews/new-review', { dealerName, vin });
+  res.render('reviews/new-review', {
+    dealerName,
+    vin,
+    isLoggedIn: req.session.user,
+  });
 });
 
 // ****************************************************************************************
@@ -68,7 +72,7 @@ router.get('/delete/:reviewId', isLoggedIn, async (req, res) => {
   } catch (err) {
     console.log('Soemthing went wrong during deletion of the review:', err);
   }
-  res.redirect(`/vehicles/details/${vin}`);
+  res.redirect(`/vehicles/details/${vin}`, { isLoggedIn: req.session.user });
 });
 
 // ****************************************************************************************
@@ -88,6 +92,7 @@ router.get('/edit/:reviewId/:dealerName/:vin', (req, res) => {
         dealerName: dealerName,
         reviewId: reviewId,
         vin: vin,
+        isLoggedIn: req.session.user,
       });
     });
 });

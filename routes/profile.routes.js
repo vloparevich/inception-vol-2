@@ -22,6 +22,7 @@ router.get('/', isLoggedIn, (req, res) => {
   console.log('user: ', user);
   res.render('user/profile', {
     userObject: user,
+    isLoggedIn: req.session.user,
   });
 });
 
@@ -38,6 +39,7 @@ router.get('/edit', isLoggedIn, (req, res) => {
   res.render('user/edit', {
     user: user,
     _id: user_id,
+    isLoggedIn: req.session.user,
   });
 });
 
@@ -105,6 +107,7 @@ router.get('/savedvehicles', isLoggedIn, (req, res) => {
       res.render('/savedvehicles', {
         user: user,
         _id: user_id,
+        isLoggedIn: req.session.user,
       });
     });
 });
