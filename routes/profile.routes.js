@@ -33,12 +33,7 @@ router.get('/edit', isLoggedIn, (req, res) => {
   const user = req.session.user;
   const user_id = mongoose.Types.ObjectId(user._id);
 
-  console.log('user: ', user);
-
-  //   User.findOne({ email: email })
-  //   .then(userFound => res.render('movie-views/movie-edit', userFound))
-  //   .catch(error => console.log(`Error while getting a single movie for edit: ${error}`));
-  // });
+  // console.log('user: ', user);
 
   res.render('user/edit', {
     user: user,
@@ -50,47 +45,52 @@ router.get('/edit', isLoggedIn, (req, res) => {
 // POST route to edit profile page
 // ****************************************************************************************
 
-router.post('/', fileUploader.single('profilePic'), (req, res) => {
-  const user = req.session.user;
-  const user_id = mongoose.Types.ObjectId(user._id);
-  const { firstName, lastName, location, currentVehicle, existingImage } =
-    req.body;
+router.post(
+  '/',
+  isLoggedIn,
+  fileUploader.single('profilePic'),
+  (req, res, next) => {
+    const user = req.session.user;
+    const user_id = mongoose.Types.ObjectId(user._id);
+    const { firstName, lastName, location, currentVehicle, existingImage } =
+      req.body;
 
-  let profilePic;
-  if (req.file) {
-    profilePic = req.file.path;
-  } else {
-    profilePic = existingImage;
-  }
-
-  User.findByIdAndUpdate(
-    user_id,
-    {
-      firstName: firstName,
-      lastName: lastName,
-      location: location,
-      currentVehicle: currentVehicle,
-      profilePic,
-    },
-    {
-      new: true,
+    let profilePic;
+    if (req.file) {
+      profilePic = req.file.path;
+    } else {
+      profilePic = existingImage;
     }
-  )
-    .then((updatedProfile) => {
-      console.log('update', updatedProfile);
-      res.render('user/profile', {
-        user: user,
-        _id: user_id,
-      });
-    })
-    .catch((error) => {
-      if (error instanceof mongoose.Error.ValidationError) {
-        return res.status(400).render('auth/signup', {
-          errorMessage: error.message,
-        });
+
+    User.findByIdAndUpdate(
+      user_id,
+      {
+        firstName: firstName,
+        lastName: lastName,
+        location: location,
+        currentVehicle: currentVehicle,
+        profilePic,
+      },
+      {
+        new: true,
       }
-    });
-});
+    )
+      .then((updatedProfile) => {
+        console.log('update', updatedProfile);
+        res.render('user/profile', {
+          userObject: user,
+          _id: user_id,
+        });
+      })
+      .catch((error) => {
+        if (error instanceof mongoose.Error.ValidationError) {
+          return res.status(400).render('auth/signup', {
+            errorMessage: error.message,
+          });
+        }
+      });
+  }
+);
 
 // ****************************************************************************************
 // GET route to show saved vehicles

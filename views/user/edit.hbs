@@ -1,7 +1,7 @@
 <h2>Profile Editor</h2>
 
 <form action="/user/profile" method="POST" enctype="multipart/form-data">
-    <input type="hidden" name="_id" value="{{user_id}}">
+    <input type="hidden" name="_id" value="{{user.user_id}}">
     <label>First Name<input type="text" name="firstName" value="{{user.firstName}}"></label>
     <label>Last Name<input type="text" name="lastName" value="{{user.lastName}}"></label>
 
