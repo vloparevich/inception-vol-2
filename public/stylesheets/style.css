@@ -2,12 +2,20 @@
 dark blue = #225473
 light blue = #04D9D9
 white = #F2F2F2
+super white = #FFFCFC
 purple = #A194BF
-pink = #F28DEB */
+pink = #F28DEB
+black = #272727 */
 
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&family=Roboto:wght@100;300;700&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;500;600&display=swap');
 @import url('//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+
+*,
+*::before,
+*::after {
+  box-sizing: content-box;
+}
 
 html {
   margin: 0;
@@ -17,8 +25,8 @@ html {
 body {
   margin: 0;
   padding: 0;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  font-family: "Montserrat", sans-serif;
+  font: 14px Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-family: Helvetica, Arial, "Lucida Grande", sans-serif;
   margin-top: 6rem;
   min-height: 90vh;
   display: flex;
@@ -27,9 +35,10 @@ body {
   text-align: center;
 }
 
-.app-title {
-  text-decoration: none !important;
-  color: #04D9D9;
+.app-title img {
+  /* text-decoration: none !important;
+  color: #04D9D9; */
+  height: 125px;
 }
 
 .app-title:hover {
@@ -38,6 +47,15 @@ body {
 
 h1 {
   color: #225473;
+  font-family: Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: bold;
+}
+
+h3 {
+  color: #272727;
+  font-family: Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: bold;
+  font-size: 1.3rem;
 }
 
 header {
@@ -87,14 +105,42 @@ header>div {
   margin: auto;
   list-style: none;
   display: flex;
+  flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
   width: 50%;
-  font-size: .75rem;
+  font-size: .85rem;
 }
 
 .nav-bar ul li {
-  margin: 0rem .5rem;
+  margin: auto .5rem;
+}
+
+#nav-bar-img-name {
+  display: flex;
+  flex-direction: row;
+}
+
+#user-image-nav {
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  border-radius: 50%;
+  margin: 0 .1rem;
+}
+
+#user-image-nav img {
+  width: 100%;
+  height: auto;
+}
+
+#user-image-nav li {
+  margin: auto;
+}
+
+#name-top {
+  color: #F28DEB;
+  font-weight: bold;
 }
 
 .footer-section {
@@ -374,7 +420,29 @@ header>div {
 .user-profile {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  margin: 0 auto;
+  width: 100%;
+} 
+
+#user-profile-top {
+  padding: 3rem;
+  background-color: #FFFCFC;
+  box-shadow: 0 0 6px 0 lightgray;
+  margin-bottom: 0.75rem;
+}
+
+#user-image-div {
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 50%;
+  box-shadow: 4px 4px 4px lightgray;
+  margin: 0 auto;
+}
+
+#user-image-div img {
+  width: 100%;
+  height: auto;
 }
 
 .user-details {
@@ -383,26 +451,59 @@ header>div {
   align-content: center;
 }
 
-.user-image {
-  height: 200px;
-  width: 200px;
+#profile-name {
+  color: #272727;
+  margin: .5rem;
 }
 
 .error-banner p {
   margin: 0 auto;
 }
 
-#info-card {
-  background-color: white;
-  width: 20%;
+#user-feed {
   display: flex;
-  flex-direction: column;
-  margin-left: 2%;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#user-feed div {
+  margin: 0 0.25rem;
+  margin-bottom: 0.5rem;
 }
 
 #info-card {
-  justify-content: left;
-  margin-left: 2%;
+  background-color: #FFFCFC;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  padding: .75rem;
+  width: 25%;
+  box-shadow: 3px 3px 3px lightgray;
+}
+
+#info-card-content {
+  align-items: left;
+}
+
+#right-side-content {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+#user-listings {
+  background-color: #FFFCFC;
+  border-radius: 10px;
+  box-shadow: 3px 3px 3px lightgray;
+  padding: .75rem;
+}
+
+
+#saved-vehicles {
+  background-color: #FFFCFC;
+  border-radius: 10px;
+  box-shadow: 3px 3px 3px lightgray;
+  padding: .75rem;
 }
 
 /* USER PROFILE PAGE */
