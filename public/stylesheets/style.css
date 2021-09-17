@@ -426,7 +426,8 @@ header>div {
 
 #user-profile-top {
   padding: 3rem;
-  background-color: #FFFCFC;
+  /* background-color: #FFFCFC; */
+  background-image: linear-gradient(to bottom, #F2F2F2, #FFFCFC);
   box-shadow: 0 0 6px 0 lightgray;
   margin-bottom: 0.75rem;
 }
