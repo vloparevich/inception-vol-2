@@ -11,6 +11,8 @@ const saltRounds = 10;
 // Require the User model in order to interact with the database
 const User = require('../models/User.model');
 
+const fileUploader = require('../config/cloudinary.config');
+
 // Require necessary (isLoggedOut and isLoggedIn) middleware in order to control access to specific routes
 const isLoggedOut = require('../middleware/isLoggedOut');
 const isLoggedIn = require('../middleware/isLoggedIn');
@@ -19,10 +21,10 @@ const isLoggedIn = require('../middleware/isLoggedIn');
 // GET route to render signup form
 // ****************************************************************************************
 router.get('/signup', isLoggedOut, (req, res) => {
-  res.render('auth/signup');
+  res.render('auth/signup', { isLoggedIn: req.session.user });
 });
 
-router.post('/signup', (req, res) => {
+router.post('/signup', fileUploader.single('profilePic'), (req, res) => {
   const { email, password, firstName, lastName } = req.body;
   console.log('User: ', { email, password, firstName, lastName });
 
@@ -71,6 +73,7 @@ router.post('/signup', (req, res) => {
           password: hashedPassword,
           firstName: firstName,
           lastName: lastName,
+          profilePic: req.file.path,
         });
       })
       .then((user) => {
@@ -101,7 +104,7 @@ router.post('/signup', (req, res) => {
 // GET route to render login form
 // ****************************************************************************************
 router.get('/login', isLoggedOut, (req, res) => {
-  res.render('auth/login');
+  res.render('auth/login', { isLoggedIn: req.session.user });
 });
 
 // ****************************************************************************************
@@ -142,6 +145,7 @@ router.post('/login', isLoggedOut, (req, res, next) => {
             .render('auth/login', { errorMessage: 'Wrong credentials.' });
         }
         req.session.user = user;
+        global.test = user;
         // req.session.user = user._id; // ! better and safer but in this case we saving the entire user object
         return res.redirect('/');
       });
@@ -161,9 +165,10 @@ router.post('/login', isLoggedOut, (req, res, next) => {
 router.get('/logout', isLoggedIn, (req, res) => {
   req.session.destroy((err) => {
     if (err) {
-      return res
-        .status(500)
-        .render('auth/logout', { errorMessage: err.message });
+      return res.status(500).render('auth/logout', {
+        errorMessage: err.message,
+        isLoggedIn: req.session.user,
+      });
     }
     res.redirect('/');
   });

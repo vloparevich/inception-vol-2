@@ -28,6 +28,7 @@ router.get('/', (req, res) => {
       console.log('TRIMMED:', { trimmedArr: trimmedArrOfCars });
       res.render('index', {
         vehiclesFromApi: trimmedArrOfCars,
+        isLoggedIn: req.session.user,
       });
     })
     .catch((err) => {
