@@ -19,7 +19,7 @@ const userSchema = new Schema({
   currentVehicle: [{ type: Array }],
   vehicles: [{ type: Schema.Types.ObjectId, ref: 'Vehicle' }], // VINs will be saved
   reviews: [{ type: Schema.Types.ObjectId, ref: 'Review' }], // Reviews in regards to the Delaerships
-  profilePic: String,
+  profilePic: { type: String, required: false },
 });
 
 const User = model('User', userSchema);
