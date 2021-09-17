@@ -373,14 +373,14 @@ header>div {
 
 .user-profile {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-evenly;
 }
 
 .user-details {
   display: flex;
   flex-direction: column;
-  align-content: left;
+  align-content: center;
 }
 
 .user-image {
@@ -391,6 +391,21 @@ header>div {
 .error-banner p {
   margin: 0 auto;
 }
+
+#info-card {
+  background-color: white;
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  margin-left: 2%;
+}
+
+#info-card {
+  justify-content: left;
+  margin-left: 2%;
+}
+
+/* USER PROFILE PAGE */
 
 /* A U T H F O R M S */
 
