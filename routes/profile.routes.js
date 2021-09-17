@@ -19,7 +19,7 @@ const isLoggedIn = require('../middleware/isLoggedIn');
 
 router.get('/', isLoggedIn, (req, res) => {
   const user = req.session.user;
-  console.log('user: ', user);
+  // console.log('user: ', user);
   res.render('user/profile', {
     userObject: user,
     isLoggedIn: req.session.user,
@@ -88,7 +88,7 @@ router.post(
       .then((updatedProfile) => {
         console.log('update', updatedProfile);
         res.render('user/profile', {
-          userObject: user,
+          userObject: updatedProfile,
           _id: user_id,
         });
       })
