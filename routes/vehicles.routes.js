@@ -44,7 +44,6 @@ router.post('/', (req, res) => {
 // ****************************************************************************************
 // GET route to get the details of selected vehicle and render details page
 // ****************************************************************************************
-// to be reviewed....
 router.get('/:id/details', (req, res, next) => {
   Vehicle.findById(req.params.id)
     .populate({
