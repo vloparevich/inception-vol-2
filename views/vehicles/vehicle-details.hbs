@@ -58,7 +58,9 @@
       </span>
     </p>
     <div class='save'>
-      <form action="/user/profile/{{vehicle.vin}}">
+      <form action="/details/:vin" type= "POST">
+      <input type = 'hidden' name = "userName" value = {{user}} />
+      <input type = 'hidden' name = "vin" value = {{vehicle.vin}} />
       <button type='submit' class='btn btn-success'>Save This Vehicle</button>
       </form>
     </div>

@@ -1,25 +1,26 @@
 <h2>Profile Editor</h2>
 
-<form action="/user/profile" method="POST" enctype="multipart/form-data">
+<form action="/profile" method="POST" enctype="multipart/form-data">
     <input type="hidden" name="_id" value="{{user.user_id}}">
-    <label>First Name<input type="text" name="firstName" value="{{user.firstName}}"></label>
-    <label>Last Name<input type="text" name="lastName" value="{{user.lastName}}"></label>
+
+    <label>First Name<input type="string" name="firstName" value="{{user.firstName}}"></label>
+    <br>
+    <label>Last Name<input type="string" name="lastName" value="{{user.lastName}}"></label>
 
     <br>
 
-    <label>Location<input type="string" name="location" {{user.location}}></label>
-    
+    <label>Location<input type="string" name="location" value="{{user.location}}"></label>
+
     <br>
 
-    <label>Current Vehicle<input type="string" name="currentVehicle" {{user.currentVehicle}}></label>
-    
+    <label>Current Vehicle<input type="string" name="currentVehicle" value="{{user.currentVehicle}}"></label>
+
     <br>
 
-    <label>Image
-          <input type="file" name="profilePic" />
-          <input type="text" name="existingImage" hidden value="{{user.profilePic}}">
+    <label>Image<input type="file" name="profilePic"/>
+    <input type="string" name="existingImage" hidden value="{{user.profilePic}}">
     </label>
-      
+
     <br>
 
     <button type="submit">Save changes</button>

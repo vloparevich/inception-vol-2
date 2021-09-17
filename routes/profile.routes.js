@@ -54,8 +54,14 @@ router.post(
   (req, res, next) => {
     const user = req.session.user;
     const user_id = mongoose.Types.ObjectId(user._id);
-    const { firstName, lastName, location, currentVehicle, existingImage } =
-      req.body;
+    const {
+      firstName,
+      lastName,
+      location,
+      currentVehicle,
+      existingImage
+    } =
+    req.body;
 
     let profilePic;
     if (req.file) {
@@ -65,22 +71,20 @@ router.post(
     }
 
     User.findByIdAndUpdate(
-      user_id,
-      {
-        firstName: firstName,
-        lastName: lastName,
-        location: location,
-        currentVehicle: currentVehicle,
-        profilePic,
-      },
-      {
-        new: true,
-      }
-    )
+        user_id, {
+          firstName: firstName,
+          lastName: lastName,
+          location: location,
+          currentVehicle: currentVehicle,
+          profilePic,
+        }, {
+          new: true,
+        }
+      )
       .then((updatedProfile) => {
         console.log('update', updatedProfile);
         res.render('user/profile', {
-          userObject: user,
+          userObject: updatedProfile,
           _id: user_id,
         });
       })
@@ -101,15 +105,33 @@ router.get('/savedvehicles', isLoggedIn, (req, res) => {
   const user = req.session.user;
   const user_id = req.session.user._id;
   User.findById(user_id)
-    .populate({ path: 'vehicles' })
+    .populate({
+      path: 'vehicles'
+    })
     .then((foundUserWithVehicles) => {
       console.log('saved list', foundUserWithVehicles);
-      res.render('/savedvehicles', {
+      res.render('user/savedvehicles', {
         user: user,
         _id: user_id,
         isLoggedIn: req.session.user,
       });
     });
 });
+
+router.post('/savedvehicles', isLoggedIn, (req, res) => {
+  const user_id = req.session.user._id;
+  User.findByIdAndUpdate(user_id, {
+      $push: {
+        savedVehicles: vehicle.vin
+      },
+      new: true
+    })
+    .then((updatedSave) => {
+      console.log(updatedSave)
+      res.render()
+
+    })
+
+})
 
 module.exports = router;

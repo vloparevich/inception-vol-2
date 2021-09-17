@@ -5,26 +5,25 @@
   </div>
   <div class='user-details'>
     {{!-- <p>{{userObject.firstName}}</p> --}}
-    <h2>
-      Name: {{userObject.firstName}} {{userObject.lastName}}
-    </h2>
-    <h2>
-      Location: {{userObject.location}}
-    </h2>
-    <h2>
-      Current Vehicle: {{userObject.currentVehicle}}
-    </h2>
-    <a href ="/profile/edit">Edit Profile</a>
+    <h3>Name:</h3> <h2> {{userObject.firstName}} {{userObject.lastName}}</h2>
+    <br>
+    <h3>Location:</h3> <h2>{{userObject.location}}</h2>
+    <br>
+    <h3>Current Vehicle:</h3> <h2>{{userObject.currentVehicle}}</h2>
+    <br>
+    <h4><a href ="/profile/edit">Edit Profile</a></h4>
   </div>
 
   <div class="user-listings">
-    <h2>My Listings</h2>
+    <h3>My Listings</h3>
+    <h2>
     <li><a href="">Listing 1</a></li>
     <li><a href="">Listing 2</a></li>
+    </h2>
   </div>
 
   <div class="saved-vehicles">
-    <a href="/profile/savedvehicles">Saved Vehicles</a>
+    <h3><a href="/profile/savedvehicles">Saved Vehicles</a></h3>
   </div>
 
 </div>
