@@ -13,8 +13,7 @@ const vehiclesApi = new VehiclesApi();
 // ****************************************************************************************
 // GET route to render the form for adding review about a dealer
 // ****************************************************************************************
-// router.get('/review/add-review/:dealerName', isLoggedIn, (req, res) => {
-router.get('/add-review/:dealerName/:vin', (req, res) => {
+router.get('/add-review/:dealerName/:vin', isLoggedIn, (req, res) => {
   const { dealerName, vin } = req.params;
   res.render('reviews/new-review', {
     dealerName,
@@ -51,16 +50,14 @@ router.post('/add-review', isLoggedIn, async (req, res) => {
 // ****************************************************************************************
 // GET route to delete a review if belongs to this user
 // ****************************************************************************************
-router.get('/delete/:reviewId', isLoggedIn, async (req, res) => {
+router.get('/delete/:reviewId/:vin', isLoggedIn, async (req, res) => {
   const { _id } = req.session.user;
-  const { reviewId } = req.params;
+  const { reviewId, vin } = req.params;
   let reviewFromDB;
-  let vin;
   let reviewCreatorIdFromDB;
 
   try {
     reviewFromDB = await Review.findById(reviewId);
-    vin = reviewFromDB.vin;
     reviewCreatorIdFromDB = reviewFromDB.user_id.toString();
     if (_id === reviewCreatorIdFromDB) {
       await Review.findByIdAndRemove(reviewId);
