@@ -19,7 +19,6 @@ router.get('/add-review/:dealerName/:vin', (req, res) => {
   res.render('reviews/new-review', {
     dealerName,
     vin,
-    isLoggedIn: req.session.user,
   });
 });
 
@@ -72,7 +71,7 @@ router.get('/delete/:reviewId', isLoggedIn, async (req, res) => {
   } catch (err) {
     console.log('Soemthing went wrong during deletion of the review:', err);
   }
-  res.redirect(`/vehicles/details/${vin}`, { isLoggedIn: req.session.user });
+  res.redirect(`/vehicles/details/${vin}`);
 });
 
 // ****************************************************************************************
@@ -92,10 +91,10 @@ router.get('/edit/:reviewId/:dealerName/:vin', (req, res) => {
         dealerName: dealerName,
         reviewId: reviewId,
         vin: vin,
-        isLoggedIn: req.session.user,
       });
     });
 });
+
 // ****************************************************************************************
 // POST route to update the review
 // ****************************************************************************************

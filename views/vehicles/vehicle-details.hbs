@@ -1,36 +1,55 @@
-{{#if errorDeletion}}
-  <a class='error-banner' href="/vehicles/details/{{vehicle.vin}}">
-    <div class='action-error-message error'>
-      <i>
-        {{errorDeletion}}
-      </i>
-      <p>
-        Close X
-      </p>
+<div class="vehicle-details-section">
+  <div class="errorDeletioen">{{#if errorDeletion}}
+    <a class='error-banner' href="/vehicles/details/{{vehicle.vin}}">
+      <div class='action-error-message error'>
+        <i>
+          {{errorDeletion}}
+        </i>
+        <p>
+          Close X
+        </p>
+      </div>
+    </a>
+    {{/if}}
+  </div>
+  <div class='dealer-name-title'>
+    <h1>
+      {{vehicle.dealerName}}
+    </h1>
+  </div>
+  <div class='vehicle-details'>
+    <div class='set-of-pictures-left-side'>
+      <img class='main-image' src="{{vehicle.primaryPhotoUrl}}" alt="image of {{vehicle.make}} vehicle" />
+      <div class='more-images'>
+        {{#each vehicle.photoUrls}}
+        <img class='small-pic' src="{{this}}" alt="small image - {{vehicle.make}}" />
+        {{/each}}
+      </div>
     </div>
-  </a>
-{{/if}}
-
-<div class='dealer-name-title'>
-  <h1>
-    {{vehicle.dealerName}}
-  </h1>
-</div>
-<div class='vehicle-details'>
-  <div class='set-of-pictures-left-side'>
-    <img
-      class='main-image'
-      src="{{vehicle.primaryPhotoUrl}}"
-      alt="image of {{vehicle.make}} vehicle"
-    />
-    <div class='more-images'>
-      {{#each vehicle.photoUrls}}
-        <img
-          class='small-pic'
-          src="{{this}}"
-          alt="small image - {{vehicle.make}}"
-        />
-      {{/each}}
+    <div class='main-details'>
+      <h2>
+        {{vehicle.year}} {{vehicle.make}} {{vehicle.model}}
+      </h2>
+      <p>
+        {{vehicle.doorCount}} {{vehicle.driveline}}
+      </p>
+      <p>
+        Exterior {{vehicle.colorExterior}}
+      </p>
+      <p>
+        {{vehicle.city}}, {{vehicle.state}}
+      </p>
+      <p>
+        {{!-- <a href="{{this.clickoffUrl}}">
+          {{vehicle.dealerName}}
+        </a> --}}
+        Price
+        <span class='price'>
+          <b>
+            {{vehicle.price}}
+          </b>
+        </span>
+      </p>
     </div>
   </div>
   <div class='main-details'>
@@ -74,7 +93,7 @@
         Dealer review section
       </h4>
 
-      {{#each reviews}}
+        {{#each reviews}}
         <p class='review'>
           Review: {{this}}
         </p>
@@ -86,8 +105,8 @@
             {{reviews.author}}
           </span>
         </p>
-      {{/each}}
-      {{#each foundDealer.0.reviews}}
+        {{/each}}
+        {{#each foundDealer.0.reviews}}
         <p>
           Review content: {{this.reviewContent}}
         </p>
@@ -95,9 +114,8 @@
           Author: {{this.user_id.firstName}}
         </p>
         <div class='review-control-buttons'>
-        THIS ID: {{this._id}}
+          THIS ID: {{this._id}}
           <form action="/review/edit/{{this._id}}/{{../dealerName}}/{{../vehicle.vin}}" method='GET'>
-          VIN:::{{../vehicle.vin}}
             <button type='submit' class='btn btn-warning'>
               Edit
             </button>
@@ -108,7 +126,7 @@
             </button>
           </form>
         </div>
-      {{/each}}
+        {{/each}}
       </div>
     </div>
   </div>
