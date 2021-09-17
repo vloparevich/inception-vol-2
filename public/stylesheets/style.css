@@ -507,6 +507,32 @@ header>div {
   padding: .75rem;
 }
 
+#delete-account button {
+  border-radius: 5rem;
+  padding: .6rem 2rem;
+  background-color: lightgray;
+  border: none;
+  margin-top: 1rem;
+}
+
+#delete-account button:hover {
+  opacity: 2;
+  background-color: #E83E5A;
+  color: white;
+}
+
+/* .auth-form-container button {
+  background-color: #04D9D9;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px auto;
+  border: none;
+  cursor: pointer;
+  width: 50%;
+  opacity: 0.9;
+  border-radius: 50rem;
+} */
+
 /* USER PROFILE PAGE */
 
 /* A U T H F O R M S */
