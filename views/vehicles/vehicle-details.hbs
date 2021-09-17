@@ -52,17 +52,46 @@
       </p>
     </div>
   </div>
-  <div>
-    <div>
-      <form action="/review/add-review/{{vehicle.dealerName}}/{{vehicle.vin}}">
-        <button type='submit' class='btn btn-primary'>
-          Add review about: {{vehicle.dealerName}}
-        </button>
+  <div class='main-details'>
+    <h2>
+      {{vehicle.year}} {{vehicle.make}} {{vehicle.model}}
+    </h2>
+    <p>
+      {{vehicle.doorCount}} {{vehicle.driveline}}
+    </p>
+    <p>
+      Exterior {{vehicle.colorExterior}}
+    </p>
+    <p>
+      {{vehicle.city}}, {{vehicle.state}}
+    </p>
+    <p>
+      {{!-- <a href="{{this.clickoffUrl}}">
+        {{vehicle.dealerName}}
+      </a> --}}
+      Price
+      <span class='price'>
+        <b>
+          {{vehicle.price}}
+        </b>
+      </span>
+    </p>
+    <div class='save'>
+      <form action="/user/profile/{{vehicle.vin}}">
+      <button type='submit' class='btn btn-success'>Save This Vehicle</button>
       </form>
-      <div class='dealer-review-section'>
-        <h4>
-          Dealer review section
-        </h4>
+    </div>
+    <br>
+    <div class = 'reviews'>
+    <form action="/review/add-review/{{vehicle.dealerName}}/{{vehicle.vin}}">
+      <button type='submit' class='btn btn-primary'>
+        Add review about: {{vehicle.dealerName}}
+      </button>
+    </form>
+    <div class='dealer-review-section'>
+      <h4>
+        Dealer review section
+      </h4>
 
         {{#each reviews}}
         <p class='review'>

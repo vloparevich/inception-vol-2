@@ -16,7 +16,10 @@ const vehiclesApi = new VehiclesApi();
 // router.get('/review/add-review/:dealerName', isLoggedIn, (req, res) => {
 router.get('/add-review/:dealerName/:vin', (req, res) => {
   const { dealerName, vin } = req.params;
-  res.render('reviews/new-review', { dealerName, vin });
+  res.render('reviews/new-review', {
+    dealerName,
+    vin,
+  });
 });
 
 // ****************************************************************************************
@@ -91,6 +94,7 @@ router.get('/edit/:reviewId/:dealerName/:vin', (req, res) => {
       });
     });
 });
+
 // ****************************************************************************************
 // POST route to update the review
 // ****************************************************************************************
