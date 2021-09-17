@@ -1,5 +1,7 @@
 const { Router } = require('express');
 const router = new Router();
+const nodemailer = require('nodemailer');
+const templates = require('../templates/template');
 
 // ℹ️ Handles password encryption
 const bcrypt = require('bcryptjs');
@@ -34,25 +36,6 @@ router.post('/signup', fileUploader.single('profilePic'), (req, res) => {
     });
   }
 
-  // Ensure password length is 8 chars - Comment this out while testing
-  // if (password.length < 8) {
-  //   return res.status(400).render("auth/signup", {
-  //     errorMessage: "Your password needs to be at least 8 characters long.",
-  //   });
-  // }
-
-  //   ! This use case is using a regular expression to control for special characters and min length
-  /*
-  const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
-
-  if (!regex.test(password)) {
-    return res.status(400).render("signup", {
-      errorMessage:
-        "Password needs to have at least 8 chars and must contain at least one number, one lowercase and one uppercase letter.",
-    });
-  }
-  */
-
   // Search the database for a user with the email submitted in the form
   User.findOne({ email: email }).then((found) => {
     console.log({ found });
@@ -80,7 +63,30 @@ router.post('/signup', fileUploader.single('profilePic'), (req, res) => {
         // Bind the user to the session object
         req.session.user = user;
         console.log('Session', req.session.user);
-        res.redirect('/');
+        let { email, subject, message } = req.body;
+        console.log('EMAIL', { email, subject, message });
+
+        let transporter = nodemailer.createTransport({
+          service: 'Gmail',
+          auth: {
+            user: process.env.NODEMAILER_ACC,
+            pass: process.env.NODEMAILER_PASS,
+          },
+        });
+
+        transporter
+          .sendMail({
+            from: `CarAmerican <${process.env.NODEMAILER_ACC}>`,
+            to: email,
+            subject: 'Congrats, you are registered on CarAmerican.com',
+            text: 'CarAmerican',
+            html: templates.templateExample(`${firstName} ${lastName}`),
+          })
+          .then((info) => {
+            console.log('Info from nodeamailer', info);
+            res.redirect('/');
+          })
+          .catch((error) => console.log(error));
       })
       .catch((error) => {
         if (error instanceof mongoose.Error.ValidationError) {
