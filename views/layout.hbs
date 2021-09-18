@@ -17,13 +17,20 @@
    <header>
       <div class='header-content'>
          <a class="app-title" href="/">
-            <p>CarAmerican</p>
+            <img src="../images/CarAmerican.png">
+            {{!-- <p>CarAmerican</p> --}}
          </a>
          <nav class="nav-bar">
             <ul class='nav-bar-ul'>
                {{#if isLoggedIn}}
                   {{!-- <p id="welcome">Welcome, {{ isLoggedIn.firstName }}</p> --}}
-                  <li><a href="/profile">Profile</a></li>
+                  <div id="nav-bar-img-name">
+                     <div id="user-image-nav">
+                        <img src="{{isLoggedIn.profilePic}}" alt="image of user" />
+                     </div>
+                     <li><a id="name-top" href="/profile">{{isLoggedIn.firstName}}</a></li>
+                  </div>
+
                   <li><a href="/auth/logout">Log Out</a></li>
                {{else}}
                   <li><a href="/auth/signup">Sign Up</a></li>

@@ -1,33 +1,60 @@
 <div class='user-profile'>
-  <div class="user-image-top-left">
-    <img class="user-image" src="{{userObject.profilePic}}" alt="image of user" />
 
-  </div>
-  <div class='user-details'>
-    {{!-- <p>{{userObject.firstName}}</p> --}}
-    <h2>
-      Name: {{userObject.firstName}} {{userObject.lastName}}
-    </h2>
-    <h2>
-      Email: {{userObject.email}}
-    </h2>
-    <h2>
-      Location: {{userObject.location}}
-    </h2>
-    <h2>
-      Current Vehicle: {{userObject.currentVehicle}}
-    </h2>
-    <a href ="/profile/edit">Edit Profile</a>
+  <div id="user-profile-top">
+    <div id="user-image-div">
+      <img src="{{userObject.profilePic}}" alt="image of user" />
+    </div>
+
+    <div class='user-details'>
+      {{!-- <p>{{userObject.firstName}}</p> --}}
+      <h1 id="profile-name"><b>
+        {{userObject.firstName}} {{userObject.lastName}}
+      </b></h1>
+      <p>
+        Email: {{userObject.email}}
+      </p>
+      <a href ="/profile/edit">Edit Profile</a>
+    </div>
   </div>
 
-  <div class="user-listings">
-    <h2>My Listings</h2>
-    <li><a href="">Listing 1</a></li>
-    <li><a href="">Listing 2</a></li>
-  </div>
+    <div id="user-feed">
+      <div id="info-card">
+        <div id="info-card-content">
+          <h3>
+            My Info
+          </h3>
+        <p>
+          Lives in {{userObject.location}}
+        </p>
+        <p>
+          Drives a {{userObject.currentVehicle}}
+        </p>
+      </div>
+      </div>
 
-  <div class="saved-vehicles">
-    <a href="/profile/savedvehicles">Saved Vehicles</a>
-  </div>
+      <div id="right-side-content">
+        <div id="user-listings">
+          <div id="user-listings-content">
+          <h3>My Listings</h3>
+          <li><a href="">Listing 1</a></li>
+          <li><a href="">Listing 2</a></li>
+          </div>
+        </div>
 
-</div>
+        <div id="saved-vehicles">
+          <h3>Saved Vehicles</h3>
+          <a href="/profile/savedvehicles">Saved Vehicles</a>
+        </div>
+        
+          <form id="delete-account" action="/profile/delete" method="POST">
+            <button>Delete Account</button>
+          </form>
+
+      </div>
+
+    
+    </div>
+
+
+
+  </div>

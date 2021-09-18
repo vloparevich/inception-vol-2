@@ -90,6 +90,7 @@ router.post(
         res.render('user/profile', {
           userObject: updatedProfile,
           _id: user_id,
+          isLoggedIn: req.session.user,
         });
       })
       .catch((error) => {
@@ -101,6 +102,17 @@ router.post(
       });
   }
 );
+
+// ****************************************************************************************
+// POST route to delete user from database
+// ****************************************************************************************
+router.post('/profile/delete', (req, res, next) => {
+  const user_id = mongoose.Types.ObjectId(user._id);
+
+  User.findByIdAndDelete(user_id)
+    .then(() => res.redirect('/', { _id: user_id }))
+    .catch((error) => next(error));
+});
 
 // ****************************************************************************************
 // GET route to show saved vehicles
