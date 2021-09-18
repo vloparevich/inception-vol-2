@@ -150,7 +150,7 @@ header>div {
   display: block;
   height: 5rem;
   width: 100%;
-  margin-top: auto;
+  margin-top: 2rem;
   position: absolute;
   bottom: 0;
   border-top: 1rem solid #04D9D9;
@@ -252,6 +252,10 @@ header>div {
   outline: none;
 }
 
+.main-section {
+  margin-bottom: 2rem;
+}
+
 .main-section h1 {
   margin: 2rem 0;
 }
@@ -266,6 +270,10 @@ header>div {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  background-image: linear-gradient(to bottom, #F2F2F2, #FFFCFC);
+  padding: .75rem;
+  margin: 0 .75rem;
+  box-shadow: 3px 3px 3px lightgray;
 }
 
 .set-of-vehicles .vehicle-card img {
