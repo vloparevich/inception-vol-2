@@ -489,7 +489,16 @@ header>div {
   }
 
   .main-details h1 {
-    margin-top: auto;
+    margin-top: 3rem;
+  }
+
+  #vehicle-details-div {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .main-details {
+    margin: 0 auto;
   }
 }
 
