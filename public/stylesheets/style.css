@@ -319,8 +319,7 @@ header>div {
 
 /* DETAILS PAGE */
 
-#vehicle-details-section {
-}
+#vehicle-details-section {}
 
 .vehicle-details {
   background-image: linear-gradient(to bottom, #F2F2F2, #FFFCFC);
