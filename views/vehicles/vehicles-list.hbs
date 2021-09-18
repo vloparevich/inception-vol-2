@@ -5,9 +5,10 @@
   </h2>
   {{/if}}
 </div>
+{{#each vehiclesFromApi}}
 <form action=''>
   <div class='list-of-vehicles'>
-    {{#each vehiclesFromApi}}
+
     <div class='list-of-vehicles-box'>
       <a href="/vehicles/details/{{this.vin}}">
         <div id='vehicle-card'>
