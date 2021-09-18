@@ -759,7 +759,9 @@ hr {
 }
 
 /* A U T H F O R M S */
-
+#sign-up-button {
+  background-color: #F28DEB;
+}
 
 /* V E H I C L E S   L I S T */
 .list-of-vehicles {

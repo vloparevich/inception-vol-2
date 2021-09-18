@@ -1,27 +1,57 @@
-
-<form action="/auth/login" class="auth-form" method="POST">
-   <div class="auth-form-container">
-      <h1>Welcome Back to My CarAmerican</h1>
-      <p>Sign in and completely control the way you buy your next car.</p>
-      <hr>
-
-      <label> <b>Email</b><br>
-         <input type="text" placeholder="Enter Email" name="email" required>
-      </label>
-      <label> <b>Password</b><br>
-         <input type="password" placeholder="Enter Password" name="password" required>
-      </label>
-
+<div class='form-contianer'>
+  <form action='/auth/login' class='auth-form' method='POST'>
+    <div class='auth-form-container'>
+      <h1>
+        Welcome Back to My CarAmerican
+      </h1>
+      <p>
+        Sign in and completely control the way you buy your next car.
+      </p>
+      <hr />
       <label>
-      <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+        <b>
+          Email
+        </b>
+        <br />
+        <input type='text' placeholder='Enter Email' name='email' required />
+      </label>
+      <label>
+        <b>
+          Password
+        </b>
+        <br />
+        <input
+          type='password'
+          placeholder='Enter Password'
+          name='password'
+          required
+        />
+      </label>
+      <label>
+        <input
+          type='checkbox'
+          checked='checked'
+          name='remember'
+          style='margin-bottom:15px'
+        />
+        Remember me
       </label>
 
-      <button type="submit">Log In</button>
-
+      <button type='submit'>
+        Log In
+      </button>
       {{#if errorMessage}}
-      <p class="error">{{errorMessage}}</p>
-   {{/if}}
-
-   </div>
-</form>
-
+        <p class='error'>
+          {{errorMessage}}
+        </p>
+      {{/if}}
+    </div>
+  </form>
+  <form action='/auth/signup' class='auth-form' method='GET'>
+    <div class='auth-form-container'>
+      <button type='submit' id="sign-up-button">
+        Sign Up
+      </button>
+    </div>
+  </form>
+</div>
