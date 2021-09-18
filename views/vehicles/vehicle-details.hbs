@@ -57,20 +57,23 @@
           {{vehicle.city}}, {{vehicle.state}}
         </p>
         
-        <div class='save'>
-          <form action="/user/profile/{{vehicle.vin}}">
-          <button type='submit' class='btn btn-success'>Save This Vehicle</button>
-          </form>
-        </div>
-        <br>
+          <div class='save'>
+            <form action="/profile/savedvehicles" method="POST">
+              <input type = 'hidden' name = "userName" value = {{user}} />
+              <input type = 'hidden' name = "vin" value = {{vehicle.vin}} />
+              <input type = 'hidden' name = "make" value = {{vehicle.make}} />
+              <input type = 'hidden' name = "model" value = {{vehicle.model}} />
+              <button type='submit' class='btn btn-success'>Save This Vehicle</button>
+            </form>
+          </div>
 
-    </div>
+        </div>
 
       </div>
 
       
 
-  </div>
+    </div>
 
   {{!-- ************ --}}
   {{!-- D E A L E R --}}
@@ -106,6 +109,20 @@
         <h4>
           Dealer review section
         </h4>
+
+{{!-- ***************************÷ --}}
+
+
+    <br>
+    <div class = 'reviews'>
+    <form action="/review/add-review/{{vehicle.dealerName}}/{{vehicle.vin}}">
+      <button type='submit' class='btn btn-primary'>
+        Add review about: {{vehicle.dealerName}}
+      </button>
+    </form>
+
+
+
 
           {{#each reviews}}
           <p class='review'>
@@ -143,17 +160,16 @@
           {{/each}}
         </div>
 
-      
+          </div>
+
+          </div>
+
+        </div>
 
       </div>
-
-      </div>
-
-
-  </div>
+    </div>  
 
 {{!-- ************ --}}
 {{!-- D E A L E R --}}
 {{!-- ************ --}}
 
-</div>

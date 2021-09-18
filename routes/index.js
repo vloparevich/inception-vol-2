@@ -24,7 +24,7 @@ router.get('/', (req, res) => {
       // const newArr = Array.from(records);
       // const trimmedArr = newArr.slice(1);
       // console.log('TRIMMED', trimmedArr);
-      const trimmedArrOfCars = records.filter((curr, i) => i < 4 && curr);
+      const trimmedArrOfCars = records.filter((curr, i) => i < 5 && curr);
       console.log('TRIMMED:', { trimmedArr: trimmedArrOfCars });
       res.render('index', {
         vehiclesFromApi: trimmedArrOfCars,
