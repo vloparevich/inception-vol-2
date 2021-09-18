@@ -300,10 +300,19 @@ header>div {
 }
 
 /* DETAILS PAGE */
+
+#vehicle-details-section {
+  background-image: linear-gradient(to bottom, #F2F2F2, #FFFCFC);
+  box-shadow: 3px 3px 3px lightgray;
+  margin: 2rem 0 4rem 0;
+  height: 33rem;
+}
+
 .vehicle-details {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
+  margin: 0 2rem;
 }
 
 .set-of-pictures-left-side {
@@ -311,7 +320,7 @@ header>div {
 }
 
 .set-of-pictures-left-side .main-image {
-  width: 85%;
+  width: 100%;
 }
 
 .more-images {
@@ -333,6 +342,13 @@ header>div {
   z-index: 999;
 } */
 
+.main-details {
+  /* background-image: linear-gradient(to bottom, #F2F2F2, #FFFCFC);
+  box-shadow: 3px 3px 3px lightgray; */
+  /* margin-right: 5rem; */
+  width: 50%;
+
+}
 
 .main-details>* {
   text-align: left;
