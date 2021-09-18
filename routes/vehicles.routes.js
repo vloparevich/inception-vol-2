@@ -52,6 +52,7 @@ router.get('/:id/details', (req, res, next) => {
     })
     .then((vehicleFromAPI) => {
       console.log({ vehicle: vehicleFromAPI.make.model });
+      console.log({ vehicle: vehicleFromAPI });
       res.render('/details', {
         vehicleFromAPI,
         isAuth: req.session?.user._id,
