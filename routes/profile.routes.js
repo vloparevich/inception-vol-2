@@ -22,7 +22,6 @@ const vehiclesApi = new VehiclesApi();
 
 router.get('/', isLoggedIn, (req, res) => {
   const user = req.session.user;
-  // console.log('user: ', user);
   res.render('user/profile', {
     userObject: user,
     isLoggedIn: req.session.user,
@@ -36,9 +35,6 @@ router.get('/', isLoggedIn, (req, res) => {
 router.get('/edit', isLoggedIn, (req, res) => {
   const user = req.session.user;
   const user_id = mongoose.Types.ObjectId(user._id);
-
-  // console.log('user: ', user);
-
   res.render('user/edit', {
     user: user,
     _id: user_id,
@@ -65,7 +61,6 @@ router.post(
       currentVehicle,
       existingImage,
     } = req.body;
-    console.log('user id and req.body, ', user_id, req.body);
 
     let profilePic;
     if (req.file) {
@@ -89,7 +84,6 @@ router.post(
       }
     )
       .then((updatedProfile) => {
-        console.log('update', updatedProfile);
         res.render('user/profile', {
           userObject: updatedProfile,
           _id: user_id,
@@ -125,49 +119,35 @@ router.get('/savedvehicles', isLoggedIn, (req, res) => {
   const user_id = req.session.user._id;
   User.findById(user_id)
     .populate({
-      path: 'vehicles'
+      path: 'vehicles',
     })
     .then((foundUserWithVehicles) => {
-      vehiclesApi.getVehiclesList(foundUserWithVehicles.savedVehicles).then(list => {
-        console.log("my list", list)
-      res.render('user/savedvehicles', {
-        vehiclesFromApi: list,
-        // _id: user_id,
-        // isLoggedIn: req.session.user,
-      });
-      });
-      // console.log("hello array", arrayOfVehicles)
-      
+      vehiclesApi
+        .getVehiclesList(foundUserWithVehicles.savedVehicles)
+        .then((list) => {
+          const normalizedList = list.map((current) => {
+            return current.data;
+          });
+          res.render('vehicles/vehicles-list', {
+            vehiclesFromApi: normalizedList,
+            savedVehiclesPage: true,
+          });
+        });
     });
 });
 
 router.post('/savedvehicles', (req, res) => {
   const user_id = req.session.user._id;
-  const {
-    vin
-  } = req.body;
-  // const {
-  //   make
-  // } = req.body;
-  // const {
-  //   model
-  // } = req.body;
-  // const vin = req.body.vin;
-  console.log(req.body)
+  const { vin } = req.body;
+
   User.findByIdAndUpdate(user_id, {
-      $push: {
-        savedVehicles: vin,
-        // savedVehicles: make,
-        // savedVehicles: model
-      },
-      new: true
-    })
-    .then((updatedSave) => {
-      console.log("update", updatedSave)
-      // res.render()
-
-    })
-
-})
+    $push: {
+      savedVehicles: vin,
+    },
+    new: true,
+  }).then((updatedSave) => {
+    res.redirect(`/vehicles/details/${vin}/${true}`);
+  });
+});
 
 module.exports = router;

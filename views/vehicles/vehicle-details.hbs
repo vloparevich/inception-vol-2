@@ -30,90 +30,96 @@
         {{/each}}
       </div>
     </div>
-  <div class='main-details'>
-    <h2>
-      {{vehicle.year}} {{vehicle.make}} {{vehicle.model}}
-    </h2>
-    <p>
-      {{vehicle.doorCount}} {{vehicle.driveline}}
-    </p>
-    <p>
-      Exterior {{vehicle.colorExterior}}
-    </p>
-    <p>
-      {{vehicle.city}}, {{vehicle.state}}
-    </p>
-    <p>
-      {{!-- <a href="{{this.clickoffUrl}}">
-        {{vehicle.dealerName}}
-      </a> --}}
-      Price
-      <span class='price'>
-        <b>
-          {{vehicle.price}}
-        </b>
-      </span>
-    </p>
-    <div class='save'>
-      <form action="/profile/savedvehicles" method="POST">
-      <input type = 'hidden' name = "userName" value = {{user}} />
-      <input type = 'hidden' name = "vin" value = {{vehicle.vin}} />
-      <input type = 'hidden' name = "make" value = {{vehicle.make}} />
-      <input type = 'hidden' name = "model" value = {{vehicle.model}} />
-      <button type='submit' class='btn btn-success'>Save This Vehicle</button>
-      </form>
-    </div>
-    <br>
-    <div class = 'reviews'>
-    <form action="/review/add-review/{{vehicle.dealerName}}/{{vehicle.vin}}">
-      <button type='submit' class='btn btn-primary'>
-        Add review about: {{vehicle.dealerName}}
-      </button>
-    </form>
-    <div class='dealer-review-section'>
-      <h4>
-        Dealer review section
-      </h4>
-
+    <div class='main-details'>
+      <h2>
+        {{vehicle.year}} {{vehicle.make}} {{vehicle.model}}
+      </h2>
+      <p>
+        {{vehicle.doorCount}} {{vehicle.driveline}}
+      </p>
+      <p>
+        Exterior {{vehicle.colorExterior}}
+      </p>
+      <p>
+        {{vehicle.city}}, {{vehicle.state}}
+      </p>
+      <p>
+        {{!-- <a href="{{this.clickoffUrl}}">
+          {{vehicle.dealerName}}
+        </a> --}}
+        Price
+        <span class='price'>
+          <b>
+            {{vehicle.price}}
+          </b>
+        </span>
+      </p>
+      <div class='save'>
+        <form action="/profile/savedvehicles" method="POST">
+          <input type='hidden' name="userName" value={{user}} />
+          <input type='hidden' name="vin" value={{vehicle.vin}} />
+          <input type='hidden' name="make" value={{vehicle.make}} />
+          <input type='hidden' name="model" value={{vehicle.model}} />
+          <button type='submit' class='btn btn-success'>
+            {{#if isSaved}}
+              Saved
+            {{else}}
+              Save This Vehicle
+            {{/if}}
+          </button>
+        </form>
+      </div>
+      <br>
+      <div class='reviews'>
+        <form action="/review/add-review/{{vehicle.dealerName}}/{{vehicle.vin}}">
+          <button type='submit' class='btn btn-primary'>
+            Add review about: {{vehicle.dealerName}}
+          </button>
+        </form>
         <div class='dealer-review-section'>
           <h4>
             Dealer review section
           </h4>
 
-          {{#each reviews}}
-          <p class='review'>
-            Review: {{this}}
-          </p>
-          <p>
-            <span class='review-author'>
-              Author:
-            </span>
-            <span class='review-author-name'>
-              {{reviews.author}}
-            </span>
-          </p>
-          {{/each}}
-          {{#each foundDealer.0.reviews}}
-          <p>
-            Review content: {{this.reviewContent}}
-          </p>
-          <p>
-            Author: {{this.user_id.firstName}}
-          </p>
-          <div class='review-control-buttons'>
-            <form action="/review/edit/{{this._id}}/{{../dealerName}}/{{../vehicle.vin}}" method='GET'>
-              <button type='submit' class='btn btn-warning'>
-                Edit
-              </button>
-            </form>
-            <form action="/review/delete/{{this._id}}/{{../vehicle.vin}}" method='GET'>
-              <button type='submit' class='btn btn-danger'>
-                Delete
-              </button>
-            </form>
+          <div class='dealer-review-section'>
+            <h4>
+              Dealer review section
+            </h4>
+
+            {{#each reviews}}
+            <p class='review'>
+              Review: {{this}}
+            </p>
+            <p>
+              <span class='review-author'>
+                Author:
+              </span>
+              <span class='review-author-name'>
+                {{reviews.author}}
+              </span>
+            </p>
+            {{/each}}
+            {{#each foundDealer.0.reviews}}
+            <p>
+              Review content: {{this.reviewContent}}
+            </p>
+            <p>
+              Author: {{this.user_id.firstName}}
+            </p>
+            <div class='review-control-buttons'>
+              <form action="/review/edit/{{this._id}}/{{../dealerName}}/{{../vehicle.vin}}" method='GET'>
+                <button type='submit' class='btn btn-warning'>
+                  Edit
+                </button>
+              </form>
+              <form action="/review/delete/{{this._id}}/{{../vehicle.vin}}" method='GET'>
+                <button type='submit' class='btn btn-danger'>
+                  Delete
+                </button>
+              </form>
+            </div>
+            {{/each}}
           </div>
-          {{/each}}
         </div>
       </div>
     </div>
-  </div>
