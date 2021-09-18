@@ -30,6 +30,7 @@
         {{/each}}
       </div>
     </div>
+<<<<<<< HEAD
     <div class='main-details'>
       <h2>
         {{vehicle.year}} {{vehicle.make}} {{vehicle.model}}
@@ -61,6 +62,52 @@
       </div>
       <br>
       <div class='reviews'>
+=======
+  <div class='main-details'>
+    <h2>
+      {{vehicle.year}} {{vehicle.make}} {{vehicle.model}}
+    </h2>
+    <p>
+      {{vehicle.doorCount}} {{vehicle.driveline}}
+    </p>
+    <p>
+      Exterior {{vehicle.colorExterior}}
+    </p>
+    <p>
+      {{vehicle.city}}, {{vehicle.state}}
+    </p>
+    <p>
+      {{!-- <a href="{{this.clickoffUrl}}">
+        {{vehicle.dealerName}}
+      </a> --}}
+      Price
+      <span class='price'>
+        <b>
+          {{vehicle.price}}
+        </b>
+      </span>
+    </p>
+    <div class='save'>
+      <form action="/profile/savedvehicles" method="POST">
+      <input type = 'hidden' name = "userName" value = {{user}} />
+      <input type = 'hidden' name = "vin" value = {{vehicle.vin}} />
+      <input type = 'hidden' name = "make" value = {{vehicle.make}} />
+      <input type = 'hidden' name = "model" value = {{vehicle.model}} />
+      <button type='submit' class='btn btn-success'>Save This Vehicle</button>
+      </form>
+    </div>
+    <br>
+    <div class = 'reviews'>
+    <form action="/review/add-review/{{vehicle.dealerName}}/{{vehicle.vin}}">
+      <button type='submit' class='btn btn-primary'>
+        Add review about: {{vehicle.dealerName}}
+      </button>
+    </form>
+    <div class='dealer-review-section'>
+      <h4>
+        Dealer review section
+      </h4>
+>>>>>>> 7002632ad344bb120e2b0afb7f4f28cb462808b2
 
         <div class='dealer-review-section'>
           <h4>

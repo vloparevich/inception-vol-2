@@ -18,6 +18,7 @@ const userSchema = new Schema({
   location: { type: String },
   currentVehicle: [{ type: Array }],
   vehicles: [{ type: Schema.Types.ObjectId, ref: 'Vehicle' }], // VINs will be saved
+  savedVehicles: [{ type: String}],
   reviews: [{ type: Schema.Types.ObjectId, ref: 'Review' }], // Reviews in regards to the Delaerships
   profilePic: { type: String, required: false },
 });
