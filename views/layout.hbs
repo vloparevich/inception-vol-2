@@ -15,20 +15,20 @@
 
 <body>
    <header>
-      <div class='header-content'>
+            <div class='header-content'>
          <a class="app-title" href="/">
             <img src="../images/CarAmerican.png">
             {{!-- <p>CarAmerican</p> --}}
          </a>
          <nav class="nav-bar">
             <ul class='nav-bar-ul'>
-               {{#if isLoggedIn}}
+               {{#if currentUser.email}}
                   {{!-- <p id="welcome">Welcome, {{ isLoggedIn.firstName }}</p> --}}
                   <div id="nav-bar-img-name">
                      <div id="user-image-nav">
-                        <img src="{{isLoggedIn.profilePic}}" alt="image of user" />
+                        <img src="{{currentUser.profilePic}}" alt="image of user" />
                      </div>
-                     <li><a id="name-top" href="/profile">{{isLoggedIn.firstName}}</a></li>
+                     <li><a id="name-top" href="/profile">{{currentUser.firstName}}</a></li>
                   </div>
                   <li><a href="/profile/savedvehicles">Saved Vehicles</a></li>
                   <li><a href="/auth/logout">Log Out</a></li>

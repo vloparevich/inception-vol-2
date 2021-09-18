@@ -18,12 +18,17 @@ const app = express();
 // ℹ️ This function is getting exported from the config folder. It runs most pieces of middleware
 require('./config')(app);
 
-
 const projectName = 'CarAmerican';
 const capitalized = (string) =>
   string[0].toUpperCase() + string.slice(1).toLowerCase();
 
 app.locals.title = capitalized(projectName);
+
+// Setting currentUser globally
+app.use(function (req, res, next) {
+  app.locals.currentUser = req.session.user;
+  next();
+});
 
 // 👇 Start handling routes here
 const index = require('./routes/index');
