@@ -63,10 +63,10 @@ router.get('/:id/details', (req, res, next) => {
 // ****************************************************************************************
 // GET route to get the details of selected vehicle and render details page
 // ****************************************************************************************
-//!!!!!! uncomment when login is ready--> router.get('/vehicle/details/:vin', isLoggedIn, (req, res, next) => {
-router.get('/details/:vin', (req, res, next) => {
+router.get('/details/:vin/:isSaved?', isLoggedIn, (req, res, next) => {
   const errorDeletion = req.session?.errorDeletion;
-  const { vin } = req.params;
+  const { vin, isSaved } = req.params;
+  console.log('SAVED', isSaved);
   vehiclesApi.getVehicleDetails(vin).then((vehicleFromAPI) => {
     const dealerName = vehicleFromAPI.data.dealerName;
     Dealer.find({ dealerName: dealerName })
@@ -83,6 +83,7 @@ router.get('/details/:vin', (req, res, next) => {
           foundDealer: foundDealer,
           errorDeletion: errorDeletion,
           dealerName: dealerName,
+          isSaved: isSaved,
         });
         delete req.session.errorDeletion;
       });
