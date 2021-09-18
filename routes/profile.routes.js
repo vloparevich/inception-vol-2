@@ -131,6 +131,7 @@ router.get('/savedvehicles', isLoggedIn, (req, res) => {
           res.render('vehicles/vehicles-list', {
             vehiclesFromApi: normalizedList,
             savedVehiclesPage: true,
+            usersListOfVehicles: true,
           });
         });
     });
@@ -142,12 +143,15 @@ router.post('/savedvehicles', (req, res) => {
   const user_id = req.session.user._id;
   const { vin } = req.body;
 
-  User.findByIdAndUpdate(user_id, {
-    $push: {
-      savedVehicles: vin,
+  User.findByIdAndUpdate(
+    user_id,
+    {
+      $push: {
+        savedVehicles: vin,
+      },
     },
-  }, {new: true})
-  .then((updatedSave) => {
+    { new: true }
+  ).then((updatedSave) => {
     res.redirect(`/vehicles/details/${vin}/${true}`);
   });
 });
@@ -157,19 +161,19 @@ router.post('/savedvehicles', (req, res) => {
 // ****************************************************************************************
 router.get('/savedvehicles/delete/:vin', (req, res) => {
   const user_id = req.session.user._id;
-  const {
-    vin
-  } = req.params;
-  User.findByIdAndUpdate(user_id, {
-    $pull: {
-      savedVehicles: vin,
+  const { vin } = req.params;
+  User.findByIdAndUpdate(
+    user_id,
+    {
+      $pull: {
+        savedVehicles: vin,
+      },
     },
-    
-  }, {new: true})
-  .then((updatedSave) => {
-    console.log("deleted", updatedSave)
+    { new: true }
+  ).then((updatedSave) => {
+    console.log('deleted', updatedSave);
     // res.redirect(`/vehicles/details/${vin}`)
-    res.redirect("/profile/savedvehicles")
+    res.redirect('/profile/savedvehicles');
   });
 });
 

@@ -37,9 +37,11 @@
     </div>
   </div>
 </form>
+{{#if ../usersListOfVehicles}}
 <form action="/profile/savedvehicles/delete/{{this.vin}}" method='GET'>
   <button type='submit' class='btn btn-danger'>Remove From Favorites</button>
 </form>
+{{/if}}
 {{/each}}
 {{#if errorMessage}}
 {{errorMessage}}
