@@ -118,17 +118,22 @@ router.get('/savedvehicles', isLoggedIn, (req, res) => {
     });
 });
 
-router.post('/savedvehicles', isLoggedIn, (req, res) => {
+router.post('/savedvehicles', (req, res) => {
   const user_id = req.session.user._id;
+  const {vin} = req.body;
+  const {make} = req.body;
+  const {model} = req.body;
+  // const vin = req.body.vin;
+  console.log(req.body)
   User.findByIdAndUpdate(user_id, {
       $push: {
-        savedVehicles: vehicle.vin
+        savedVehicles: vin, savedVehicles: make, savedVehicles: model
       },
       new: true
     })
     .then((updatedSave) => {
-      console.log(updatedSave)
-      res.render()
+      console.log("update", updatedSave)
+      // res.render()
 
     })
 

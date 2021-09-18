@@ -5,7 +5,15 @@
   </div>
   <div class='saved list'>
     <h2>
-      Name: {{userObject.saved-vehicles}}
+      Saved Vehicles:
+      <br> 
+      <a href="/vehicles/details/{{user.savedVehicles.[0]}}">{{user.savedVehicles.[0]}}</a>
+      <br>
+      <a href="/vehicles/details/{{user.savedVehicles.[1]}}">{{user.savedVehicles.[1]}}</a>
+      <br>
+      <a href="/vehicles/details/{{user.savedVehicles.[2]}}">{{user.savedVehicles.[2]}}</a>
+      <br>
+      <a href="/vehicles/details/{{user.savedVehicles.[3].vin}}">{{user.savedVehicles.[3]}}</a>
     </h2>
   </div>
 
