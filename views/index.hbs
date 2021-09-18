@@ -1,11 +1,11 @@
-<div id="top-area">
-
-
+<div id='top-area'>
   <div id='main-search-area'>
-  <div>
-    <h1 id="slogan">Change Starts Here</h1>
-  </div>
-    <form id="search-form" action='/vehicles' method='POST' autocomplete='off'>
+    <div>
+      <h1 id='slogan'>
+        Change Starts Here
+      </h1>
+    </div>
+    <form id='search-form' action='/vehicles' method='POST' autocomplete='off'>
       <div class='form__group'>
         <input
           autofocus
@@ -62,39 +62,34 @@
           placeholder='Max. year'
           name='year_max'
         />
-
       </div>
-        <button type='submit' class='search-button'>
-          Search
-        </button>
+      <button type='submit' class='search-button'>
+        Search
+      </button>
     </form>
   </div>
-
 </div>
 
-
-
 <div class='main-section'>
-  <h1>You Might Like</h1>
+  <h1>
+    You Might Like
+  </h1>
   <div class='set-of-vehicles'>
     {{#each vehiclesFromApi}}
-      <div class='vehicle-card'>
-        <img class='vehicle-img' src="{{this.primaryPhotoUrl}}" alt='' />
-        <p>
-          {{this.make}} {{this.model}}
-        </p>
-        <p>
-          {{this.mileage}}
-        </p>
-        <p>
-          {{this.price}}
-        </p>
-
-        <a href="/vehicles/details/{{this.vin}}">
-          BUY
-        </a>
-        
-      </div>
+      <a class='vehicle-card-index-page' href="/vehicles/details/{{this.vin}}">
+        <div class='vehicle-card'>
+          <img class='vehicle-img' src="{{this.primaryPhotoUrl}}" alt='' />
+          <p>
+            {{this.make}} {{this.model}}
+          </p>
+          <p>
+            {{this.mileage}}
+          </p>
+          <p>
+            {{this.price}}
+          </p>
+        </div>
+      </a>
     {{/each}}
     {{#if errorMessage}}
       <p>
@@ -102,5 +97,4 @@
       </p>
     {{/if}}
   </div>
-
 </div>

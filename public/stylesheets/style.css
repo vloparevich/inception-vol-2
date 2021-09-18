@@ -272,6 +272,20 @@ header>div {
   width: 35%;
 }
 
+/*YOU MIGHT LIKE SECTION*/
+.vehicle-card-index-page {
+  text-decoration: none !important;
+}
+
+.vehicle-card-index-page .vehicle-card .vehicle-img {
+  margin-bottom: .5rem;
+}
+
+.vehicle-card-index-page .vehicle-card * {
+  margin-bottom: .5rem;
+  color: #225473
+}
+
 /* DETAILS PAGE */
 .vehicle-details {
   display: flex;
@@ -352,7 +366,7 @@ header>div {
   width: 100%;
 }
 
-/* ERROR MESSAGE STLES */
+/* ERROR MESSAGE STYLES */
 .info,
 .success,
 .warning,
@@ -422,7 +436,7 @@ header>div {
   flex-direction: column;
   margin: 0 auto;
   width: 100%;
-} 
+}
 
 #user-profile-top {
   padding: 3rem;
