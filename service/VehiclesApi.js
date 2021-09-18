@@ -52,7 +52,7 @@ class VehiclesApi {
       const car = await this.getVehicleDetails(arrayOfVins[i]);
       // .then(vehicleFromApi => {
       //   console.log(vehicleFromApi,"where are you")
-      vehicles.push(car)
+      vehicles.push(car);
       // }
     }
     return vehicles;
