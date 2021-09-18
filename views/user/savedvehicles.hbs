@@ -20,16 +20,19 @@
                 {{this.data.price}}
                 <br>
                 <p>Mileage:{{this.data.mileage}}</p>
-                <h4>
                   <b>
-                    Exterior
+                    Exterior:{{this.data.colorExterior}}
                   </b>
-                </h4>{{this.data.displayColor}}
-                <h4>
                   <b>
-                    Location
+                    Location:{{this.data.city}}, {{this.data.state}}
                   </b>
-                </h4>{{this.data.city}}, {{this.data.state}}
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                <form action="/savedvehicles/delete/{{this.data.vehicle}}" method='GET'></form>
+                <button type='submit' class='btn btn-danger'>Remove From Favorites</button>
+                </form>
               </div>
             </div>
           </a>

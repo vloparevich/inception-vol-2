@@ -140,25 +140,18 @@ router.get('/savedvehicles', isLoggedIn, (req, res) => {
       
     });
 });
-
+// ****************************************************************************************
+// POST route to add saved vehicles
+// ****************************************************************************************
 router.post('/savedvehicles', (req, res) => {
   const user_id = req.session.user._id;
   const {
     vin
   } = req.body;
-  // const {
-  //   make
-  // } = req.body;
-  // const {
-  //   model
-  // } = req.body;
   // const vin = req.body.vin;
-  console.log(req.body)
   User.findByIdAndUpdate(user_id, {
       $push: {
         savedVehicles: vin,
-        // savedVehicles: make,
-        // savedVehicles: model
       },
       new: true
     })
@@ -167,7 +160,24 @@ router.post('/savedvehicles', (req, res) => {
       // res.render()
 
     })
+})
 
+// ****************************************************************************************
+// GET route to delete a saved vehicle
+// ****************************************************************************************
+router.get('savedvehicles/delete', (req, res) => {
+  const user_id = req.session.user._id;
+  const {
+    vin
+  } = req.body;
+  User.findByIdAndUpdate(user_id, {
+    $pop: {
+      savedVehicles: vin,
+    }
+  })
+  .then((updatedSave) => {
+    console.log("deleted", updatedSave)
+  })
 })
 
 module.exports = router;
