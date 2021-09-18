@@ -45,6 +45,18 @@ class VehiclesApi {
     this.customApi.defaults.baseURL = preparedUrl;
     return this.customApi.get('');
   };
+
+  getVehiclesList = async (arrayOfVins) => {
+    const vehicles = [];
+    for (let i = 0; i < arrayOfVins.length; i++) {
+      const car = await this.getVehicleDetails(arrayOfVins[i]);
+      // .then(vehicleFromApi => {
+      //   console.log(vehicleFromApi,"where are you")
+      vehicles.push(car)
+      // }
+    }
+    return vehicles;
+  };
 }
 
 module.exports = VehiclesApi;
