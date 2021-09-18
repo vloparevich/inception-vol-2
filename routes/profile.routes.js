@@ -13,6 +13,9 @@ const fileUploader = require('../config/cloudinary.config');
 const isLoggedOut = require('../middleware/isLoggedOut');
 const isLoggedIn = require('../middleware/isLoggedIn');
 
+const VehiclesApi = require('../service/VehiclesApi');
+const vehiclesApi = new VehiclesApi();
+
 // ****************************************************************************************
 // GET route to show profile page
 // ****************************************************************************************
@@ -109,25 +112,37 @@ router.get('/savedvehicles', isLoggedIn, (req, res) => {
       path: 'vehicles'
     })
     .then((foundUserWithVehicles) => {
-      console.log('saved list', foundUserWithVehicles);
+      vehiclesApi.getVehiclesList(foundUserWithVehicles.savedVehicles).then(list => {
+        console.log("my list", list)
       res.render('user/savedvehicles', {
-        user: user,
-        _id: user_id,
-        isLoggedIn: req.session.user,
+        vehiclesFromApi: list,
+        // _id: user_id,
+        // isLoggedIn: req.session.user,
       });
+      });
+      // console.log("hello array", arrayOfVehicles)
+      
     });
 });
 
 router.post('/savedvehicles', (req, res) => {
   const user_id = req.session.user._id;
-  const {vin} = req.body;
-  const {make} = req.body;
-  const {model} = req.body;
+  const {
+    vin
+  } = req.body;
+  // const {
+  //   make
+  // } = req.body;
+  // const {
+  //   model
+  // } = req.body;
   // const vin = req.body.vin;
   console.log(req.body)
   User.findByIdAndUpdate(user_id, {
       $push: {
-        savedVehicles: vin, savedVehicles: make, savedVehicles: model
+        savedVehicles: vin,
+        // savedVehicles: make,
+        // savedVehicles: model
       },
       new: true
     })

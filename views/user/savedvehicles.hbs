@@ -1,20 +1,44 @@
 <div class='saved-vehicles'>
-  <div class="saved cars">
-    <img class="user-image" src="" alt="happy car" />
-
-  </div>
   <div class='saved list'>
     <h2>
       Saved Vehicles:
-      <br> 
-      <a href="/vehicles/details/{{user.savedVehicles.[0]}}">{{user.savedVehicles.[0]}}</a>
-      <br>
-      <a href="/vehicles/details/{{user.savedVehicles.[1]}}">{{user.savedVehicles.[1]}}</a>
-      <br>
-      <a href="/vehicles/details/{{user.savedVehicles.[2]}}">{{user.savedVehicles.[2]}}</a>
-      <br>
-      <a href="/vehicles/details/{{user.savedVehicles.[3].vin}}">{{user.savedVehicles.[3]}}</a>
     </h2>
+    <form action=''>
+      <div class='list-of-vehicles'>
+        {{#each vehiclesFromApi}}
+        <div class='list-of-vehicles-box'>
+          <a href="/vehicles/details/{{this.data.vin}}">
+            <div id='vehicle-card'>
+              <img id='vehicle-primary-img' src="{{this.data.primaryPhotoUrl}}" alt='' />
+              <div class='vehicle-info'>
+                <div class='vehicle-year-make'>
+                  {{this.data.year}}
+                  {{this.data.make}}
+                </div>
+                {{this.data.bodyStyle}}
+                {{this.data.model}}
+                {{this.data.price}}
+                <br>
+                <p>Mileage:{{this.data.mileage}}</p>
+                <h4>
+                  <b>
+                    Exterior
+                  </b>
+                </h4>{{this.data.displayColor}}
+                <h4>
+                  <b>
+                    Location
+                  </b>
+                </h4>{{this.data.city}}, {{this.data.state}}
+              </div>
+            </div>
+          </a>
+        </div>
+        {{/each}}
+        {{#if errorMessage}}
+        {{errorMessage}}
+        {{/if}}
+      </div>
+    </form>
   </div>
-
 </div>
