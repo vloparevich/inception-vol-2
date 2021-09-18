@@ -48,32 +48,32 @@ body {
 }
 
 h1 {
-  color: #272727;
+  color: #225473;
   font-family: Helvetica, Arial, "Lucida Grande", sans-serif;
   font-weight: bold;
 }
 
 h2 {
-  color: #272727;
+  color: #225473;
   font-family: Helvetica, Arial, "Lucida Grande", sans-serif;
   font-weight: bold;
 }
 
 h3 {
-  color: #272727;
+  color: #225473;
   font-family: Helvetica, Arial, "Lucida Grande", sans-serif;
   font-weight: bold;
   /* font-size: 1.3rem; */
 }
 
 h4 {
-  color: #272727;
+  color: #225473;
   font-family: Helvetica, Arial, "Lucida Grande", sans-serif;
   font-weight: bold;
 }
 
 h5 {
-  color: #272727;
+  color: #225473;
   font-family: Helvetica, Arial, "Lucida Grande", sans-serif;
   font-weight: bold;
 }
@@ -292,6 +292,13 @@ header>div {
   padding: .75rem;
   margin: 0 .75rem;
   box-shadow: 3px 3px 3px lightgray;
+  border-radius: 10px;
+}
+
+.set-of-vehicles .vehicle-card:active {
+  box-shadow: 0 0px;
+  transform: translateY(4px);
+  outline: none;
 }
 
 .set-of-vehicles .vehicle-card img {
@@ -319,8 +326,8 @@ header>div {
 
 /* DETAILS PAGE */
 
-#vehicle-details-section {
-}
+/* #vehicle-details-section {
+} */
 
 .vehicle-details {
   background-image: linear-gradient(to bottom, #F2F2F2, #FFFCFC);
@@ -412,11 +419,51 @@ header>div {
   background-image: linear-gradient(to bottom, #F2F2F2, #FFFCFC);
   box-shadow: 3px 3px 3px lightgray;
   padding: 1rem;
+  border-radius: 10px;
+  width: 50%;
 }
 
 .dealer-review-section {
-  background-color: #04D9D9;
-  margin: 0 4rem;
+  background-image: linear-gradient(to bottom, #F2F2F2, #FFFCFC);
+  margin-left: 2rem;
+  box-shadow: 3px 3px 3px lightgray;
+  padding: 1rem;
+  border-radius: 10px;
+  /* width: 100%; */
+}
+
+#reviews-container {
+  width: 100%;
+}
+
+#review-control-buttons {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 2rem;
+  justify-content: right;
+}
+
+#btn-btn-danger {
+  margin-left: 1rem;
+  color: white;
+  background-color: gray;
+  border-radius: 4rem;
+  border: none;
+  padding: .5rem 1rem;
+}
+
+#btn-btn-warning {
+  margin-left: 1rem;
+  color: white;
+  background-color: gray;
+  border-radius: 4rem;
+  border: none;
+  padding: .5rem 1rem;
+}
+
+#logo-dealer {
+  display: flex;
+  flex-direction: row;
 }
 
 @media (max-width: 964px) {
@@ -720,6 +767,7 @@ hr {
   margin: 5% 10%;
   box-shadow: 5px 5px 5px lightgray;
   background-color: white;
+  border-radius: 10px;
 }
 
 #vehicle-card:active {
