@@ -28,7 +28,9 @@ body {
   font: 14px Helvetica, Arial, "Lucida Grande", sans-serif;
   font-family: Helvetica, Arial, "Lucida Grande", sans-serif;
   margin-top: 6rem;
-  min-height: 90vh;
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 5rem;
   display: flex;
   flex-direction: column;
   background-color: #F2F2F2;
@@ -147,7 +149,10 @@ header>div {
   background-color: #225473;
   display: block;
   height: 5rem;
+  width: 100%;
   margin-top: auto;
+  position: absolute;
+  bottom: 0;
   border-top: 1rem solid #04D9D9;
 }
 
