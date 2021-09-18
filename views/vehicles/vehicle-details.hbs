@@ -12,8 +12,6 @@
     </a>
     {{/if}}
   </div>
-
-
   <div class='vehicle-details'>
     <div id="vehicle-details-div">
 
@@ -25,18 +23,15 @@
           {{/each}}
         </div>
       </div>
-
       <div class='main-details'>
         <h1>
           {{vehicle.title}}
         </h1>
-
         <hr style="border-top: 1px solid lightgray">
 
         <div style="font-weight: bold; color:gray">
           Condition: {{ vehicle.condition }} | Exterior: {{ vehicle.colorExterior }}
         </div>
-
         <div id="details-price-mileage">
           <div id='details-price'>
             <h2>{{vehicle.price}}</h2>
@@ -45,7 +40,6 @@
             <h2>{{ vehicle.mileage}} miles</h2>
           </div>
         </div>
-
         <p>
           {{vehicle.doorCount}} {{vehicle.driveline}}
         </p>
@@ -56,7 +50,6 @@
         <p>
           {{vehicle.city}}, {{vehicle.state}}
         </p>
-
         <div class='save'>
           <form action="/profile/savedvehicles" method="POST">
             <input type='hidden' name="userName" value={{user}} />
@@ -75,9 +68,6 @@
       </div>
     </div>
   </div>
-
-
-
 </div>
 
 {{!-- ************ --}}
@@ -129,13 +119,13 @@
           {{/each}} --}}
           {{#each foundDealer.0.reviews}}
           <div style="display: flex; flex-direction: row">
-            <img style="width: 33px;" src="{{this.user_id.profilePic}}" alt="image of user"/>
+            <img style="width: 33px;" src="{{this.user_id.profilePic}}" alt="image of user" />
             <p style="margin: auto 1rem;"><b>{{this.user_id.firstName}} {{this.user_id.lastName}}</b></p>
           </div>
           <div style="margin: 1rem 0;">
-          <p>
-            {{this.reviewContent}}
-          </p>
+            <p>
+              {{this.reviewContent}}
+            </p>
           </div>
           <div id='review-control-buttons'>
             {{!-- THIS ID: {{this._id}} --}}
