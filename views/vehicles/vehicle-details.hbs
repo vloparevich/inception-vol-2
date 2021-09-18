@@ -15,59 +15,93 @@
 
     
     <div class='vehicle-details'>
+      <div id="vehicle-details-div">
 
-      <div class='set-of-pictures-left-side'>
-        <img class='main-image' src="{{vehicle.primaryPhotoUrl}}" alt="image of {{vehicle.make}} vehicle" />
-        <div class='more-images'>
-          {{#each vehicle.photoUrls}}
-          <img class='small-pic' src="{{this}}" alt="small image - {{vehicle.make}}" />
-          {{/each}}
+        <div class='set-of-pictures-left-side'>
+          <img class='main-image' src="{{vehicle.primaryPhotoUrl}}" alt="image of {{vehicle.make}} vehicle" />
+          <div class='more-images'>
+            {{#each vehicle.photoUrls}}
+            <img class='small-pic' src="{{this}}" alt="small image - {{vehicle.make}}" />
+            {{/each}}
+          </div>
         </div>
-      </div>
 
-    <div class='main-details'>
-      <h1>
-        {{vehicle.title}}
-      </h1>
-      <p>
-        {{vehicle.doorCount}} {{vehicle.driveline}}
-      </p>
-      <p>
-        Exterior {{vehicle.colorExterior}}
-      </p>
-      <p>
-        {{vehicle.city}}, {{vehicle.state}}
-      </p>
-      <p>
-        {{!-- <a href="{{this.clickoffUrl}}">
-          {{vehicle.dealerName}}
-        </a> --}}
-        Price
-        <span class='price'>
-          <b>
-            {{vehicle.price}}
-          </b>
-        </span>
-      </p>
+      <div class='main-details'>
+        <h1>
+          {{vehicle.title}}
+        </h1>
+
+        <hr style="border-top: 1px solid lightgray">
+
+        <div style="font-weight: bold; color:gray">
+          Condition: {{ vehicle.condition }} | Exterior: {{ vehicle.colorExterior }}
+        </div>
+
+        <div id="details-price-mileage">
+          <div id='details-price'>
+              <h2>{{vehicle.price}}</h2>
+          </div>
+          <div id='details-mileage'>
+              <h2>{{ vehicle.mileage}} miles</h2>
+          </div>
+        </div>
+
+        <p>
+          {{vehicle.doorCount}} {{vehicle.driveline}}
+        </p>
+        <p>
+          Exterior {{vehicle.colorExterior}}
+        </p>
+        <p style="font-size:x-small">{{vehicle.description}}</p>
+        <p>
+          {{vehicle.city}}, {{vehicle.state}}
+        </p>
+        
+        <div class='save'>
+          <form action="/user/profile/{{vehicle.vin}}">
+          <button type='submit' class='btn btn-success'>Save This Vehicle</button>
+          </form>
+        </div>
+        <br>
+
+    </div>
+
+      </div>
 
       
-      <div class='save'>
-        <form action="/user/profile/{{vehicle.vin}}">
-        <button type='submit' class='btn btn-success'>Save This Vehicle</button>
-        </form>
-      </div>
-      <br>
 
-      <div class='dealer-name-title'>
-          {{vehicle.dealerName}}
+  </div>
+
+  {{!-- ************ --}}
+  {{!-- D E A L E R --}}
+  {{!-- ************ --}}
+
+  <div id="dealer-section-container">
+
+      <div>
+      <h3>Dealer Reviews</h3>
+      <hr style="border-top: 1px solid lightgray">
+      </div>
+
+      <div id="dealer-content-container">
+      <div id='dealer-name-title'>
+        <img src="../public/images/carDealershipIcon.png">
+          <h4>{{vehicle.dealerName}}</h4>
+
+          <hr style="border-top: 1px solid lightgray">
+
+          <h5>Review this dealer</h5>
+          <p>Share your thoughts with other customers</p>
+          <form action="/review/add-review/{{vehicle.dealerName}}/{{vehicle.vin}}">
+            <button type='submit' class='btn btn-primary'>
+              Write a customer review
+            </button>
+          </form>
       </div>
 
       <div class = 'reviews'>
-      <form action="/review/add-review/{{vehicle.dealerName}}/{{vehicle.vin}}">
-        <button type='submit' class='btn btn-primary'>
-          Add review about: {{vehicle.dealerName}}
-        </button>
-      </form>
+
+
       <div class='dealer-review-section'>
         <h4>
           Dealer review section
@@ -108,9 +142,18 @@
           </div>
           {{/each}}
         </div>
+
+      
+
       </div>
-    </div>
+
+      </div>
+
 
   </div>
+
+{{!-- ************ --}}
+{{!-- D E A L E R --}}
+{{!-- ************ --}}
 
 </div>

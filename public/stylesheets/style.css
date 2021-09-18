@@ -48,7 +48,13 @@ body {
 }
 
 h1 {
-  color: #225473;
+  color: #272727;
+  font-family: Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: bold;
+}
+
+h2 {
+  color: #272727;
   font-family: Helvetica, Arial, "Lucida Grande", sans-serif;
   font-weight: bold;
 }
@@ -57,7 +63,19 @@ h3 {
   color: #272727;
   font-family: Helvetica, Arial, "Lucida Grande", sans-serif;
   font-weight: bold;
-  font-size: 1.3rem;
+  /* font-size: 1.3rem; */
+}
+
+h4 {
+  color: #272727;
+  font-family: Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: bold;
+}
+
+h5 {
+  color: #272727;
+  font-family: Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: bold;
 }
 
 header {
@@ -302,17 +320,20 @@ header>div {
 /* DETAILS PAGE */
 
 #vehicle-details-section {
-  background-image: linear-gradient(to bottom, #F2F2F2, #FFFCFC);
-  box-shadow: 3px 3px 3px lightgray;
-  margin: 2rem 0 4rem 0;
-  height: 33rem;
 }
 
 .vehicle-details {
+  background-image: linear-gradient(to bottom, #F2F2F2, #FFFCFC);
+  box-shadow: 3px 3px 3px lightgray;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+#vehicle-details-div {
+  margin: 2rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 0 2rem;
 }
 
 .set-of-pictures-left-side {
@@ -358,12 +379,44 @@ header>div {
   margin-top: 0;
 }
 
-.main-details .price {
-  margin-left: 2rem;
+#details-price-mileage {
+  margin: 1rem 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  text-align: left;
+}
+
+#details-price {
+  margin-right: 2rem;
+}
+
+#details-mileage {
+  margin-right: 2rem;
+}
+
+#dealer-section-container {
+  text-align: left;
+  margin: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+#dealer-content-container {
+  display: flex;
+  flex-direction: row;
+}
+
+#dealer-name-title {
+  text-align: left;
+  background-image: linear-gradient(to bottom, #F2F2F2, #FFFCFC);
+  box-shadow: 3px 3px 3px lightgray;
+  padding: 1rem;
 }
 
 .dealer-review-section {
   background-color: #04D9D9;
+  margin: 0 4rem;
 }
 
 @media (max-width: 964px) {
