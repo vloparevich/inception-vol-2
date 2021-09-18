@@ -7,61 +7,36 @@
     </div>
     <form id='search-form' action='/vehicles' method='POST' autocomplete='off'>
       <div class='form__group'>
-        <input
-          autofocus
-          list='select'
-          name='make'
-          class='form__input_make'
-          placeholder='Make'
-        />
+        <input autofocus list='select' name='make' class='form__input_make' placeholder='Make' />
         <datalist class='form-control-datalist' id='select'>
           <option value='Acura'></option>
           <option value='Audi'></option>
+          <option value='Aurus'></option>
           <option value='BMW'></option>
-          <option value='Ford'>
-          </option>
-          <option value='Honda'>
-          </option>
-          <option value='Hyundai'>
-          </option>
-          <option value='Kia'>
-          </option>
-          <option value='Lexus'>
-          </option>
-          <option value='Mazda'>
-          </option>
-          <option value='Mitsubishi'>
-          </option>
-          <option value='Nissan'>
-          </option>
-          <option value='Subaru'>
-          </option>
-          <option value='Suzuki'>
-          </option>
-          <option value='Toyota'>
-          </option>
+          <option value='Bugatti'></option>
+          <option value='Ferrari'></option>
+          <option value='Fiat'></option>
+          <option value='Ford'></option>
+          <option value='GAZ'></option>
+          <option value='Honda'></option>
+          <option value='Hyundai'></option>
+          <option value='Kamaz'></option>
+          <option value='Kia'></option>
+          <option value='Lada'></option>
+          <option value='Lamborghini'></option>
+          <option value='Lexus'></option>
+          <option value='Mazda'></option>
+          <option value='Mercedes-Benz'></option>
+          <option value='Mitsubishi'></option>
+          <option value='Nissan'></option>
+          <option value='Subaru'></option>
+          <option value='Suzuki'></option>
+          <option value='Toyota'></option>
+          <option value='UAZ'></option>
         </datalist>
-        <input
-          type='text'
-          class='form__input'
-          id='model'
-          placeholder='Model'
-          name='model'
-        />
-        <input
-          type='text'
-          class='form__input'
-          id='year_min'
-          placeholder='Min. year'
-          name='year_min'
-        />
-        <input
-          type='text'
-          class='form__input'
-          id='year_max'
-          placeholder='Max. year'
-          name='year_max'
-        />
+        <input type='text' class='form__input' id='model' placeholder='Model' name='model' />
+        <input type='text' class='form__input' id='year_min' placeholder='Min. year' name='year_min' />
+        <input type='text' class='form__input' id='year_max' placeholder='Max. year' name='year_max' />
       </div>
       <button type='submit' class='search-button'>
         Search
@@ -76,25 +51,25 @@
   </h1>
   <div class='set-of-vehicles'>
     {{#each vehiclesFromApi}}
-      <a class='vehicle-card-index-page' href="/vehicles/details/{{this.vin}}">
-        <div class='vehicle-card'>
-          <img class='vehicle-img' src="{{this.primaryPhotoUrl}}" alt='' />
-          <p>
-            {{this.make}} {{this.model}}
-          </p>
-          <p>
-            {{this.mileage}}
-          </p>
-          <p>
-            {{this.price}}
-          </p>
-        </div>
-      </a>
+    <a class='vehicle-card-index-page' href="/vehicles/details/{{this.vin}}">
+      <div class='vehicle-card'>
+        <img class='vehicle-img' src="{{this.primaryPhotoUrl}}" alt='' />
+        <p>
+          {{this.make}} {{this.model}}
+        </p>
+        <p>
+          {{this.mileage}}
+        </p>
+        <p>
+          {{this.price}}
+        </p>
+      </div>
+    </a>
     {{/each}}
     {{#if errorMessage}}
-      <p>
-        {{errorMessage}}
-      </p>
+    <p>
+      {{errorMessage}}
+    </p>
     {{/if}}
   </div>
 </div>

@@ -93,8 +93,11 @@
 
   <div id="dealer-content-container">
     <div id='dealer-name-title'>
-      <img src="../public/images/carDealershipIcon.png">
-      <h4>{{vehicle.dealerName}}</h4>
+
+      <div id="logo-dealer">
+        <img style="height: 21px; margin: auto 0" src="../../images/carDealershipIcon.png">
+        <h4 style="margin-left: 1rem;">{{vehicle.dealerName}}</h4>
+      </div>
 
       <hr style="border-top: 1px solid lightgray">
 
@@ -107,23 +110,11 @@
       </form>
     </div>
 
-    <div class='reviews'>
-
+    <div id='reviews-container'>
 
       <div class='dealer-review-section'>
-        <h4>
-          Dealer review section
-        </h4>
-
-        {{!-- ***************************÷ --}}
-        <br>
-        <div class='reviews'>
-          <form action="/review/add-review/{{vehicle.dealerName}}/{{vehicle.vin}}">
-            <button type='submit' class='btn btn-primary'>
-              Add review about: {{vehicle.dealerName}}
-            </button>
-          </form>
-          {{#each reviews}}
+        <div class='reviews' style="margin-left: 2rem;">
+          {{!-- {{#each reviews}}
           <p class='review'>
             Review: {{this}}
           </p>
@@ -135,27 +126,31 @@
               {{reviews.author}}
             </span>
           </p>
-          {{/each}}
+          {{/each}} --}}
           {{#each foundDealer.0.reviews}}
+          <div style="display: flex; flex-direction: row">
+            <img style="width: 33px;" src="{{this.user_id.profilePic}}" alt="image of user"/>
+            <p style="margin: auto 1rem;"><b>{{this.user_id.firstName}} {{this.user_id.lastName}}</b></p>
+          </div>
+          <div style="margin: 1rem 0;">
           <p>
-            Review content: {{this.reviewContent}}
+            {{this.reviewContent}}
           </p>
-          <p>
-            Author: {{this.user_id.firstName}}
-          </p>
-          <div class='review-control-buttons'>
-            THIS ID: {{this._id}}
+          </div>
+          <div id='review-control-buttons'>
+            {{!-- THIS ID: {{this._id}} --}}
             <form action="/review/edit/{{this._id}}/{{../dealerName}}/{{../vehicle.vin}}" method='GET'>
-              <button type='submit' class='btn btn-warning'>
+              <button type='submit' id='btn-btn-warning'>
                 Edit
               </button>
             </form>
             <form action="/review/delete/{{this._id}}/{{../vehicle.vin}}" method='GET'>
-              <button type='submit' class='btn btn-danger'>
+              <button type='submit' id='btn-btn-danger'>
                 Delete
               </button>
             </form>
           </div>
+          <hr style="border-top: 1px solid lightgray">
           {{/each}}
         </div>
       </div>

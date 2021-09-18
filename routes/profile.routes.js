@@ -172,7 +172,8 @@ router.get('/savedvehicles/delete/:vin', (req, res) => {
     { new: true }
   ).then((updatedSave) => {
     console.log('deleted', updatedSave);
-    res.redirect(`/vehicles/details/${vin}`);
+    // res.redirect(`/vehicles/details/${vin}`)
+    res.redirect('/profile/savedvehicles');
   });
 });
 
