@@ -63,9 +63,8 @@ router.post('/signup', fileUploader.single('profilePic'), (req, res) => {
         // Bind the user to the session object
         req.session.user = user;
         console.log('Session', req.session.user);
-        let { email, subject, message } = req.body;
-        console.log('EMAIL', { email, subject, message });
 
+        let { email } = req.body;
         let transporter = nodemailer.createTransport({
           service: 'Gmail',
           auth: {
@@ -86,7 +85,11 @@ router.post('/signup', fileUploader.single('profilePic'), (req, res) => {
             console.log('Info from nodeamailer', info);
             res.redirect('/');
           })
-          .catch((error) => console.log(error));
+          .catch((error) =>
+            console.log(
+              `Something went wrong during sending the email to the user: ${error}`
+            )
+          );
       })
       .catch((error) => {
         if (error instanceof mongoose.Error.ValidationError) {
