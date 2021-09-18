@@ -446,19 +446,27 @@ header>div {
 #btn-btn-danger {
   margin-left: 1rem;
   color: white;
-  background-color: gray;
+  background-color: lightgray;
   border-radius: 4rem;
   border: none;
-  padding: .5rem 1rem;
+  padding: .35rem 1rem;
+}
+
+#btn-btn-danger:hover {
+  background-color: #D9415D;
 }
 
 #btn-btn-warning {
   margin-left: 1rem;
   color: white;
-  background-color: gray;
+  background-color: lightgray;
   border-radius: 4rem;
   border: none;
-  padding: .5rem 1rem;
+  padding: .35rem 1rem;
+}
+
+#btn-btn-warning:hover {
+  background-color: #04D9D9;
 }
 
 #logo-dealer {
