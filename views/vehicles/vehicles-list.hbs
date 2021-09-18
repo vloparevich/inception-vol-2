@@ -1,47 +1,46 @@
 <div class='header-vehicles-list'>
   {{#if savedVehiclesPage}}
-    <h2>
-      Saved Vehicles
-    </h2>
+  <h2>
+    Saved Vehicles
+  </h2>
   {{/if}}
 </div>
 <form action=''>
   <div class='list-of-vehicles'>
     {{#each vehiclesFromApi}}
-      <div class='list-of-vehicles-box'>
-        <a href="/vehicles/details/{{this.vin}}">
-          <div id='vehicle-card'>
-            <img
-              id='vehicle-primary-img'
-              src="{{this.primaryPhotoUrl}}"
-              alt=''
-            />
-            <div class='vehicle-info'>
-              <div class='vehicle-year-make'>
-                {{this.year}}
-                {{this.make}}
-              </div>
-              {{this.bodyStyle}}
-              {{this.model}}
-              {{this.price}}
-              {{this.mileage}}
-              <h4>
-                <b>
-                  Exterior
-                </b>
-              </h4>{{this.displayColor}}
-              <h4>
-                <b>
-                  Location
-                </b>
-              </h4>{{this.city}}, {{this.state}}
+    <div class='list-of-vehicles-box'>
+      <a href="/vehicles/details/{{this.vin}}">
+        <div id='vehicle-card'>
+          <img id='vehicle-primary-img' src="{{this.primaryPhotoUrl}}" alt='' />
+          <div class='vehicle-info'>
+            <div class='vehicle-year-make'>
+              {{this.year}}
+              {{this.make}}
             </div>
+            {{this.bodyStyle}}
+            {{this.model}}
+            {{this.price}}
+            {{this.mileage}}
+            <h4>
+              <b>
+                Exterior
+              </b>
+            </h4>{{this.displayColor}}
+            <h4>
+              <b>
+                Location
+              </b>
+            </h4>{{this.city}}, {{this.state}}
           </div>
-        </a>
-      </div>
-    {{/each}}
-    {{#if errorMessage}}
-      {{errorMessage}}
-    {{/if}}
+        </div>
+      </a>
+    </div>
   </div>
 </form>
+<form action="/profile/savedvehicles/delete/{{this.vin}}" method='GET'>
+  <button type='submit' class='btn btn-danger'>Remove From Favorites</button>
+</form>
+{{/each}}
+{{#if errorMessage}}
+{{errorMessage}}
+{{/if}}
