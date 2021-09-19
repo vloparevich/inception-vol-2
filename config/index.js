@@ -28,6 +28,8 @@ const MongoStore = require('connect-mongo');
 // Connects the mongo uri to maintain the same naming structure
 const MONGO_URI = require('../utils/consts');
 
+const hbs = require('hbs');
+
 // Middleware configuration
 module.exports = (app) => {
   // In development environment the app logs
@@ -40,8 +42,17 @@ module.exports = (app) => {
 
   // Normalizes the path to the views folder
   app.set('views', path.join(__dirname, '..', 'views'));
-  // Sets the view engine to handlebars
+
+  // Sets the view engine to handlebars and registering a helper
   app.set('view engine', 'hbs');
+  hbs.registerHelper('if_equal', function (a, b, opts) {
+    if (a == b) {
+      return opts.fn(this);
+    } else {
+      return opts.inverse(this);
+    }
+  });
+
   // AHandles access to the public folder
   app.use(express.static(path.join(__dirname, '..', 'public')));
 

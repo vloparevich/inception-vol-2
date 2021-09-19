@@ -44,26 +44,27 @@ router.post('/', (req, res) => {
 // ****************************************************************************************
 // GET route to get the details of selected vehicle and render details page
 // ****************************************************************************************
-router.get('/:id/details', (req, res, next) => {
-  Vehicle.findById(req.params.id)
-    .populate({
-      path: 'details',
-      populate: { path: 'user' },
-    })
-    .then((vehicleFromAPI) => {
-      console.log({ vehicle: vehicleFromAPI.make.model });
-      console.log({ vehicle: vehicleFromAPI });
-      res.render('/details', {
-        vehicleFromAPI,
-        isAuth: req.session?.user._id,
-      });
-    });
-});
+// router.get('/:id/details', (req, res, next) => {
+//   Vehicle.findById(req.params.id)
+//     .populate({
+//       path: 'details',
+//       populate: { path: 'user' },
+//     })
+//     .then((vehicleFromAPI) => {
+//       console.log({ vehicle: vehicleFromAPI.make.model });
+//       console.log({ vehicle: vehicleFromAPI });
+//       res.render('/details', {
+//         vehicleFromAPI,
+//         isAuth: req.session?.user._id,
+//       });
+//     });
+// });
 
 // ****************************************************************************************
 // GET route to get the details of selected vehicle and render details page
 // ****************************************************************************************
 router.get('/details/:vin/:isSaved?', isLoggedIn, (req, res, next) => {
+  let { _id } = req.session.user;
   const errorDeletion = req.session?.errorDeletion;
   const { vin, isSaved } = req.params;
   console.log('SAVED', isSaved);
@@ -76,14 +77,15 @@ router.get('/details/:vin/:isSaved?', isLoggedIn, (req, res, next) => {
           path: 'user_id',
         },
       })
-      .then((foundDealer) => {
-        console.log('FOUND', foundDealer);
+      .then((foundDealerFromDB) => {
+        const foundDealer = JSON.parse(JSON.stringify(foundDealerFromDB));
         res.render('vehicles/vehicle-details', {
+          currentActiveUserId: _id,
           vehicle: vehicleFromAPI.data,
           foundDealer: foundDealer,
-          errorDeletion: errorDeletion,
           dealerName: dealerName,
           isSaved: isSaved,
+          errorDeletion: errorDeletion,
         });
       });
     delete req.session.errorDeletion;
