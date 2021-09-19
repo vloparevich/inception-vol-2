@@ -18,9 +18,25 @@
       <div class='set-of-pictures-left-side'>
         <img class='main-image' src="{{vehicle.primaryPhotoUrl}}" alt="image of {{vehicle.make}} vehicle" />
         <div class='more-images'>
-          {{#each vehicle.photoUrls}}
-          <img class='small-pic zoom' src="{{this}}" alt="small image - {{vehicle.make}}" />
-          {{/each}}
+          <div class="set-of-small-pics">
+            {{#each vehicle.photoUrls}}
+            <img class='small-pic' src="{{this}}" alt="small image - {{vehicle.make}}" />
+            {{/each}}
+          </div>
+
+
+          <div class='slider'>
+            <div class="slide">
+              {{#each vehicle.photoUrls}}
+              <img class='small-pic-slide' src="{{this}}" alt="small image - {{vehicle.make}}" />
+              {{/each}}
+            </div>
+            <div class="slide">
+              {{#each vehicle.photoUrls}}
+              <img class='small-pic-slide' src="{{this}}" alt="small image - {{vehicle.make}}" />
+              {{/each}}
+            </div>
+          </div>
         </div>
       </div>
       <div class='main-details'>
