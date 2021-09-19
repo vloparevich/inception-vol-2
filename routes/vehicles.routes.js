@@ -85,8 +85,8 @@ router.get('/details/:vin/:isSaved?', isLoggedIn, (req, res, next) => {
           dealerName: dealerName,
           isSaved: isSaved,
         });
-        delete req.session.errorDeletion;
       });
+    delete req.session.errorDeletion;
   });
 });
 
