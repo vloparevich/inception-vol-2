@@ -352,23 +352,27 @@ header>div {
 }
 
 .more-images {
+  padding-top: 1.2rem;
   max-width: 543px;
   margin: 0 auto;
+  position: relative;
 }
 
 .small-pic {
   width: 3rem;
 }
 
-/* .small-pic:hover {
-  position: relative;
-  top: -250px;
-  left: -35px;
-  width: 500px;
-  height: auto;
-  display: block;
-  z-index: 999;
-} */
+.small-pic.zoom {
+  transition: transform .4s;
+  margin: 0 auto;
+}
+
+.small-pic.zoom:active {
+  position: absolute;
+  top: -200px;
+  left: 250px;
+  transform: scale(14);
+}
 
 .main-details {
   /* background-image: linear-gradient(to bottom, #F2F2F2, #FFFCFC);
