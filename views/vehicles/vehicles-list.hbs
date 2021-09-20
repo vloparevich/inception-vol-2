@@ -6,10 +6,11 @@
   {{/if}}
 </div>
 {{#each vehiclesFromApi}}
-<form action=''>
+<form action="/vehicles/details/{{this.vin}}" method="POST">
+  <input type="hidden" name="dealerLink" value="{{this.clickoffUrl}}">
   <div class='list-of-vehicles'>
     <div class='list-of-vehicles-box'>
-      <a href="/vehicles/details/{{this.vin}}">
+      <button type="submit" class="button-to-open-vehicle-details list-vehicles">
         <div id='vehicle-card'>
           <img id='vehicle-primary-img' src="{{this.primaryPhotoUrl}}" alt='' />
           <div class='vehicle-info'>
@@ -33,7 +34,7 @@
             </h4>{{this.city}}, {{this.state}}
           </div>
         </div>
-      </a>
+      </button>
     </div>
   </div>
 </form>

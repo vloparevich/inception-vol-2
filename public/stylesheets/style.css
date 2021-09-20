@@ -326,8 +326,30 @@ header>div {
 
 /* DETAILS PAGE */
 
-/* #vehicle-details-section {
-} */
+/* PSEUDO BUTTON TO SUBMIT FORM FOR GETTING VEHICLE DETAILS*/
+.button-to-open-vehicle-details {
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+.button-to-open-vehicle-details:focus {
+  outline: 0;
+}
+
+.button-to-open-vehicle-details.list-vehicles {
+  width: 800px;
+}
+
+@media (max-width: 964px) {
+  .button-to-open-vehicle-details.list-vehicles {
+    width: 100%;
+  }
+}
+
+.save-buy-buttons {
+  margin: .5rem
+}
 
 .vehicle-details {
   background-image: linear-gradient(to bottom, #F2F2F2, #FFFCFC);
@@ -823,6 +845,10 @@ hr {
 .auth-form-container button:hover {
   opacity: 2;
   background-color: #F28DEB;
+}
+
+.auth-form-container button:focus {
+  outline: none;
 }
 
 /* A U T H F O R M S */

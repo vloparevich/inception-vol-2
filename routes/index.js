@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
     // new Promise((resolve, reject) => resolve())
     .then((vehiclesFromApi) => {
       let records = vehiclesFromApi.data.records;
-      console.log({ vehiclesFromApi });
+      console.log('THIS OBJECT', { vehiclesFromApi });
       // const trimmedArr = [];
       // for (i = 0; i < 4; i++) {
       //   trimmedArr.push(records[i]);
