@@ -32,24 +32,26 @@
       </div>
       </div>
 
-      <div id="right-side-content">
+      {{!-- <div id="right-side-content">
         <div id="user-listings">
           <div id="user-listings-content">
           <h3>My Listings</h3>
           <li><a href="">Listing 1</a></li>
           <li><a href="">Listing 2</a></li>
           </div>
-        </div>
+        </div> --}}
 
         <div id="saved-vehicles">
           <h3>Saved Vehicles</h3>
-          <a href="/profile/savedvehicles">Saved Vehicles</a>
+          <a href="/profile/savedvehicles">View {{userObject.savedVehicles.length}} Saved Vehicle</a>
         </div>
         
+
+      </div>
+      <div id="delete-account">
           <form id="delete-account" action="/profile/delete" method="POST">
             <button>Delete Account</button>
           </form>
-
       </div>
 
     
