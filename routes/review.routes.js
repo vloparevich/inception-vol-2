@@ -41,7 +41,7 @@ router.post('/add-review', isLoggedIn, async (req, res) => {
     await Dealer.findByIdAndUpdate(dealerInDb._id, {
       $push: { reviews: createdReviewInDb._id },
     });
-    res.redirect(`/vehicles/details/${vin}`);
+    res.redirect(307, `/vehicles/details/${vin}`);
   } catch (err) {
     console.log('Soemthing went wrong during postin the review:', err);
   }
@@ -50,7 +50,7 @@ router.post('/add-review', isLoggedIn, async (req, res) => {
 // ****************************************************************************************
 // GET route to delete a review if belongs to this user
 // ****************************************************************************************
-router.get('/delete/:reviewId/:vin', isLoggedIn, async (req, res) => {
+router.post('/delete/:reviewId/:vin', isLoggedIn, async (req, res) => {
   const { _id } = req.session.user;
   const { reviewId, vin } = req.params;
   let reviewFromDB;
@@ -68,7 +68,8 @@ router.get('/delete/:reviewId/:vin', isLoggedIn, async (req, res) => {
   } catch (err) {
     console.log('Soemthing went wrong during deletion of the review:', err);
   }
-  res.redirect(`/vehicles/details/${vin}`);
+  console.log('REDIRECTING DELETE');
+  res.redirect(307, `/vehicles/details/${vin}`);
 });
 
 // ****************************************************************************************
@@ -118,7 +119,8 @@ router.post('/edit/:reviewId/:vin', async (req, res) => {
   } catch (err) {
     console.log('Soemthing went wrong during editing the review:', err);
   }
-  res.redirect(`/vehicles/details/${vin}`);
+  console.log('REDIRECTING EDIT');
+  res.redirect(307, `/vehicles/details/${vin}`);
 });
 
 module.exports = router;

@@ -152,7 +152,7 @@ router.post('/savedvehicles', (req, res) => {
     },
     { new: true }
   ).then((updatedSave) => {
-    res.redirect(`/vehicles/details/${vin}/${true}`);
+    res.redirect(307, `/vehicles/details/${vin}/${true}`);
   });
 });
 
