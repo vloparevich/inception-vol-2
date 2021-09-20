@@ -67,7 +67,7 @@
           {{vehicle.city}}, {{vehicle.state}}
         </p>
         <div class='save'>
-          <form action="/profile/savedvehicles" method="POST">
+          <form action="/profile/savedvehicles" method="POST" class="save-buy-buttons">
             <input type='hidden' name="userName" value={{user}} />
             <input type='hidden' name="vin" value={{vehicle.vin}} />
             <input type='hidden' name="make" value={{vehicle.make}} />
@@ -78,6 +78,11 @@
               {{else}}
               Save This Vehicle
               {{/if}}
+            </button>
+          </form>
+          <form action="{{dealerLink}}" class="save-buy-buttons">
+            <button type='submit' class='btn btn-info'>
+              Buy
             </button>
           </form>
         </div>
@@ -102,7 +107,7 @@
 
       <div id="logo-dealer">
         <img style="height: 21px; margin: auto 0" src="../../images/carDealershipIcon.png">
-        <h4 style="margin-left: 1rem;">{{vehicle.dealerName}}</h4>
+        <a href="{{dealerLink}}" class="dealer-link"><h4 style="margin-left: 1rem;">{{vehicle.dealerName}}</h4></a> 
       </div>
 
       <hr style="border-top: 1px solid lightgray">

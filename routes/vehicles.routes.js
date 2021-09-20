@@ -63,11 +63,13 @@ router.post('/', (req, res) => {
 // ****************************************************************************************
 // GET route to get the details of selected vehicle and render details page
 // ****************************************************************************************
-router.get('/details/:vin/:isSaved?', isLoggedIn, (req, res, next) => {
+router.post('/details/:vin/:isSaved?', isLoggedIn, (req, res, next) => {
   let { _id } = req.session.user;
-  const errorDeletion = req.session?.errorDeletion;
+  const { dealerLink } = req.body;
   const { vin, isSaved } = req.params;
-  console.log('SAVED', isSaved);
+  const errorDeletion = req.session?.errorDeletion;
+  console.log('SAVED', isSaved, vin);
+  console.log('dealer link', req.body.dealerLink);
   vehiclesApi.getVehicleDetails(vin).then((vehicleFromAPI) => {
     const dealerName = vehicleFromAPI.data.dealerName;
     Dealer.find({ dealerName: dealerName })
@@ -84,6 +86,7 @@ router.get('/details/:vin/:isSaved?', isLoggedIn, (req, res, next) => {
           vehicle: vehicleFromAPI.data,
           foundDealer: foundDealer,
           dealerName: dealerName,
+          dealerLink: dealerLink,
           isSaved: isSaved,
           errorDeletion: errorDeletion,
         });
