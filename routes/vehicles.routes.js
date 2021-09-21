@@ -58,12 +58,15 @@ router.post('/details/:vin/:isSaved?', isLoggedIn, (req, res, next) => {
       })
       .then((foundDealerFromDB) => {
         const foundDealer = JSON.parse(JSON.stringify(foundDealerFromDB));
+        const preparedDelaerLink = dealerLink.startsWith(`http`)
+          ? dealerLink
+          : `https://${dealerLink}`;
         res.render('vehicles/vehicle-details', {
           currentActiveUserId: _id,
           vehicle: vehicleFromAPI.data,
           foundDealer: foundDealer,
           dealerName: dealerName,
-          dealerLink: dealerLink,
+          dealerLink: preparedDelaerLink,
           isSaved: isSaved,
           errorDeletion: errorDeletion,
         });
