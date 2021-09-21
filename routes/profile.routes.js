@@ -22,6 +22,7 @@ const vehiclesApi = new VehiclesApi();
 
 router.get('/', isLoggedIn, (req, res) => {
   const user = req.session.user;
+  // console.log('userid: ', user._id);
   res.render('user/profile', {
     userObject: user,
     isLoggedIn: req.session.user,
@@ -103,11 +104,13 @@ router.post(
 // ****************************************************************************************
 // POST route to delete user from database
 // ****************************************************************************************
-router.post('/profile/delete', (req, res, next) => {
-  const user_id = mongoose.Types.ObjectId(user._id);
+router.post('/user/delete/:user_id', isLoggedIn, (req, res, next) => {
+  const { user_id } = req.params;
+  // const user_id = req.session.user._id;
+  // const user_id = mongoose.Types.ObjectId(user._id);
 
   User.findByIdAndDelete(user_id)
-    .then(() => res.redirect('/', { _id: user_id }))
+    .then(() => res.redirect('/'))
     .catch((error) => next(error));
 });
 
