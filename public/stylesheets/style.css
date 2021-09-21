@@ -406,6 +406,11 @@ header>div {
   width: 8rem;
 }
 
+#vehicle-main-description {
+  font-size: .7rem;
+  text-align: justify;
+}
+
 /* VEHICLE DETAILS - SLIDESHOW */
 .slider {
   width: 543px;
@@ -588,6 +593,7 @@ header>div {
 
   .main-details {
     margin: 0 auto;
+    width: 90%;
   }
 }
 
