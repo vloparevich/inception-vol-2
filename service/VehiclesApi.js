@@ -5,7 +5,6 @@ class VehiclesApi {
     this.apiKey = process.env.API_KEY;
     this.api = axios.create({
       baseURL: `https://auto.dev/api/listings?apikey=${this.apiKey}`,
-      //   baseURL: `https://auto.dev/api/listings?apikey=$TEST`,
     });
     this.customApi = axios.create({
       baseURL: ``,
@@ -20,7 +19,7 @@ class VehiclesApi {
     if (model.length <= 3) {
       model = model.toUpperCase();
     } else {
-      model = model.charAt(0).toUpperCase() + model.slice(1);
+      model = model.charAt(0).toUpperCase() + model.slice(1).toLowerCase();
     }
 
     return this.api.get('', {
@@ -49,11 +48,9 @@ class VehiclesApi {
   getVehiclesList = async (arrayOfVins) => {
     const vehicles = [];
     for (let i = 0; i < arrayOfVins.length; i++) {
-      const car = await this.getVehicleDetails(arrayOfVins[i]);
-      // .then(vehicleFromApi => {
-      //   console.log(vehicleFromApi,"where are you")
+      const car = await this.getVehicleDetails(arrayOfVins[i].vin);
+      car.data.clickoffUrl = arrayOfVins[i].url;
       vehicles.push(car);
-      // }
     }
     return vehicles;
   };

@@ -136,18 +136,18 @@ router.get('/savedvehicles', isLoggedIn, (req, res) => {
         });
     });
 });
+
 // ****************************************************************************************
 // POST route to add saved vehicles
 // ****************************************************************************************
 router.post('/savedvehicles', (req, res) => {
   const user_id = req.session.user._id;
-  const { vin } = req.body;
-
+  const { vin, dealerLink } = req.body;
   User.findByIdAndUpdate(
     user_id,
     {
       $push: {
-        savedVehicles: vin,
+        savedVehicles: { vin: vin, url: dealerLink },
       },
     },
     { new: true }
@@ -166,7 +166,7 @@ router.get('/savedvehicles/delete/:vin', (req, res) => {
     user_id,
     {
       $pull: {
-        savedVehicles: vin,
+        savedVehicles: { vin: vin },
       },
     },
     { new: true }

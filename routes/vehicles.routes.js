@@ -1,8 +1,6 @@
 const router = require('express').Router();
-const User = require('../models/User.model');
 const Dealer = require('../models/Dealer.model');
 
-const isLoggedOut = require('../middleware/isLoggedOut');
 const isLoggedIn = require('../middleware/isLoggedIn');
 
 const VehiclesApi = require('../service/VehiclesApi');
@@ -42,34 +40,13 @@ router.post('/', (req, res) => {
 });
 
 // ****************************************************************************************
-// GET route to get the details of selected vehicle and render details page
-// ****************************************************************************************
-// router.get('/:id/details', (req, res, next) => {
-//   Vehicle.findById(req.params.id)
-//     .populate({
-//       path: 'details',
-//       populate: { path: 'user' },
-//     })
-//     .then((vehicleFromAPI) => {
-//       console.log({ vehicle: vehicleFromAPI.make.model });
-//       console.log({ vehicle: vehicleFromAPI });
-//       res.render('/details', {
-//         vehicleFromAPI,
-//         isAuth: req.session?.user._id,
-//       });
-//     });
-// });
-
-// ****************************************************************************************
-// GET route to get the details of selected vehicle and render details page
+// POST route to get the details of selected vehicle and render details page
 // ****************************************************************************************
 router.post('/details/:vin/:isSaved?', isLoggedIn, (req, res, next) => {
   let { _id } = req.session.user;
   const { dealerLink } = req.body;
   const { vin, isSaved } = req.params;
   const errorDeletion = req.session?.errorDeletion;
-  console.log('SAVED', isSaved, vin);
-  console.log('dealer link', req.body.dealerLink);
   vehiclesApi.getVehicleDetails(vin).then((vehicleFromAPI) => {
     const dealerName = vehicleFromAPI.data.dealerName;
     Dealer.find({ dealerName: dealerName })
@@ -94,5 +71,42 @@ router.post('/details/:vin/:isSaved?', isLoggedIn, (req, res, next) => {
     delete req.session.errorDeletion;
   });
 });
+
+// ****************************************************************************************
+// HACK, POST route to get the details of selected vehicle and get the dealerUrl for single
+// vehicle (pref of the API) to render vehcile details page with all the details. This route
+// 98% repeats the previous one but with '*' which cannot be applied after this one ':isSaved?'
+// ****************************************************************************************
+// router.post('/details/:vin/:isSaved/*', isLoggedIn, (req, res, next) => {
+//   let { _id } = req.session.user;
+//   // Grab params that are attached on the end of the /details/:vin/:isSaved/ route
+//   console.log('HEEEEEEEEEEEEERE!!!!!!');
+//   const dealerLink = req.params[0];
+//   const { vin, isSaved } = req.params;
+//   const errorDeletion = req.session?.errorDeletion;
+//   vehiclesApi.getVehicleDetails(vin).then((vehicleFromAPI) => {
+//     const dealerName = vehicleFromAPI.data.dealerName;
+//     Dealer.find({ dealerName: dealerName })
+//       .populate({
+//         path: 'reviews',
+//         populate: {
+//           path: 'user_id',
+//         },
+//       })
+//       .then((foundDealerFromDB) => {
+//         const foundDealer = JSON.parse(JSON.stringify(foundDealerFromDB));
+//         res.render('vehicles/vehicle-details', {
+//           currentActiveUserId: _id,
+//           vehicle: vehicleFromAPI.data,
+//           foundDealer: foundDealer,
+//           dealerName: dealerName,
+//           dealerLink: dealerLink,
+//           isSaved: isSaved,
+//           errorDeletion: errorDeletion,
+//         });
+//       });
+//     delete req.session.errorDeletion;
+//   });
+// });
 
 module.exports = router;
