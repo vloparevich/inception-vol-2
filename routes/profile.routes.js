@@ -14,6 +14,7 @@ const isLoggedOut = require('../middleware/isLoggedOut');
 const isLoggedIn = require('../middleware/isLoggedIn');
 
 const VehiclesApi = require('../service/VehiclesApi');
+const Review = require('../models/Review.model');
 const vehiclesApi = new VehiclesApi();
 
 // ****************************************************************************************
@@ -104,14 +105,22 @@ router.post(
 // ****************************************************************************************
 // POST route to delete user from database
 // ****************************************************************************************
-router.post('/delete/:user_id', (req, res, next) => {
-  // router.post('/delete', isLoggedIn, (req, res, next) => {
+router.post('/delete/:user_id', isLoggedIn, (req, res, next) => {
   const { user_id } = req.params;
-  // const user_id = req.session.user._id;
-  // const user_id = mongoose.Types.ObjectId(user._id);
-
+  const objUserId = mongoose.Types.ObjectId(user_id);
+  Review.deleteMany({ user_id: objUserId })
+    .then((removedReviews) => {
+      console.log({ removedReviews: removedReviews });
+    })
+    .catch((err) => {
+      console.log('Something went wrong during removing the reviews', err);
+      res.render('error');
+    });
   User.findByIdAndDelete(user_id)
-    .then(() => res.redirect('/auth/logout'))
+    .then((removedAccount) => {
+      console.log({ removedAccount: removedAccount });
+      res.redirect('/auth/logout');
+    })
     .catch((error) => next(error));
 });
 
@@ -164,7 +173,6 @@ router.post('/savedvehicles', (req, res) => {
 // GET route to delete a saved vehicle
 // ****************************************************************************************
 router.get('/savedvehicles/delete/:vin', (req, res) => {
-  console.log("removing")
   const user_id = req.session.user._id;
   const { vin } = req.params;
   User.findByIdAndUpdate(
@@ -177,7 +185,6 @@ router.get('/savedvehicles/delete/:vin', (req, res) => {
     { new: true }
   ).then((updatedSave) => {
     console.log('deleted', updatedSave);
-    // res.redirect(`/vehicles/details/${vin}`)
     res.redirect('/profile/savedvehicles');
   });
 });
