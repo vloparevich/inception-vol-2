@@ -790,6 +790,67 @@ header>div {
 
 /* USER PROFILE PAGE */
 
+/* EDIT PROFILE PAGE */
+
+.edit-form {
+  border: .25rem solid #225473;
+  margin: 2.5% 30%;
+  box-shadow: 10px 5px 5px lightgray;
+  border-radius: 1rem;
+  background-color: white;
+}
+
+input[type=text] {
+  width: 50%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: .1rem solid lightgray;
+  background: #F2F2F2;
+}
+
+.edit-form-container {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-form-container textarea {
+  width: 95%;
+}
+
+.edit-form-container p {
+  color: gray;
+  font-weight: lighter;
+}
+
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* Set a style for buttons */
+.edit-form-container button {
+  background-color: #04D9D9;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px auto;
+  border: none;
+  cursor: pointer;
+  width: 50%;
+  opacity: 0.9;
+  border-radius: 50rem;
+}
+
+.edit-form-container button:hover {
+  opacity: 2;
+  background-color: #F28DEB;
+}
+
+.edit-form-container button:focus {
+  outline: none;
+}
+
 /* A U T H F O R M S */
 
 .auth-form {

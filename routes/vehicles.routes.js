@@ -25,7 +25,7 @@ router.post('/', (req, res) => {
     .then((queriedVehicles) => {
       const { records } = queriedVehicles.data;
       const suvCars = records.filter((car) => car.bodyStyle === 'suv');
-      res.render('vehicles/vehicles-list', {
+      res.status(200).render('vehicles/vehicles-list', {
         vehiclesFromApi: records,
         suvCars: suvCars,
       });
@@ -61,7 +61,7 @@ router.post('/details/:vin/:isSaved?', isLoggedIn, (req, res, next) => {
         const preparedDelaerLink = dealerLink.startsWith(`http`)
           ? dealerLink
           : `https://${dealerLink}`;
-        res.render('vehicles/vehicle-details', {
+        res.status(200).render('vehicles/vehicle-details', {
           currentActiveUserId: _id,
           vehicle: vehicleFromAPI.data,
           foundDealer: foundDealer,

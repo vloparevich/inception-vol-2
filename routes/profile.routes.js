@@ -163,6 +163,7 @@ router.post('/savedvehicles', (req, res) => {
 // GET route to delete a saved vehicle
 // ****************************************************************************************
 router.get('/savedvehicles/delete/:vin', (req, res) => {
+  console.log("removing")
   const user_id = req.session.user._id;
   const { vin } = req.params;
   User.findByIdAndUpdate(
