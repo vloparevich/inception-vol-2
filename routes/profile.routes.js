@@ -104,13 +104,14 @@ router.post(
 // ****************************************************************************************
 // POST route to delete user from database
 // ****************************************************************************************
-router.post('/user/delete/:user_id', isLoggedIn, (req, res, next) => {
+router.post('/delete/:user_id', (req, res, next) => {
+  // router.post('/delete', isLoggedIn, (req, res, next) => {
   const { user_id } = req.params;
   // const user_id = req.session.user._id;
   // const user_id = mongoose.Types.ObjectId(user._id);
 
   User.findByIdAndDelete(user_id)
-    .then(() => res.redirect('/'))
+    .then(() => res.redirect('/auth/logout'))
     .catch((error) => next(error));
 });
 
