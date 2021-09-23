@@ -44,7 +44,9 @@ router.post('/', (req, res) => {
 // ****************************************************************************************
 router.post('/details/:vin/:isSaved?', isLoggedIn, (req, res, next) => {
   let { _id } = req.session.user;
-  const { dealerLink } = req.body;
+  const dealerLink = req.body.dealerLink
+    ? req.body.dealerLink
+    : req.session.dealerLinkFromGlobalScope;
   const { vin, isSaved } = req.params;
   const errorDeletion = req.session?.errorDeletion;
   vehiclesApi.getVehicleDetails(vin).then((vehicleFromAPI) => {
@@ -58,7 +60,7 @@ router.post('/details/:vin/:isSaved?', isLoggedIn, (req, res, next) => {
       })
       .then((foundDealerFromDB) => {
         const foundDealer = JSON.parse(JSON.stringify(foundDealerFromDB));
-        const preparedDelaerLink = dealerLink.startsWith(`http`)
+        const preparedDelaerLink = dealerLink?.startsWith(`http`)
           ? dealerLink
           : `https://${dealerLink}`;
         res.status(200).render('vehicles/vehicle-details', {

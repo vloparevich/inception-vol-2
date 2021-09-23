@@ -163,6 +163,10 @@ header>div {
   font-weight: bold;
 }
 
+.heart {
+  font-size: 1.5rem;
+}
+
 .footer-section {
   background-color: #225473;
   display: block;
@@ -596,6 +600,45 @@ header>div {
     width: 90%;
   }
 }
+
+
+.no-review-header {
+  position: relative;
+}
+
+.arrow-left {
+  font-size: 50px;
+  position: absolute;
+  top: 9rem;
+  animation-name: attacking;
+  animation-duration: 4s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes attacking {
+  0% {
+    /* font-size: 50px; */
+    left: 50px;
+    top: 60px
+  }
+
+
+  50% {
+    /* font-size: 80px; */
+    left: -150px;
+    top: 110px;
+  }
+
+
+  100% {
+    /* font-size: 50px; */
+    left: 50px;
+    top: 60px
+  }
+}
+
+
 
 /*REVIEW-FORMS*/
 .update-review-container form {

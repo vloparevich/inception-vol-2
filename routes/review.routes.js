@@ -1,3 +1,5 @@
+const express = require('express');
+const app = express();
 const router = require('express').Router();
 const mongoose = require('mongoose');
 const User = require('../models/User.model');
@@ -32,6 +34,7 @@ router.post('/add-review', isLoggedIn, async (req, res) => {
     const dealerInDb = await Dealer.findOne({ dealerName: dealerName });
     const createdReviewInDb = await Review.create({
       reviewContent,
+      //find and remove this object
       user_id,
       vin,
     });
@@ -51,10 +54,12 @@ router.post('/add-review', isLoggedIn, async (req, res) => {
 // GET route to delete a review if belongs to this user
 // ****************************************************************************************
 router.post('/delete/:reviewId/:vin', isLoggedIn, async (req, res) => {
-  const { _id } = req.session.user;
-  const { reviewId, vin } = req.params;
   let reviewFromDB;
   let reviewCreatorIdFromDB;
+  const { _id } = req.session.user;
+  const { reviewId, vin } = req.params;
+  const { dealerLink } = req.body;
+  req.session.dealerLinkFromGlobalScope = dealerLink;
 
   try {
     reviewFromDB = await Review.findById(reviewId);
@@ -75,11 +80,9 @@ router.post('/delete/:reviewId/:vin', isLoggedIn, async (req, res) => {
 // ****************************************************************************************
 // GET route to render the review for editing
 // ****************************************************************************************
-router.get('/edit/:reviewId/:dealerName/:vin', (req, res) => {
+router.post('/edit/:reviewId/:dealerName/:vin', (req, res) => {
   const { reviewId, dealerName, vin } = req.params;
-  const { _id } = req.session.user;
-
-  console.log('USER ID', _id);
+  const { dealerLink } = req.body;
   Review.findById(reviewId)
     .populate('user_id')
     .then((foundReview) => {
@@ -89,6 +92,7 @@ router.get('/edit/:reviewId/:dealerName/:vin', (req, res) => {
         dealerName: dealerName,
         reviewId: reviewId,
         vin: vin,
+        dealerLink: dealerLink,
       });
     });
 });
@@ -98,7 +102,15 @@ router.get('/edit/:reviewId/:dealerName/:vin', (req, res) => {
 // ****************************************************************************************
 router.post('/edit/:reviewId/:vin', async (req, res) => {
   const { reviewId, vin } = req.params;
-  const { reviewContent } = req.body;
+  const { reviewContent, dealerLink } = req.body;
+  // app.locals.dealerLinkFromGlobalScope = dealerLink;
+  // console.log({
+  //   dealerLinkFromGlobalScope: app.locals.dealerLinkFromGlobalScope,
+  // });
+  req.session.dealerLinkFromGlobalScope = dealerLink;
+  console.log({
+    dealerLinkFromGlobalScope: req.session.dealerLinkFromGlobalScope,
+  });
   const { _id } = req.session.user;
   let reviewFromDB;
   let reviewCreatorIdFromDB;
