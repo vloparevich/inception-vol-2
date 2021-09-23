@@ -117,7 +117,8 @@
 
       <h5>Review this dealer</h5>
       <p>Share your thoughts with other customers</p>
-      <form action="/review/add-review/{{vehicle.dealerName}}/{{vehicle.vin}}">
+      <form action="/review/add-review/{{vehicle.dealerName}}/{{vehicle.vin}}" method="POST">
+        <input type='hidden' name="dealerLink" value={{dealerLink}} />
         <button type='submit' class='btn btn-primary'>
           Write a customer review
         </button>

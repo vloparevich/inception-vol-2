@@ -15,7 +15,9 @@ const vehiclesApi = new VehiclesApi();
 // ****************************************************************************************
 // GET route to render the form for adding review about a dealer
 // ****************************************************************************************
-router.get('/add-review/:dealerName/:vin', isLoggedIn, (req, res) => {
+router.post('/add-review/:dealerName/:vin', isLoggedIn, (req, res) => {
+  const { dealerLink } = req.body;
+  req.session.dealerLinkFromGlobalScope = dealerLink;
   const { dealerName, vin } = req.params;
   res.render('reviews/new-review', {
     dealerName,
@@ -103,14 +105,7 @@ router.post('/edit/:reviewId/:dealerName/:vin', (req, res) => {
 router.post('/edit/:reviewId/:vin', async (req, res) => {
   const { reviewId, vin } = req.params;
   const { reviewContent, dealerLink } = req.body;
-  // app.locals.dealerLinkFromGlobalScope = dealerLink;
-  // console.log({
-  //   dealerLinkFromGlobalScope: app.locals.dealerLinkFromGlobalScope,
-  // });
   req.session.dealerLinkFromGlobalScope = dealerLink;
-  console.log({
-    dealerLinkFromGlobalScope: req.session.dealerLinkFromGlobalScope,
-  });
   const { _id } = req.session.user;
   let reviewFromDB;
   let reviewCreatorIdFromDB;
