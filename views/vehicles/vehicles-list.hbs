@@ -1,8 +1,14 @@
 <div class='header-vehicles-list'>
   {{#if savedVehiclesPage}}
-  <h2>
-    Saved Vehicles
-  </h2>
+    {{#if vehiclesFromApi}}
+    <h2>
+      Saved Vehicles
+    </h2>
+    {{else}}
+    <h2>
+      No saved vehicles yet
+    </h2>
+    {{/if}}
   {{/if}}
 </div>
 {{#each vehiclesFromApi}}
