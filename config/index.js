@@ -70,12 +70,12 @@ module.exports = (app) => {
       httpOnly: true,
       cookie: {
         sameSite: 'lax',
-        maxAge: 600 * 1000,
+        maxAge: 1200 * 1000,
         httpOnly: true,
       },
       store: MongoStore.create({
         mongoUrl: MONGO_URI,
-        ttl: 600,
+        ttl: 1200,
       }),
     })
   );

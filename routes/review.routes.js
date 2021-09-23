@@ -1,3 +1,5 @@
+const express = require('express');
+const app = express();
 const router = require('express').Router();
 const mongoose = require('mongoose');
 const User = require('../models/User.model');
@@ -13,7 +15,9 @@ const vehiclesApi = new VehiclesApi();
 // ****************************************************************************************
 // GET route to render the form for adding review about a dealer
 // ****************************************************************************************
-router.get('/add-review/:dealerName/:vin', isLoggedIn, (req, res) => {
+router.post('/add-review/:dealerName/:vin', isLoggedIn, (req, res) => {
+  const { dealerLink } = req.body;
+  req.session.dealerLinkFromGlobalScope = dealerLink;
   const { dealerName, vin } = req.params;
   res.render('reviews/new-review', {
     dealerName,
@@ -32,6 +36,7 @@ router.post('/add-review', isLoggedIn, async (req, res) => {
     const dealerInDb = await Dealer.findOne({ dealerName: dealerName });
     const createdReviewInDb = await Review.create({
       reviewContent,
+      //find and remove this object
       user_id,
       vin,
     });
@@ -51,10 +56,12 @@ router.post('/add-review', isLoggedIn, async (req, res) => {
 // GET route to delete a review if belongs to this user
 // ****************************************************************************************
 router.post('/delete/:reviewId/:vin', isLoggedIn, async (req, res) => {
-  const { _id } = req.session.user;
-  const { reviewId, vin } = req.params;
   let reviewFromDB;
   let reviewCreatorIdFromDB;
+  const { _id } = req.session.user;
+  const { reviewId, vin } = req.params;
+  const { dealerLink } = req.body;
+  req.session.dealerLinkFromGlobalScope = dealerLink;
 
   try {
     reviewFromDB = await Review.findById(reviewId);
@@ -75,11 +82,9 @@ router.post('/delete/:reviewId/:vin', isLoggedIn, async (req, res) => {
 // ****************************************************************************************
 // GET route to render the review for editing
 // ****************************************************************************************
-router.get('/edit/:reviewId/:dealerName/:vin', (req, res) => {
+router.post('/edit/:reviewId/:dealerName/:vin', (req, res) => {
   const { reviewId, dealerName, vin } = req.params;
-  const { _id } = req.session.user;
-
-  console.log('USER ID', _id);
+  const { dealerLink } = req.body;
   Review.findById(reviewId)
     .populate('user_id')
     .then((foundReview) => {
@@ -89,6 +94,7 @@ router.get('/edit/:reviewId/:dealerName/:vin', (req, res) => {
         dealerName: dealerName,
         reviewId: reviewId,
         vin: vin,
+        dealerLink: dealerLink,
       });
     });
 });
@@ -98,7 +104,8 @@ router.get('/edit/:reviewId/:dealerName/:vin', (req, res) => {
 // ****************************************************************************************
 router.post('/edit/:reviewId/:vin', async (req, res) => {
   const { reviewId, vin } = req.params;
-  const { reviewContent } = req.body;
+  const { reviewContent, dealerLink } = req.body;
+  req.session.dealerLinkFromGlobalScope = dealerLink;
   const { _id } = req.session.user;
   let reviewFromDB;
   let reviewCreatorIdFromDB;
