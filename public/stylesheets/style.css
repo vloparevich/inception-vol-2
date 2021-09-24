@@ -163,8 +163,9 @@ header>div {
   font-weight: bold;
 }
 
-.heart {
-  font-size: 1.5rem;
+#heart {
+  height: 20px;
+  width: 20px;
 }
 
 .numbers-reviews-badge {
@@ -275,7 +276,7 @@ header>div {
 .search-button {
   margin-top: 1rem;
   padding: .50rem;
-  border-radius: 1rem;
+  border-radius: 5rem;
   background-image: linear-gradient(to right, #ff00ee, #F28DEB);
   font-weight: bold;
   border: .5px solid #FFA500;
