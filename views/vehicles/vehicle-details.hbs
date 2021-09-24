@@ -150,6 +150,7 @@
             </form>
             <form action="/review/delete/{{this._id}}/{{../vehicle.vin}}" method='post'>
               <input type="hidden" name="dealerLink" value={{../dealerLink}}>
+              <input type="hidden" name="dealerName" value="{{../dealerName}}">
               <button type='submit' id='btn-btn-danger'>
                 Delete
               </button>
