@@ -81,6 +81,11 @@
         method='POST'
       >
         <input type='hidden' name='dealerLink' value="{{this.clickoffUrl}}" />
+        <div class='numbers-reviews-badge'>
+          <p>
+            {{this.reviewLength}} <span class="reviews-badge-text">reviews</span> 
+          </p>
+        </div>
         <button type='submit' class='button-to-open-vehicle-details'>
           <div class='vehicle-card'>
             <img class='vehicle-img' src="{{this.primaryPhotoUrl}}" alt='' />

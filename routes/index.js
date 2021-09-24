@@ -1,8 +1,5 @@
 const router = require('express').Router();
-const User = require('../models/User.model');
-
-const isLoggedOut = require('../middleware/isLoggedOut');
-const isLoggedIn = require('../middleware/isLoggedIn');
+const Dealer = require('../models/Dealer.model');
 
 const VehiclesApi = require('../service/VehiclesApi');
 const vehiclesApi = new VehiclesApi();
@@ -10,34 +7,37 @@ const vehiclesApi = new VehiclesApi();
 // ****************************************************************************************
 // GET route to get the default set of 20 vehicles and render index/landing page
 // ****************************************************************************************
-router.get('/', (req, res) => {
-  vehiclesApi
-    .getGeneralLisiting()
-    // new Promise((resolve, reject) => resolve())
-    .then((vehiclesFromApi) => {
-      let records = vehiclesFromApi.data.records;
-      console.log('THIS OBJECT', { vehiclesFromApi });
-      // const trimmedArr = [];
-      // for (i = 0; i < 4; i++) {
-      //   trimmedArr.push(records[i]);
-      // }
-      // const newArr = Array.from(records);
-      // const trimmedArr = newArr.slice(1);
-      // console.log('TRIMMED', trimmedArr);
-      const trimmedArrOfCars = records.filter((curr, i) => i < 5 && curr);
-      console.log('TRIMMED:', { trimmedArr: trimmedArrOfCars });
-      res.render('index', {
-        vehiclesFromApi: trimmedArrOfCars,
-        isLoggedIn: req.session.user,
-      });
-    })
-    .catch((err) => {
-      console.log('Error appaeared during getting cars from API', err);
-      res.render('index', {
-        errorMessage:
-          'Oops, something went wrong,\ntry one more time, please 😔',
-      });
+router.get('/', async (req, res) => {
+  try {
+    const vehiclesFromApi = await vehiclesApi.getGeneralLisiting();
+    let records = vehiclesFromApi.data.records;
+    console.log('MY CURRENT RECORDS', records);
+    const trimmedArrOfCars = records.filter((curr, i) => i < 5 && curr);
+    const trimmedArrOfCarsAndRevLength = trimmedArrOfCars.map(
+      async (current) => {
+        const dealerName = current.dealerName;
+
+        const dealer = await Dealer.findOne({ dealerName: dealerName });
+        current.reviewLength = dealer.reviews.length;
+        return {
+          ...current,
+          reviewLength: dealer.reviews.length,
+        };
+      }
+    );
+
+    let data = await Promise.all(trimmedArrOfCarsAndRevLength);
+
+    res.render('index', {
+      vehiclesFromApi: data,
+      isLoggedIn: req.session.user,
     });
+  } catch (err) {
+    console.log('Error appaeared during getting cars from API', err);
+    res.render('index', {
+      errorMessage: 'Oops, something went wrong,\ntry one more time, please 😔',
+    });
+  }
 });
 
 module.exports = router;
