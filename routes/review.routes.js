@@ -58,15 +58,23 @@ router.post('/delete/:reviewId/:vin', isLoggedIn, async (req, res) => {
   let reviewFromDB;
   let reviewCreatorIdFromDB;
   const { _id } = req.session.user;
-  const { reviewId, vin } = req.params;
-  const { dealerLink } = req.body;
+  let { reviewId, vin } = req.params;
+  const { dealerLink, dealerName } = req.body;
   req.session.dealerLinkFromGlobalScope = dealerLink;
 
   try {
+    reviewId = mongoose.Types.ObjectId(reviewId);
     reviewFromDB = await Review.findById(reviewId);
     reviewCreatorIdFromDB = reviewFromDB.user_id.toString();
     if (_id === reviewCreatorIdFromDB) {
       await Review.findByIdAndRemove(reviewId);
+
+      await Dealer.findOneAndUpdate(
+        { dealerName: dealerName },
+        {
+          $pull: { reviews: reviewId },
+        }
+      );
     } else {
       req.session.errorDeletion =
         'You are not Authorized to Delete this review, you are not a creator of it....';
