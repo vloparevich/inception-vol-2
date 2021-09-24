@@ -168,6 +168,28 @@ header>div {
   width: 20px;
 }
 
+.numbers-reviews-badge {
+  position: absolute;
+  bottom: 15px;
+  right: 20px;
+  z-index: 5;
+  border: #F28DEB 3px solid;
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  text-align: center;
+  color: #F28DEB;
+  font-size: 1.3rem;
+  background-color: #225473;
+}
+
+.reviews-badge-text {
+  position: absolute;
+  top: 22px;
+  right: 4px;
+  font-size: .75rem;
+}
+
 .footer-section {
   background-color: #225473;
   display: block;
@@ -318,6 +340,7 @@ header>div {
 /*YOU MIGHT LIKE SECTION*/
 .vehicle-card-index-page {
   text-decoration: none !important;
+  position: relative;
 }
 
 .vehicle-card-index-page .vehicle-card .vehicle-img {
@@ -574,9 +597,19 @@ header>div {
 }
 
 @media (max-width: 964px) {
-  .vehicle-details {
+
+  .vehicle-details,
+  .set-of-vehicles {
     flex-direction: column;
     justify-content: center;
+  }
+
+  .numbers-reviews-badge {
+    right: 125px;
+  }
+
+  .vehicle-card-index-page {
+    margin: 1rem;
   }
 
   .set-of-pictures-left-side {

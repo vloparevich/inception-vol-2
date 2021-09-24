@@ -36,7 +36,6 @@ router.post('/add-review', isLoggedIn, async (req, res) => {
     const dealerInDb = await Dealer.findOne({ dealerName: dealerName });
     const createdReviewInDb = await Review.create({
       reviewContent,
-      //find and remove this object
       user_id,
       vin,
     });
