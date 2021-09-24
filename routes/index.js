@@ -11,17 +11,19 @@ router.get('/', async (req, res) => {
   try {
     const vehiclesFromApi = await vehiclesApi.getGeneralLisiting();
     let records = vehiclesFromApi.data.records;
-    console.log('MY CURRENT RECORDS', records);
     const trimmedArrOfCars = records.filter((curr, i) => i < 5 && curr);
     const trimmedArrOfCarsAndRevLength = trimmedArrOfCars.map(
       async (current) => {
         const dealerName = current.dealerName;
 
-        const dealer = await Dealer.findOne({ dealerName: dealerName });
+        let dealer = await Dealer.findOne({ dealerName: dealerName });
+        if (!dealer) {
+          dealer = { reviews: [] };
+        }
         current.reviewLength = dealer.reviews.length;
         return {
           ...current,
-          reviewLength: dealer.reviews.length,
+          reviewLength: dealer.reviews?.length,
         };
       }
     );
