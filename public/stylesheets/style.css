@@ -78,6 +78,12 @@ h5 {
   font-weight: bold;
 }
 
+h6 {
+  color: #225473;
+  font-family: Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: bold;
+}
+
 header {
   margin: 0;
   z-index: 15;
@@ -164,8 +170,8 @@ header>div {
 }
 
 #heart {
-  height: 20px;
-  width: 20px;
+  height: 17px;
+  width: 17px;
 }
 
 .numbers-reviews-badge {
@@ -314,7 +320,8 @@ header>div {
 .set-of-vehicles .vehicle-card {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content:space-around;
+  align-items: left;
   background-image: linear-gradient(to bottom, #F2F2F2, #FFFCFC);
   padding: .75rem;
   margin: 0 .75rem;

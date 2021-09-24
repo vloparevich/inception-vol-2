@@ -89,14 +89,17 @@
         <button type='submit' class='button-to-open-vehicle-details'>
           <div class='vehicle-card'>
             <img class='vehicle-img' src="{{this.primaryPhotoUrl}}" alt='' />
-            <p>
-              {{this.make}} {{this.model}}
-            </p>
+            <h6>
+              <b>{{this.make}} {{this.model}}</b>
+            </h6>
             <p>
               {{this.mileage}}
             </p>
-            <p>
+            <h6>
               {{this.price}}
+            </h6>
+            <p style="color: gray;">
+              {{!-- Only at {{this.dealerName}} --}}
             </p>
           </div>
         </button>
