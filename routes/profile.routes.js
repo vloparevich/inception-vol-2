@@ -23,10 +23,12 @@ const vehiclesApi = new VehiclesApi();
 
 router.get('/', isLoggedIn, (req, res) => {
   const user = req.session.user;
-  // console.log('userid: ', user._id);
-  res.render('user/profile', {
-    userObject: user,
-    isLoggedIn: req.session.user,
+  const user_id = mongoose.Types.ObjectId(user._id);
+  User.findById(user_id).then((foundUser) => {
+    res.render('user/profile', {
+      userObject: foundUser,
+      isLoggedIn: user,
+    });
   });
 });
 
