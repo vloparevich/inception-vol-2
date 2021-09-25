@@ -1,14 +1,14 @@
 <div class='header-vehicles-list'>
   {{#if savedVehiclesPage}}
-    {{#if vehiclesFromApi}}
-    <h2>
-      Saved Vehicles
-    </h2>
-    {{else}}
-    <h2>
-      No saved vehicles yet
-    </h2>
-    {{/if}}
+  {{#if vehiclesFromApi}}
+  <h2>
+    Saved Vehicles
+  </h2>
+  {{else}}
+  <h2>
+    No saved vehicles yet
+  </h2>
+  {{/if}}
   {{/if}}
 </div>
 {{#each vehiclesFromApi}}
@@ -20,24 +20,22 @@
         <div id='vehicle-card'>
           <img id='vehicle-primary-img' src="{{this.primaryPhotoUrl}}" alt='' />
           <div class='vehicle-info'>
-            <div class='vehicle-year-make'>
+            <h4 class='vehicle-year-make'>
               {{this.year}}
               {{this.make}}
-            </div>
+              {{this.model}}
+            </h4>
+            {{!-- <hr style="border-top: 2px solid black"> --}}
             {{this.bodyStyle}}
-            {{this.model}}
-            {{this.price}}
-            {{this.mileage}}
-            <h4>
-              <b>
+            <h6>
                 Exterior
-              </b>
-            </h4>{{this.displayColor}}
-            <h4>
-              <b>
+            </h6>{{this.displayColor}}
+            <h6>
                 Location
-              </b>
-            </h4>{{this.city}}, {{this.state}}
+            </h6>{{this.city}}, {{this.state}}
+            <h5>
+              {{this.mileage}} | {{this.price}}
+            </h5>
           </div>
         </div>
       </button>
