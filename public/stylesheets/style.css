@@ -176,8 +176,8 @@ header>div {
 
 .numbers-reviews-badge {
   position: absolute;
-  bottom: 15px;
-  right: 20px;
+  top: -20px;
+  right: -3px;
   z-index: 5;
   border: #F28DEB 3px solid;
   border-radius: 50%;
@@ -321,9 +321,9 @@ header>div {
   display: flex;
   flex-direction: column;
   justify-content:space-around;
-  align-items: left;
+  text-align: left;
   background-image: linear-gradient(to bottom, #F2F2F2, #FFFCFC);
-  padding: .75rem;
+  padding: .75rem .75rem;
   margin: 0 .75rem;
   box-shadow: 3px 3px 3px lightgray;
   border-radius: 10px;
@@ -336,13 +336,13 @@ header>div {
 }
 
 .set-of-vehicles .vehicle-card img {
-  width: 85%;
+  width: 100%;
   margin: 0 auto;
 }
 
-.vehicle-img {
+/* .vehicle-img {
   width: 35%;
-}
+} */
 
 /*YOU MIGHT LIKE SECTION*/
 .vehicle-card-index-page {
