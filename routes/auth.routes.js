@@ -26,10 +26,15 @@ router.get('/signup', isLoggedOut, (req, res) => {
   res.render('auth/signup', { isLoggedIn: req.session.user });
 });
 
-router.post('/signup', fileUploader.single('profilePic'), (req, res) => {
-  const { email, password, firstName, lastName } = req.body;
+router.post('/signup', fileUploader.single('profilePic'), (req, res, next) => {
+  const { email, password, passwordRetype, firstName, lastName } = req.body;
   console.log('User: ', { email, password, firstName, lastName });
 
+  if (password !== passwordRetype) {
+    return res.status(400).render('auth/signup', {
+      errorMessage: 'Password did not match',
+    });
+  }
   if (!email || !password || !firstName || !lastName) {
     return res.status(400).render('auth/signup', {
       errorMessage: 'Please fill out all required fields.',
@@ -38,8 +43,7 @@ router.post('/signup', fileUploader.single('profilePic'), (req, res) => {
 
   // Search the database for a user with the email submitted in the form
   User.findOne({ email: email }).then((found) => {
-    console.log({ found });
-    //   // If the user is found, send the message email is already used
+    // If the user is found, send the message email is already used
     if (found) {
       return res.status(400).render('auth/signup', {
         errorMessage: 'Email is already being used.',
@@ -82,14 +86,14 @@ router.post('/signup', fileUploader.single('profilePic'), (req, res) => {
             html: templates.templateExample(`${firstName} ${lastName}`),
           })
           .then((info) => {
-            console.log('Info from nodeamailer', info);
             res.redirect('/');
           })
-          .catch((error) =>
+          .catch((error) => {
             console.log(
               `Something went wrong during sending the email to the user: ${error}`
-            )
-          );
+            );
+            res.redirect('/');
+          });
       })
       .catch((error) => {
         if (error instanceof mongoose.Error.ValidationError) {
@@ -102,9 +106,12 @@ router.post('/signup', fileUploader.single('profilePic'), (req, res) => {
             errorMessage: error,
           });
         }
-        return res
-          .status(500)
-          .render('auth/signup', { errorMessage: error.message });
+        // if 'path' found that means that user did not upload the profile pic
+        error.message.includes('path')
+          ? res.render('auth/signup', {
+              errorMessage: 'Please upload profile image',
+            })
+          : res.redirect('/');
       });
   });
 });
