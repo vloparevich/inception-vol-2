@@ -78,12 +78,6 @@ h5 {
   font-weight: bold;
 }
 
-h6 {
-  color: #225473;
-  font-family: Helvetica, Arial, "Lucida Grande", sans-serif;
-  font-weight: bold;
-}
-
 header {
   margin: 0;
   z-index: 15;
@@ -170,8 +164,7 @@ header>div {
 }
 
 #heart {
-  height: 17px;
-  width: 17px;
+  width: 1.25rem;
 }
 
 .numbers-reviews-badge {
@@ -282,7 +275,7 @@ header>div {
 .search-button {
   margin-top: 1rem;
   padding: .50rem;
-  border-radius: 5rem;
+  border-radius: 1rem;
   background-image: linear-gradient(to right, #ff00ee, #F28DEB);
   font-weight: bold;
   border: .5px solid #FFA500;
@@ -320,10 +313,9 @@ header>div {
 .set-of-vehicles .vehicle-card {
   display: flex;
   flex-direction: column;
-  justify-content:space-around;
-  text-align: left;
+  justify-content: space-around;
   background-image: linear-gradient(to bottom, #F2F2F2, #FFFCFC);
-  padding: .75rem .75rem;
+  padding: .75rem;
   margin: 0 .75rem;
   box-shadow: 3px 3px 3px lightgray;
   border-radius: 10px;
@@ -336,13 +328,13 @@ header>div {
 }
 
 .set-of-vehicles .vehicle-card img {
-  width: 100%;
+  width: 85%;
   margin: 0 auto;
 }
 
-/* .vehicle-img {
+.vehicle-img {
   width: 35%;
-} */
+}
 
 /*YOU MIGHT LIKE SECTION*/
 .vehicle-card-index-page {
@@ -645,7 +637,6 @@ header>div {
 
 .no-review-header {
   position: relative;
-  color: gray;
 }
 
 .arrow-left {
@@ -947,7 +938,8 @@ hr {
 }
 
 input[type=text],
-input[type=password] {
+input[type=password],
+.custom-file-upload {
   width: 50%;
   padding: 15px;
   margin: 5px 0 22px 0;
@@ -1008,6 +1000,11 @@ hr {
   background-color: #F28DEB;
 }
 
+form[action='/auth/signup'] .required :after {
+  content: " *";
+  color: red;
+}
+
 /* V E H I C L E S   L I S T */
 .list-of-vehicles {
   display: flex;
@@ -1053,7 +1050,7 @@ hr {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-left: 1rem;
+  padding: .5rem 1rem;
 }
 
 .vehicle-year-make {
@@ -1063,5 +1060,16 @@ hr {
   align-items: flex-start;
 }
 
+
+input[type="file"] {
+  display: none;
+}
+
+.custom-file-upload {
+  border: 1px solid #ccc;
+  display: inline-block;
+  cursor: pointer;
+  margin: 0 auto;
+}
 
 /* V E H I C L E S   L I S T */
